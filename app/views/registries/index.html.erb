@@ -2,9 +2,18 @@
 
 <h1>Give A Gift</h1>
 
+<%= form_for registries_path, method: :get do |f| %> 
+  <p> 
+    <%= f.label "Search: " %> 
+    <%= text_field_tag :q, params[:q] %> 
+    <%= submit_tag "Search", name: nil %>
+  </p>
+<% end %> 
+
 <table>
   <thead>
     <tr>
+      <th>Name</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +21,7 @@
   <tbody>
     <% @registries.each do |registry| %>
       <tr>
+        <td><%= registry.name %></td>
         <td><%= link_to 'Show', registry %></td>
         <td><%= link_to 'Edit', edit_registry_path(registry) %></td>
         <td><%= link_to 'Destroy', registry, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2019_07_17_003825) do
   enable_extension "plpgsql"
 
   create_table "registries", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

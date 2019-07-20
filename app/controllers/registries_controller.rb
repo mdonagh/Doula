@@ -5,6 +5,9 @@ class RegistriesController < ApplicationController
   # GET /registries.json
   def index
     @registries = Registry.all
+    if params[:q]
+      @registries = Registry.search_by_name(params[:q]).records
+    end 
   end
 
   # GET /registries/1
@@ -69,6 +72,6 @@ class RegistriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def registry_params
-      params.fetch(:registry, {})
+      params.require(:registry).permit(:name)
     end
 end

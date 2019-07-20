@@ -31,6 +31,10 @@ gem 'activemerchant'
 #Contact form functionality https://github.com/plataformatec/mail_form
 gem 'mail_form'
 
+#Searching capability 
+gem 'elasticsearch-model', '~> 7.0.0.pre'
+gem 'elasticsearch-rails'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
