@@ -1,5 +1,5 @@
 # Change these
-server '165.22.183.161', port: 3000, roles: [:web, :app, :db], primary: true
+server '165.22.183.161', roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'ggit@ssh.dev.azure.com:v3/tibsarsoftware/Be%20Her%20Village/BeHerVillage'
 set :application,     'behervillage-prod'
