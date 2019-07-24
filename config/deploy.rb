@@ -3,7 +3,7 @@ server '165.22.183.161', roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'ggit@ssh.dev.azure.com:v3/tibsarsoftware/Be%20Her%20Village/BeHerVillage'
 set :application,     'behervillage-prod'
-set :user,            'deploy'
+set :user,            'tibsarsoftware'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
