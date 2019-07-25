@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  resources :registries
-  devise_for :users
+  # resources :registries
+  # devise_for :users
   
   #Root page 
-  root to: "services#index"
+  # root to: "services#index"
 
-  resources :services
+  # resources :services
   get ':page' => "pages#show" 
 
   # get 'search', to: 'registries#search_by_name'
