@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # root to: "services#index"
 
   # resources :services
+  get '/articles/:article' => "articles#show"
   get ':page' => "pages#show" 
 
   # get 'search', to: 'registries#search_by_name'
