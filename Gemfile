@@ -28,7 +28,6 @@ gem 'devise'
 #ECommerce functionality 
 gem 'activemerchant'
 
-gem 'activestorage'
 #Contact form functionality https://github.com/plataformatec/mail_form
 gem 'mail_form'
 
