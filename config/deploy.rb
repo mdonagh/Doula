@@ -1,9 +1,9 @@
 # Change these
 server '165.22.183.161', roles: [:web, :app, :db], primary: true
 
-set :repo_url,        'ggit@ssh.dev.azure.com:v3/tibsarsoftware/Be%20Her%20Village/BeHerVillage'
+set :repo_url,        'ggit@ssh.dev.azure.com:v3/deploy/Be%20Her%20Village/BeHerVillage'
 set :application,     'behervillage-prod'
-set :user,            'tibsarsoftware'
+set :user,            'deploy'
 set :puma_threads,    [4, 16]
 set :puma_workers,    0
 
