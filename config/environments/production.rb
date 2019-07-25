@@ -90,7 +90,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.require_master_key = true
-  config.secret_key_base = ENV["RAILS_MASTER_KEY"]
+  # config.secret_key_base = ENV["RAILS_MASTER_KEY"]
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
