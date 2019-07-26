@@ -1,0 +1,23 @@
+<div class="footer-logo">
+    <p>Be Her Village, Inc</p>
+</div>
+<div class="footer-contact-info">
+    <i class="fa fa-map-marker"></i>
+    <p><span>62 West Chestnut St</span> Farmingdale, NY 11735</p>
+</div>
+<div class="footer-links">
+    <p>PUT LINKS HERE</p>
+</div>
+<div class="footer-affiliate">
+    <p>
+    <span>Affiliates</span>
+    <% if affiliate_signed_in? %>
+        <%= link_to('Logout Affiliate', destroy_affiliate_session_path, method: :delete)%>
+    <% else %>
+        <%= link_to('Login Affiliate', new_affiliate_session_path) %>
+    <%end%>
+    <%= link_to('Affiliate Sign Up', new_affiliate_registration_path)%>
+    </p>
+</div>
+<div class="social-media-links">
+</div>

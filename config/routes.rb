@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
   # resources :registries
-  # devise_for :users
+
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
+
+  devise_for :affiliates, controllers: {
+    sessions: 'affiliates/sessions'
+  }
+
   
   #Root page 
-  # root to: "services#index"
+  root to: "services#index"
 
-  # resources :services
+  resources :services
   get '/articles/:article' => "articles#show"
   # get ':page' => "pages#show" 
 
