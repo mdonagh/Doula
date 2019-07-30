@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  # resources :registries
+  resources :registry_types
+  resources :service_categories
+  resources :registries
 
   devise_for :users, controllers: {
     sessions: 'users/sessions'
@@ -9,7 +11,6 @@ Rails.application.routes.draw do
     sessions: 'affiliates/sessions'
   }
 
-  
   #Root page 
   root to: "services#index"
 
@@ -17,6 +18,5 @@ Rails.application.routes.draw do
   get '/articles/:article' => "articles#show"
   # get ':page' => "pages#show" 
 
-  # get 'search', to: 'registries#search_by_name'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'search', to: 'registries#search_by_name'
 end

@@ -16,6 +16,66 @@
     <%= form.text_field :name %>
   </div>
 
+  <div class="field">
+    <%= form.fields_for :address do |a| %>
+
+      <div class="field">
+        <%= a.label :city%>
+        <%= a.text_field :city, id: :city %>
+      </div>
+
+      <div class="field">
+        <%= a.label :state%>
+        <%= a.text_field :state, id: :state %>
+      </div>
+
+      <div class="field">
+        <%= a.label :zip_code, 'Street: '%>
+        <%= a.text_field :zip_code, id: :zip_code %>
+      </div>
+    <% end %> 
+  </div>
+
+  <div class="field">
+    <%= form.label :due_date %>
+    <%= form.text_field :due_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :num_child %>
+    <%= form.number_field :num_child, min: 1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %>
+    <%= form.text_field :gender %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone_number %>
+    <%= form.text_field :phone_number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shower_or_sprinkle %>
+    <%= form.check_box :shower_or_sprinkle %>
+  </div>
+
+  <div class="field">
+    <%= form.label :shower_date %>
+    <%= form.date_field :shower_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cards_ordered %>
+    <%= form.check_box :cards_ordered %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

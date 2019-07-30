@@ -1,0 +1,22 @@
+<%= form_with(model: service_category, local: true) do |form| %>
+  <% if service_category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(service_category.errors.count, "error") %> prohibited this service_category from being saved:</h2>
+
+      <ul>
+      <% service_category.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

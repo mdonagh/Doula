@@ -1,0 +1,2 @@
+class RegistryType < ApplicationRecord
+end
