@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  resources :line_items
+  resources :carts
   resources :registry_types
   resources :service_categories
-  resources :registries
+  resources :registries, param: :slug
 
   devise_for :users, controllers: {
     sessions: 'users/sessions'

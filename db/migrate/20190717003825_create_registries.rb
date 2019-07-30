@@ -13,7 +13,10 @@ class CreateRegistries < ActiveRecord::Migration[5.2]
       t.boolean :cards_ordered, :default => false 
       t.boolean :cards_sent, :default => false 
       t.references :user 
+      t.string :slug
       t.timestamps
     end
+
+    add_index :slug,                unique: true
   end
 end

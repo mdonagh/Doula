@@ -1,0 +1,2 @@
+class CreateJoinTableRegistriesService < ApplicationRecord
+end

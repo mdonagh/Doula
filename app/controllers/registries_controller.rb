@@ -67,11 +67,11 @@ class RegistriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_registry
-      @registry = Registry.find(params[:id])
+      @registry = Registry.find_by(slug: params[:slug])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def registry_params
-      params.require(:registry).permit(:name)
+      params.require(:registry).permit(:name, :address, :due_date, :num_child, :gender, :email, :phone_number, :shower_date, :shower_or_sprinkle, :cards_ordered, :slug)
     end
 end
