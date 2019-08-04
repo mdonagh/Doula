@@ -5,7 +5,7 @@ class CreateServices < ActiveRecord::Migration[5.2]
       t.text :description
       t.decimal :price
       t.integer :intervals
-      t.references :service_categories 
+      t.references :service_category
       t.references :affiliate
       t.timestamps
     end
