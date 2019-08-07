@@ -30,7 +30,10 @@ class RegistriesController < ApplicationController
     @registry = Registry.new(registry_params)
     
     #assign the registry to the currently logged in user 
-    @registry.user = current_user
+    @registry.user_id = current_user.id
+
+    #assign the slug 
+    @registry.slug = registry_params["name"].parameterize
 
     respond_to do |format|
       if @registry.save
@@ -75,6 +78,6 @@ class RegistriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def registry_params
-      params.require(:registry).permit(:name, :address, :due_date, :num_child, :gender, :email, :phone_number, :shower_date, :shower_or_sprinkle, :cards_ordered, :slug)
+      params.require(:registry).permit(:name, :address, :due_date, :num_child, :gender, :email, :phone_number, :shower_date, :shower_or_sprinkle, :address, :cards_ordered, :slug)
     end
 end

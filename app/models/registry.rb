@@ -3,6 +3,12 @@ require 'elasticsearch/model'
 class Registry < ApplicationRecord
     include Elasticsearch::Model 
     include Elasticsearch::Model::Callbacks 
+
+    validates_uniqueness_of :slug
+
+    def to_param
+      slug
+    end 
     # attr_accessor :name
 
     def self.search_by_name(query)
