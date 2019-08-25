@@ -33,11 +33,14 @@ class RegistriesController < ApplicationController
     @registry.user_id = current_user.id
 
     #assign the slug 
-    @registry.slug = registry_params["name"].parameterize
+    @registry.slug = registry_params["name"].gsub("'", "").parameterize
 
     respond_to do |format|
       if @registry.save
-        format.html { redirect_to @registry, notice: 'Registry was successfully created.' }
+        current_user.current_registry_id = @registry.id
+        current_user.save 
+
+        format.html { redirect_to services_path, notice: 'Registry was successfully created.' }
         format.json { render :show, status: :created, location: @registry }
       else
         format.html { render :new }
@@ -70,6 +73,14 @@ class RegistriesController < ApplicationController
     end
   end
 
+  def add_service
+    @registry = Registry.find(current_user.current_registry_id)
+    @registry.add_service(service_params[:service_id].to_i, service_params[:increments].to_i)
+    respond_to do |format|
+      format.html { redirect_to services_path, notice: 'Successfully added service.' }
+      format.json { render :show, status: :ok, location: @registry }
+    end 
+  end 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_registry
@@ -80,4 +91,8 @@ class RegistriesController < ApplicationController
     def registry_params
       params.require(:registry).permit(:name, :address, :due_date, :num_child, :gender, :email, :phone_number, :shower_date, :shower_or_sprinkle, :address, :cards_ordered, :slug)
     end
+
+    def service_params
+      params.permit(:increments, :service_id)
+    end 
 end

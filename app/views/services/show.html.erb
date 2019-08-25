@@ -15,10 +15,18 @@
   <%= @service.price %>
 </p>
 
-<p>
-  <strong>Intervals:</strong>
-  <%= @service.intervals %>
-</p>
+<%# <p> %>
+  <%# <strong>Intervals:</strong> %>
+  <%#= @service.intervals %>
+<%# </p> %>
 
 <%= link_to 'Edit', edit_service_path(@service) %> |
 <%= link_to 'Back', services_path %>
+
+<%= form_with url:add_to_registry_path(@service), local: true, method: :post do |f| %> 
+  <p> 
+    <%= f.label "Increments: " %> 
+    <%= f.number_field :increments %> 
+    <%= f.submit "Add to Registry" %>
+  </p>
+<% end %> 

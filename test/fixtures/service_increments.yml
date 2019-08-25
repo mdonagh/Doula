@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  service: one
+  user: one
+  price: 9.99
+  purchased: false
+
+two:
+  service: two
+  user: two
+  price: 9.99
+  purchased: false

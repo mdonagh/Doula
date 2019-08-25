@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_30_195601) do
+ActiveRecord::Schema.define(version: 2019_08_07_232631) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -29,13 +29,6 @@ ActiveRecord::Schema.define(version: 2019_07_30_195601) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "create_join_table_registries_services", force: :cascade do |t|
-    t.string "registries"
-    t.string "services"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -67,6 +60,15 @@ ActiveRecord::Schema.define(version: 2019_07_30_195601) do
     t.index ["user_id"], name: "index_registries_on_user_id"
   end
 
+  create_table "registry_services", force: :cascade do |t|
+    t.bigint "service_id"
+    t.bigint "registry_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["registry_id"], name: "index_registry_services_on_registry_id"
+    t.index ["service_id"], name: "index_registry_services_on_service_id"
+  end
+
   create_table "registry_types", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -78,6 +80,15 @@ ActiveRecord::Schema.define(version: 2019_07_30_195601) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "service_increments", force: :cascade do |t|
+    t.bigint "registry_service_id"
+    t.decimal "price"
+    t.boolean "purchased", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["registry_service_id"], name: "index_service_increments_on_registry_service_id"
   end
 
   create_table "services", force: :cascade do |t|
@@ -100,6 +111,7 @@ ActiveRecord::Schema.define(version: 2019_07_30_195601) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "phone_number"
+    t.integer "current_registry_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -108,4 +120,7 @@ ActiveRecord::Schema.define(version: 2019_07_30_195601) do
 
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "services", column: "services_id"
+  add_foreign_key "registry_services", "registries"
+  add_foreign_key "registry_services", "services"
+  add_foreign_key "service_increments", "registry_services"
 end

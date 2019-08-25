@@ -21,4 +21,7 @@ Rails.application.routes.draw do
   # get ':page' => "pages#show" 
 
   get 'search', to: 'registries#search_by_name'
+
+  post '/add_to_registry/:service_id' => 'registries#add_service', as: :add_to_registry
+
 end
