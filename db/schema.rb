@@ -34,13 +34,13 @@ ActiveRecord::Schema.define(version: 2019_08_07_232631) do
   end
 
   create_table "line_items", force: :cascade do |t|
-    t.bigint "services_id"
+    t.bigint "registry_service_id"
     t.bigint "cart_id"
     t.integer "quantity", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_line_items_on_cart_id"
-    t.index ["services_id"], name: "index_line_items_on_services_id"
+    t.index ["registry_service_id"], name: "index_line_items_on_registry_service_id"
   end
 
   create_table "registries", force: :cascade do |t|
@@ -53,6 +53,8 @@ ActiveRecord::Schema.define(version: 2019_08_07_232631) do
     t.integer "shower_or_sprinkle"
     t.boolean "cards_ordered", default: false
     t.boolean "cards_sent", default: false
+    t.boolean "accepts_check"
+    t.boolean "accepts_wepay"
     t.bigint "user_id"
     t.string "slug", null: false
     t.datetime "created_at", null: false
@@ -111,6 +113,10 @@ ActiveRecord::Schema.define(version: 2019_08_07_232631) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "phone_number"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "wepay_access_token"
+    t.string "wepay_account_id"
     t.integer "current_registry_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -118,8 +124,6 @@ ActiveRecord::Schema.define(version: 2019_08_07_232631) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "line_items", "carts"
-  add_foreign_key "line_items", "services", column: "services_id"
   add_foreign_key "registry_services", "registries"
   add_foreign_key "registry_services", "services"
   add_foreign_key "service_increments", "registry_services"

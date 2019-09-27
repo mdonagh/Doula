@@ -14,8 +14,15 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       ## Rememberable
       t.datetime :remember_created_at
 
-      # Needed info 
+      ## Needed info 
       t.string :phone_number 
+      t.string :first_name 
+      t.string :last_name 
+
+      ## Wepay 
+      t.string :wepay_access_token 
+      t.integer :wepay_account_id
+
 
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false

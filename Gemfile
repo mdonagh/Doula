@@ -25,8 +25,14 @@ gem 'jbuilder', '~> 2.5'
 # Authentication 
 gem 'devise'
 
+gem 'jquery-rails'
+
 #ECommerce functionality 
-gem 'activemerchant'
+# gem 'activemerchant'
+# gem 'paypal-sdk-rest'
+# gem 'wepay-rails'
+gem 'wepay', '~> 0.4.0'
+
 
 #Contact form functionality https://github.com/plataformatec/mail_form
 gem 'mail_form'
@@ -58,7 +64,7 @@ group :development do
   gem 'capistrano-rails',   require: false
   gem 'capistrano-bundler', require: false
   gem 'capistrano3-puma',   require: false
-
+  gem 'pry'
   #debug in ide 
   gem 'ruby-debug-ide'
   gem 'debase'

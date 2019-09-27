@@ -1,0 +1,9 @@
+<h1>Checkout</h1>
+<div id="wepay-iframe-div">
+	<script type="text/javascript" src="https://www.wepay.com/js/iframe.wepay.js">
+	</script>
+
+	<script type="text/javascript">
+        WePay.iframe_checkout("wepay-iframe-div", "<%= @checkout['hosted_checkout']['checkout_uri'] %>");
+	</script>
+</div>

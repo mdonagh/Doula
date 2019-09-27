@@ -37,8 +37,16 @@ class RegistriesController < ApplicationController
 
     respond_to do |format|
       if @registry.save
+
         current_user.current_registry_id = @registry.id
         current_user.save 
+        binding.pry
+        # Setup WePay if selected 
+        if @registry.accepts_wepay && (!current_user.has_valid_wepay_access_token? || !current_user.has_wepay_account?)
+          # TODO check if they already have a wepay account setup 
+          format.html { redirect_to user_setup_wepay_path, notice: 'Registry was successfully created.'}
+          format.json { render :show, status: :created, location: @registry }
+        end 
 
         format.html { redirect_to services_path, notice: 'Registry was successfully created.' }
         format.json { render :show, status: :created, location: @registry }
@@ -89,7 +97,9 @@ class RegistriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def registry_params
-      params.require(:registry).permit(:name, :address, :due_date, :num_child, :gender, :email, :phone_number, :shower_date, :shower_or_sprinkle, :address, :cards_ordered, :slug)
+      params.require(:registry).permit(:name, :address, :due_date, :num_child, :gender, :email, 
+        :phone_number, :shower_date, :shower_or_sprinkle, :address, :cards_ordered, :slug, 
+        :accepts_wepay, :accepts_check)
     end
 
     def service_params

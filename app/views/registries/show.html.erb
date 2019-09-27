@@ -43,7 +43,7 @@
       <%= form_with model: LineItem.new do |f|%>
         <p>
         <%= f.label "Number of Increments:"%>
-        <%= f.number_field :increments %>
+        <%= f.number_field :quantity %>
         <%= f.hidden_field :registry_service_id, value: rs.id %>
         <%= f.submit "Add Increments to Cart" %>
         </p>

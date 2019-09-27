@@ -1,4 +1,15 @@
 <p id="notice"><%= notice %></p>
+<h1>Checkout</h1>
+<ul>
+<% @cart.line_items.each do |line_item| %>
+    <li><%=line_item.registry_service.service.name%></li>
+    <ul>
+        <li>Quantity: <%=line_item.quantity%></li>
+    </ul>
+<% end %>
+</ul>
 
+<p>Cart Total: <%= @cart.total %> </p>
 <%= link_to 'Edit', edit_cart_path(@cart) %> |
 <%= link_to 'Back', carts_path %>
+<%= link_to 'Checkout', checkout_path %>

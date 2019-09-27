@@ -1,3 +1,4 @@
+
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
@@ -10,6 +11,12 @@ class CartsController < ApplicationController
   # GET /carts/1
   # GET /carts/1.json
   def show
+    #carts have line items 
+    # line items have a single registry service and a quantity 
+    # registry services have service_increments that have a cost 
+    # cart total = sum of line item totals 
+
+    
   end
 
   # GET /carts/new
@@ -59,6 +66,30 @@ class CartsController < ApplicationController
       format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def checkout
+    redirect_uri = url_for(:controller => 'carts', :action => 'payment_success' , :host => request.host_with_port)
+    
+    @cart = Cart.find(params[:id])
+    begin 
+      @checkout = @cart.create_checkout(redirect_uri)
+      print(@checkout)
+      test = "hi"
+      # @checkout_div = WePayService.iframe_checkout("wepay-iframe-div", @checkout['checkout_uri'])
+    rescue Exception => e
+      redirect_to @cart, alert: e.message
+    end
+  end
+  
+  def payment_success
+    if !params[:checkout_id]
+      return redirect_to root_path, alert: "Error - Checkout ID is expected"
+    end
+    if (params['error'] && params['error_description'])
+      return redirect_to root_path, alert: "Error - #{params['error_description']}"
+    end
+    redirect_to root_path, notice: "Thanks for the payment! You should receive a confirmation email shortly."
   end
 
   private

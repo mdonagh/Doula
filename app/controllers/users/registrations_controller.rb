@@ -4,10 +4,37 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
+  # setup wepay payments for the user 
+  def oauth 
+    if !params[:code]
+      return redirect_to('/')
+    end 
+
+    redirect_uri = url_for(:controller => 'registrations', :action => 'oauth', :userid => current_user.id, :host => request.host_with_port)
+    @user = User.find(params[:userid])
+    current_registry = Registry.find(@user.current_registry_id)
+    begin
+      @user.request_wepay_access_token(params[:code], redirect_uri)
+    rescue => exception
+      error = exception.message      
+    end
+
+    if error 
+      redirect_to current_registry, alert: error 
+    else
+      redirect_to current_registry, notice: 'Successfully connected to WePay'
+    end
+  end 
+  
+  def setup_wepay 
+    @user = current_user 
+    @redirect_uri = url_for(:controller => 'registrations', :action => 'oauth', :userid => current_user.id, :host => request.host_with_port)
+  end 
+
   # GET /resource/sign_up
   # def new
   #   super
-  # end
+  # end`
 
   # POST /resource
   # def create

@@ -1,0 +1,6 @@
+<p id="notice"><%= notice %></p>
+
+  <p>
+    <b>Please create an account to use WePay </b>
+    <a class="btn btn-primary" href="<%= @user.wepay_authorization_url(@redirect_uri) %>">Click here to create your account</a>
+  </p>
