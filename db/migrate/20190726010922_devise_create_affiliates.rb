@@ -34,6 +34,13 @@ class DeviseCreateAffiliates < ActiveRecord::Migration[5.2]
 
 
       t.timestamps null: false
+
+      #Custom additions 
+      t.string :business_name, null: false 
+      t.string :website
+      t.string :contact_name 
+      t.string :phone 
+      
     end
 
     add_index :affiliates, :email,                unique: true
