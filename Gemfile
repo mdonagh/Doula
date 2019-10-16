@@ -84,3 +84,10 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # POST GIS 
 gem 'activerecord-postgis-adapter'
 
+#Bootstrap 
+gem 'bootstrap', '~> 4.3.1'
+
+#Social buttons
+gem 'social-share-button'
+
+

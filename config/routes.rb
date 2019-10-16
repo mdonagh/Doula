@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
 
   #Root page 
-  root to: "services#index"
+  root to: "pages#home"
 
   resources :services
   get '/articles/:article' => "articles#show"

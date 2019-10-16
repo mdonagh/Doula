@@ -57,3 +57,5 @@
 
 <%= link_to 'Edit', edit_registry_path(@registry) %> |
 <%= link_to 'Back', registries_path %>
+
+  <%= social_share_button_tag( @registry.name, desc: @registry.name) %>

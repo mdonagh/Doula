@@ -1,4 +1,5 @@
 class RegistriesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:show]
   before_action :set_registry, only: [:show, :edit, :update, :destroy]
 
   # GET /registries
