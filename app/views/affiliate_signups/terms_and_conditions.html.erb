@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="page-header text-center my">
+        <h2>BECOME AN AFFILIATE</h2>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h5>Terms and Conditions</h5>
+            </div>
+            <div class="col text-right">
+                <%= @current_step_number %>  of <%= @step_total %>
+            </div>
+        </div>
+        
+        <div class="pre-scrollable terms_and_conditions border">
+            <%= @terms_and_conditions %>
+        </div>
+        
+        <%= form_for(@affiliate, url: wizard_path, method: :put) do |f| %>
+            <%= f.label :contract_signed do %>
+                <%= f.check_box :contract_signed %> I agree to the terms and conditions
+            <% end %>
+
+            <div class="row">
+                <div class="col">
+                    <%= fa_icon "chevron-left xs" %> <%= link_to "Back", previous_wizard_path %>
+                </div>
+                <div class="col text-right">
+                    <div class="actions">
+                        <%= f.submit "Next", class: "btn btn-primary btn-sm" %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+
+
+    </div>
+    
+</div>

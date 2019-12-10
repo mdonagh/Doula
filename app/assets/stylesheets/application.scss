@@ -14,5 +14,117 @@
  *= require_self
  */
 // Custom bootstrap variables must be set or imported *before* bootstrap.
+// Main colors 
+$pink-dark: #FF4A92;
+$pink-light: #FF89D5;
+$dark-gray: #606161;
+$light-gray: #D8D8D8;
+
+$link-hover-color: $pink-dark; 
+
+
+$theme-colors: (
+  "primary": $pink-dark,
+  "secondary": $light-gray
+);
+
 @import "bootstrap";
+@import "font-awesome";
 @import "social-share-button";
+
+// Secondary colors 
+$plan-light: plan-light #F7B2C7;
+$plan-middle: plan-middle #FF84B5; 
+$plan-dark: plan-dark #FF4894;
+
+$plans: $plan-light $plan-middle $plan-dark; 
+
+// General Styling 
+*{font-family: 'Montserrat', sans-serif;}
+
+a {
+    background-color: inherit !important;
+}
+
+@media (min-width: 1200px) {
+    .container {
+      width: 1000px;
+    }
+  }
+
+//Page header 
+.page-header h2{
+    font-size: 1.5em;
+    font-weight: 600; 
+}
+
+.page-header p{
+    font-size: 1.25em; 
+    line-height: 1.25em;
+}
+
+.field_with_errors{
+    background-color: #f8d7da; 
+    border-radius: .25rem; 
+}
+
+// Footer Styling 
+footer ul {
+    padding: 0;
+}
+
+footer li {
+    list-style: none;
+}
+
+.footer-header {
+    font-size: 0.80em;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+// Navbar Styling 
+.navbar-default {
+    background-color: $light-gray;
+    padding: 0; 
+}
+
+.navbar-brand img {
+    height: 2.7em;
+}
+
+// Affiliate Plan Page Styling 
+.card-header h4{
+    color: white; 
+    font-size: 1em; 
+}
+
+.card-deck {
+    width: 80%; 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: .5rem;
+}
+
+.card{
+    background: #F7F7F8; 
+}
+@each $plan in $plans {
+    .card-header.#{nth($plan, 1)} {
+        background-color: nth($plan, 2);
+    }
+
+    .pricing-card-title.#{nth($plan, 1)} {
+        color: nth($plan, 2);
+        line-height: .75em;
+    }
+
+    .btn-outline.#{nth($plan, 1)} {
+        border: 2px solid nth($plan, 2);    
+        width: 60%; 
+    }
+    
+    .btn-outline.#{nth($plan, 1)}:hover {
+        background-color: nth($plan, 2);    
+    }
+}

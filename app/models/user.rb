@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   def create_wepay_account
     response = WePayService.create_account(self.full_name, self.wepay_access_token)
-    binding.pry
+
     if response['error']
       return false #TBD how to handle this 
     elsif !response["account_id"]

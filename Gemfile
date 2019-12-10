@@ -90,4 +90,9 @@ gem 'bootstrap', '~> 4.3.1'
 #Social buttons
 gem 'social-share-button'
 
+#Multi step forms 
+gem 'wicked'
+
+#Font Awesome Icons 
+gem 'font-awesome-rails'
 

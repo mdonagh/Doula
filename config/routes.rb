@@ -7,19 +7,28 @@ Rails.application.routes.draw do
   resources :registry_types
   resources :service_categories
   resources :registries, param: :slug
+  resources :affiliate_signups
+
 
   devise_for :users, controllers: {
-    sessions: 'users/sessions'
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
   }
 
   devise_for :affiliates, controllers: {
-    sessions: 'affiliates/sessions'
+    sessions: 'affiliates/sessions',
+    registrations: 'affiliates/registrations'
   }
 
   devise_scope :user do
     get 'user/setup_wepay', :to => 'users/registrations#setup_wepay'
     get 'user/finish_wepay_setup', :to => 'users/registrations#finish_wepay_setup'
     get 'user/oauth(/:userid)', :to => 'users/registrations#oauth'
+  end
+
+  devise_scope :affiliate do
+    get 'affiliates/plans', :to => 'affiliates/registrations#plans'
+    post 'affiliate/select_plan', :to => 'affiliates/registrations#select_plan'
   end
 
 

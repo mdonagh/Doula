@@ -38,8 +38,13 @@ class DeviseCreateAffiliates < ActiveRecord::Migration[5.2]
       #Custom additions 
       t.string :business_name, null: false 
       t.string :website
-      t.string :contact_name 
+      t.hstore :contact_name 
       t.string :phone 
+      t.hstore :address
+      t.hstore :plan 
+      t.boolean :contract_signed 
+      t.datetime :contract_signed_date 
+      t.text :contract
       
     end
 

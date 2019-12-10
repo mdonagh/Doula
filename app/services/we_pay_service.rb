@@ -12,13 +12,11 @@ class WePayService
     end
   
     def self.request_access_token(code, redirect_uri)
-        binding.pry
         wepay_client.oauth2_token(code, redirect_uri)
     end
 
     def self.token_valid?(token)
         response = wepay_client.call("/user", token)
-        binding.pry
         response && response["user_id"] 
     end 
 
@@ -31,7 +29,4 @@ class WePayService
         wepay_client.call('/checkout/create', access_token, params)
     end 
 
-    # def self.iframe_checkout(div, checkout_uri)
-    #     wepay_client.iframe_checkout(div, checkout_uri)
-    # end 
   end

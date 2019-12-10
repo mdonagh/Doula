@@ -7,27 +7,13 @@
     <%# <%= link_to('Sign Up', new_user_registration_path)%> 
 <%# <%end %> 
 
-<%# <% if affiliate_signed_in? %> 
-    <%#= link_to('Logout Affiliate', destroy_affiliate_session_path, method: :delete)%>
+<% if affiliate_signed_in? %> 
+    <%= link_to('Logout Affiliate', destroy_affiliate_session_path, method: :delete) %> 
 <%# else %>
     <%#= link_to('Login Affiliate', new_affiliate_session_path) %>
-<%#end %>
+<%end %>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Be Her Village</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item">
-        <%= link_to('Create A Registry', new_registry_path, class: "nav-link")%>
-      </li>
-      <li class="nav-item">
-        <%= link_to('Find A Registry', registries_path, class: "nav-link")%>
-      </li>
-      
-    </ul>
-  </div>
+<nav class="navbar navbar-expand-lg navbar-default">
+  <%= link_to image_tag("logos/main_logo.png"), root_path, class: "navbar-brand mx-auto" %>
 </nav>
+

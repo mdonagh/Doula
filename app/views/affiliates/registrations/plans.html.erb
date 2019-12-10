@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="page-header">
+        <h2 class="pb-3">BECOME AN AFFILIATE</h2>
+        <p>Enim aute exercitation nisi elit in nulla nisi cillum veniam. Exercitation non minim proident magna ad enim. Excepteur velit pariatur aliqua irure pariatur nulla amet in occaecat sint. Et sit ut consequat elit eu ut veniam officia veniam aliquip pariatur. Voluptate nisi voluptate non laborum enim ea esse.
+        </p>
+    </div>
+    
+    <%= form_with url: :affiliate_select_plan do |f|  %>
+    <div class="card-deck mb-3 mx-auto text-center">
+        <% @plans.each_with_index do |plan, i| %>
+            <div class="card mb-4 border-white text-center">
+                <div class="card-header <%=plan[:class]%>">
+                    <h4 class="my-0 font-weight-bold"><%=plan[:name].upcase%></h4>
+                </div>
+                
+                <div class="card-body flex-column d-flex text-center ">
+                    <div class="pricing-card-title <%=plan[:class]%>">
+                        <h1 class="mb-0">$<%=plan[:cost]%></h1>
+                        <small>per year</small>
+                    </div>
+                    <ul class="list-unstyled mt-3 mb-5">
+                        <% plan[:details].each do |detail|%>
+                            <li><%= detail %></li>
+                        <% end %>
+                    </ul>
+                    <div class="row mt-auto justify-content-center">
+                        <%= f.button 'Select Plan', value: plan[:name], class: "btn btn-sm btn-block btn-outline #{plan[:class]}", type: 'submit' %> 
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+    <% end %>
+    <p class="text-center">Already a user? Sign in <%= link_to "here", new_affiliate_session_path %></p>
+</div>

@@ -15,6 +15,7 @@ ActiveRecord::Schema.define(version: 2019_08_07_232631) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
+  enable_extension "postgis"
 
   create_table "affiliates", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,6 +25,15 @@ ActiveRecord::Schema.define(version: 2019_08_07_232631) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "business_name", null: false
+    t.string "website"
+    t.hstore "contact_name"
+    t.string "phone"
+    t.hstore "address"
+    t.hstore "plan"
+    t.boolean "contract_signed"
+    t.datetime "contract_signed_date"
+    t.text "contract"
     t.index ["email"], name: "index_affiliates_on_email", unique: true
     t.index ["reset_password_token"], name: "index_affiliates_on_reset_password_token", unique: true
   end
@@ -100,9 +110,12 @@ ActiveRecord::Schema.define(version: 2019_08_07_232631) do
     t.integer "intervals"
     t.bigint "service_category_id"
     t.bigint "affiliate_id"
+    t.geography "lonlat", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
+    t.decimal "radius"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["affiliate_id"], name: "index_services_on_affiliate_id"
+    t.index ["lonlat"], name: "index_services_on_lonlat", using: :gist
     t.index ["service_category_id"], name: "index_services_on_service_category_id"
   end
 
@@ -116,7 +129,7 @@ ActiveRecord::Schema.define(version: 2019_08_07_232631) do
     t.string "first_name"
     t.string "last_name"
     t.string "wepay_access_token"
-    t.string "wepay_account_id"
+    t.integer "wepay_account_id"
     t.integer "current_registry_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

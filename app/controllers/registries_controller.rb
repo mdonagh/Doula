@@ -1,5 +1,5 @@
 class RegistriesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show]
+  skip_before_action :authenticate_user!, only: [:show, :index]
   before_action :set_registry, only: [:show, :edit, :update, :destroy]
 
   # GET /registries
@@ -41,7 +41,6 @@ class RegistriesController < ApplicationController
 
         current_user.current_registry_id = @registry.id
         current_user.save 
-        binding.pry
         # Setup WePay if selected 
         if @registry.accepts_wepay && (!current_user.has_valid_wepay_access_token? || !current_user.has_wepay_account?)
           # TODO check if they already have a wepay account setup 

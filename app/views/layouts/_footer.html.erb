@@ -1,26 +1,36 @@
-<%# <hr /> %>
-<span class="border-top my-3"></span>
+<div class="container">
+    <div class="border-top my-3 border-dark"></div>
+    <div class="row">
+        <div class="col">
+            <h4 class="footer-header">Be Her Village, Inc.</h4>
+            <p><span>62 West Chestnut St</span> Farmingdale, NY 11735</p>
+        </div>
+        <div class="col">
+            <h4 class="footer-header">Questions</h4>
+            <ul>
+                <li>Contact Us</li>
+                <li>FAQ</li>
+            </ul>
+        </div>
+        <div class="col">
+            <h4 class="footer-header">More Info</h4>
+            <ul>
+                <li>About Us</li>
+                <li>Blog</li>
+                <li>In the News</li>
+            </ul>
+        </div>
+        <div class="col">
+            <h4 class="footer-header">Registry</h4>
+            <ul>
+                <li>Affiliate Login/Sign Up</li>
+                <li>Make a Registry</li>
+                <li>Advertise with Us</li>
+            </ul>
+        </div>
+        <div class="col">
+            <p>Sign up box</p>
+        </div>
+    </div>
+</div>
 
-<div class="footer-logo">
-    <p>Be Her Village, Inc</p>
-</div>
-<div class="footer-contact-info">
-    <i class="fa fa-map-marker"></i>
-    <p><span>62 West Chestnut St</span> Farmingdale, NY 11735</p>
-</div>
-<div class="footer-links">
-    <p>PUT LINKS HERE</p>
-</div>
-<div class="footer-affiliate">
-    <p>
-    <span>Affiliates</span>
-    <% if affiliate_signed_in? %>
-        <%= link_to('Logout Affiliate', destroy_affiliate_session_path, method: :delete)%>
-    <% else %>
-        <%= link_to('Login Affiliate', new_affiliate_session_path) %>
-    <%end%>
-    <%= link_to('Affiliate Sign Up', new_affiliate_registration_path)%>
-    </p>
-</div>
-<div class="social-media-links">
-</div>

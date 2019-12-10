@@ -1,5 +1,6 @@
 class ServicesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show]
+  skip_before_action :authenticate_user!, only: [:show, :new]
+  before_action :authenticate_affiliate!, only: [:new]
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
   # GET /services

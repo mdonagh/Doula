@@ -1,0 +1,2 @@
+module AffiliateSignupHelper
+end

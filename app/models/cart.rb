@@ -5,7 +5,6 @@ class Cart < ApplicationRecord
     def create_checkout(redirect_uri)
         user = User.find(self.line_items[0].registry_service.registry.user_id)
         wepay_account_id = user.wepay_account_id.to_i
-        # binding.pry
         params = {
           :account_id => wepay_account_id,
           :short_description => "Be Her Village Checkout",
