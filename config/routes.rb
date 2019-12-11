@@ -48,4 +48,7 @@ Rails.application.routes.draw do
   post '/add_to_registry/:service_id' => 'registries#add_service', as: :add_to_registry
 
 
+  # Stripe routes 
+  resources :charges, only: [:new, :create]
+
 end
