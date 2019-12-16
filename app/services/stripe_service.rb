@@ -45,6 +45,20 @@ class StripeService
         currency: DEFAULT_CURRENCY
       )
     end
+
+    def create_session
+        session = Stripe::Checkout::Session.create(
+            # customer: 'cus_123',
+            payment_method_types: ['card'],
+            subscription_data: {
+                items: [{
+                plan: 'plan_GLlLVOFWdoZqcw',
+                }],
+            },
+            success_url: 'https://example.com/success',
+            cancel_url: 'https://example.com/cancel'
+        )
+    end 
   
     def order_amount
       Order.find_by(id: order).amount

@@ -11,6 +11,7 @@ alice = User.create({email: 'alice@alice.com', password: 'passwordalice', passwo
 bella = User.create({email: 'bella@bella.com', password: 'passwordbella', password_confirmation: 'passwordbella'})
 courtney = User.create({email: 'courtney@courtney.com', password: 'passwordcourtney', password_confirmation: 'passwordcourtney'})
 delilah = User.create({email: 'delilah@delilah.com', password: 'passworddelilah', password_confirmation: 'passworddelilah'})
+kaitlin = User.create({email: 'kaitlin@behervillage.com', password: 'passwordkaitlin', password_confirmation: 'passwordkaitlin', admin: true})
 
 #affiliates 
 doula = Affiliate.create({email: 'doula@doula.com', password: 'passworddoula', password_confirmation: 'passworddoula', business_name: 'ABC Doula'})

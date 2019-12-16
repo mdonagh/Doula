@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 2019_08_07_232631) do
     t.bigint "affiliate_id"
     t.geography "lonlat", limit: {:srid=>4326, :type=>"st_point", :geographic=>true}
     t.decimal "radius"
+    t.boolean "approved", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["affiliate_id"], name: "index_services_on_affiliate_id"
@@ -130,6 +131,7 @@ ActiveRecord::Schema.define(version: 2019_08_07_232631) do
     t.string "last_name"
     t.string "wepay_access_token"
     t.integer "wepay_account_id"
+    t.boolean "admin", default: false
     t.integer "current_registry_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

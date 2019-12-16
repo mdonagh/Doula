@@ -96,3 +96,5 @@ gem 'wicked'
 #Font Awesome Icons 
 gem 'font-awesome-rails'
 
+#Admin portal 
+gem 'rails_admin', '~> 2.0'

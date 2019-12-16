@@ -23,7 +23,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :wepay_access_token 
       t.integer :wepay_account_id
 
-
+      t.boolean :admin, default: false
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
       # t.datetime :current_sign_in_at

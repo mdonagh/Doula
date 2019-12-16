@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get '/carts/checkout/:id', to: 'carts#checkout', as: :checkout
   get '/carts/payment_success', to: 'carts#payment_success'
   resources :line_items

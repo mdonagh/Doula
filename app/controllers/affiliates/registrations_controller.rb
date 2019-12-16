@@ -42,20 +42,20 @@ class Affiliates::RegistrationsController < Devise::RegistrationsController
     @plans = [
       {
         name: "Local",
-        cost: 100, 
-        details: ["Bullet point 1", "Bullet point 2", "Test text hello world"],
+        cost: 25, 
+        details: ["Custom profile + URL", "10 mile reach"],
         class: "plan-light"
       }, 
       {
         name: "Regional",
-        cost: 200,
-        details: ["Bullet point 1", "Bullet point 2"],
+        cost: 45,
+        details: ["Custom profile + URL", "Social Media Promotion", "Monthly Email Promotion", "Data tracking", "100 mile reach"],
         class: "plan-middle"
       },
       {
         name: "National",
-        cost: 300,
-        details: ["Bullet point 1", "Bullet point 2", "blah blah blah", "Bullet point really long text and info and testing"],
+        cost: 95,
+        details: ["Custom profile + URL", "Social Media Promotion", "Monthly Email Promotion", "Data tracking", "Featured Listing", "National reach"],
         class: "plan-dark"
       }
     ]
