@@ -1,20 +1,32 @@
 class StripeChargesController < ApplicationController
-    rescue_from Stripe::CardError, with: :catch_exception
+    skip_before_action :user_logged_in?, only: :stripe_webhook
+    protect_from_forgery except: :stripe_webhook
+
+    def stripe_webhook
+        stripe_response = StripeWebhooks.subscription_events(request)
+    end
+
+    def index
+    end
+
     def new
+        # @stripe_session = StripeService.create_session(current_affiliate.email, params[:plan])
+        binding.pry
+        @stripe_session = StripeService.create_session(current_affiliate.email, 'plan_GLlLVOFWdoZqcw')
     end
 
-    def create
-        StripeService.new(charges_params, current_user).call
-        redirect_to new_charge_path
+    def success
+        ### the Stripe {CHECKOUT_SESSION_ID} will be available in params[:session_id]
+        
+        if params[:session_id]
+            flash.now[:success] = "Thanks for your Subscribing/Purchasing/Whatever..."
+        else
+            flash[:error] = "Session expired error...your implementation will vary"
+            redirect_to subscriptions_path  ##TODO: change this 
+        end
     end
-
-    private
-
-    def charges_params
-        params.permit(:stripeEmail, :stripeToken, :order_id)
-    end
-
-    def catch_exception(exception)
-        flash[:error] = exception.message
+    
+    def cancel
+        redirect_to subscriptions_path  ##TODO: change this 
     end
 end

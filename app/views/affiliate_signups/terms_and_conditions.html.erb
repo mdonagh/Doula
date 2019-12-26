@@ -1,3 +1,7 @@
+<%= content_for :header do %>
+  <script src="https://js.stripe.com/v3/" data-turbolinks-eval="false"></script>
+<% end %>
+
 <div class="container">
     <div class="page-header text-center my">
         <h2>BECOME AN AFFILIATE</h2>
@@ -29,6 +33,9 @@
                 <div class="col text-right">
                     <div class="actions">
                         <%= f.submit "Next", class: "btn btn-primary btn-sm" %>
+                        <div data-stripe="<%= @stripe_session.id %>">
+                            <%= link_to '$$$$$', '', class: 'subscribe-btn', remote: true %>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -38,3 +45,21 @@
     </div>
     
 </div>
+
+<script> 
+  const subscribeBtn = document.querySelector('.subscribe-btn')
+
+  subscribeBtn.addEventListener('click', e => {
+    e.preventDefault()
+
+    const CHECKOUT_SESSION_ID = subscribeBtn.parentElement.dataset.stripe
+    var stripe = Stripe('<%= Rails.application.credentials.stripe[Rails.env.to_sym][:public_key] %>');
+
+    stripe.redirectToCheckout({
+      sessionId: CHECKOUT_SESSION_ID
+    }).then((result) => {
+      // handle any result data you might need
+      console.log(result.error.message)
+    })
+  }); 
+</script>

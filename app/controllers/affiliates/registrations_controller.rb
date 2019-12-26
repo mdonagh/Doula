@@ -5,9 +5,10 @@ class Affiliates::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    @plan = AffiliatePlan.find_by(nickname: params.permit(:plan)[:plan].downcase)
+    super
+  end
 
   # POST /resource
   # def create
@@ -69,7 +70,7 @@ class Affiliates::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:business_name, :website, :phone, contact_name: [:first_name, :last_name], address: [:street_address, :address_line2, :city, :state, :zip_code]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:business_name, :website, :phone, :affiliate_plans_id, contact_name: [:first_name, :last_name], address: [:street_address, :address_line2, :city, :state, :zip_code]])
   end
 
   def plan_params

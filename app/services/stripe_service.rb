@@ -1,21 +1,21 @@
 class StripeService
     DEFAULT_CURRENCY = 'usd'.freeze
     
-    def initialize(params, user)
-      @stripe_email = params[:stripeEmail]
-      @stripe_token = params[:stripeToken]
-      @order = params[:order_id]
-      @user = user
+    def initialize(user)
+        @email = user.email
+        @key = Rails.application.credentials.stripe[Rails.env.to_sym][:secret_key]
+        @plan = AffiliatePlan.find(user.affiliate_plans_id).stripe_code
+        binding.pry
+        @user = user
+        binding.pry
+
+        Stripe.api_key = @key 
     end
   
     def call
       create_charge(find_customer)
     end
-  
-    private
-  
-    attr_accessor :user, :stripe_email, :stripe_token, :order
-  
+    
     def find_customer
     if user.stripe_token
       retrieve_customer(user.stripe_token)
@@ -48,15 +48,15 @@ class StripeService
 
     def create_session
         session = Stripe::Checkout::Session.create(
-            # customer: 'cus_123',
+            customer_email: @email,
             payment_method_types: ['card'],
             subscription_data: {
                 items: [{
-                plan: 'plan_GLlLVOFWdoZqcw',
+                plan: @plan,
                 }],
             },
-            success_url: 'https://example.com/success',
-            cancel_url: 'https://example.com/cancel'
+            success_url: 'http://www.localhost:3000',
+            cancel_url: 'https://www.google.com'
         )
     end 
   

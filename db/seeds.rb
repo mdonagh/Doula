@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 #create users 
 alice = User.create({email: 'alice@alice.com', password: 'passwordalice', password_confirmation: 'passwordalice'})
 bella = User.create({email: 'bella@bella.com', password: 'passwordbella', password_confirmation: 'passwordbella'})
@@ -33,3 +25,8 @@ alices_registry = Registry.create({name: "Alice's Registry", slug:"alices_regist
 bellas_registry = Registry.create({name: "Bella's Registry", slug:"bellas_registry", user_id: bella, accepts_wepay: false})
 courtneys_registry = Registry.create({name: "Courtney's Registry", slug:"courtneys_registry", user_id: courtney, accepts_wepay: true})
 delilahs_registry = Registry.create({name: "Delilah's Registry", slug:"delilahs_registry", user_id: delilah, accepts_wepay: false})
+
+#create affiliate plans 
+local = AffiliatePlan.create({nickname: 'local', radius_miles: 10, stripe_code: 'plan_GLlIWot9vdIto8'})
+regional = AffiliatePlan.create({nickname: 'regional', radius_miles: 50, stripe_code: 'plan_GLlLVOFWdoZqcw'})
+national = AffiliatePlan.create({nickname: 'national', stripe_code: 'plan_GLlKEV2eYgYJqH'})

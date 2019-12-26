@@ -41,7 +41,7 @@ class DeviseCreateAffiliates < ActiveRecord::Migration[5.2]
       t.hstore :contact_name 
       t.string :phone 
       t.hstore :address
-      t.hstore :plan 
+      t.references :affiliate_plans
       t.boolean :contract_signed 
       t.datetime :contract_signed_date 
       t.text :contract

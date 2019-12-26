@@ -60,6 +60,9 @@ class AffiliateSignupsController < ApplicationController
         User acknowledges that content, including but not limited to text, software, music, sound, photographs, video, graphics or other material contained in either sponsor advertisements or email-distributed, commercially produced information presented to User by the Service (Content) by Wondersoft or Wondersoft's Advertisers (“Advertiser”), is protected by copyrights, trademarks, service marks, patents or other proprietary rights and laws; therefore, User is only permitted to use this Content as expressly authorized by the Service or the Advertiser. User may not copy, reproduce, distribute, or create derivative works from this Content without expressly being authorized to do so by the Service or the Advertiser."
         
         @states = us_states
+        service = StripeService.new(@affiliate)
+        
+        @stripe_session = service.create_session
 
         @step_total = wizard_steps.length + 1 
         @current_step_number = wizard_steps.find_index(step) + 2

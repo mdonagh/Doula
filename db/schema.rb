@@ -17,6 +17,14 @@ ActiveRecord::Schema.define(version: 2019_08_07_232631) do
   enable_extension "plpgsql"
   enable_extension "postgis"
 
+  create_table "affiliate_plans", force: :cascade do |t|
+    t.string "stripe_code"
+    t.string "nickname"
+    t.decimal "radius_miles"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "affiliates", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -30,10 +38,11 @@ ActiveRecord::Schema.define(version: 2019_08_07_232631) do
     t.hstore "contact_name"
     t.string "phone"
     t.hstore "address"
-    t.hstore "plan"
+    t.bigint "affiliate_plans_id"
     t.boolean "contract_signed"
     t.datetime "contract_signed_date"
     t.text "contract"
+    t.index ["affiliate_plans_id"], name: "index_affiliates_on_affiliate_plans_id"
     t.index ["email"], name: "index_affiliates_on_email", unique: true
     t.index ["reset_password_token"], name: "index_affiliates_on_reset_password_token", unique: true
   end

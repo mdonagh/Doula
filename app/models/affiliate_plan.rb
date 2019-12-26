@@ -1,0 +1,2 @@
+class AffiliatePlan < ApplicationRecord
+end

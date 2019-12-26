@@ -16,6 +16,8 @@
 
     <%= devise_error_messages! %>
 
+    <%= f.hidden_field :affiliate_plans_id, value: @plan.id %>
+
       <%= f.fields_for :contact_name do |n| %>
       <div class="form-row">
         <div class="form-group col">

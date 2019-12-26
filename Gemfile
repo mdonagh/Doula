@@ -98,3 +98,6 @@ gem 'font-awesome-rails'
 
 #Admin portal 
 gem 'rails_admin', '~> 2.0'
+
+#Stripe 
+gem 'stripe'

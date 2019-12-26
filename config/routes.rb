@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     registrations: 'affiliates/registrations'
   }
 
+  resources :users, :only => [:show]
+
   devise_scope :user do
     get 'user/setup_wepay', :to => 'users/registrations#setup_wepay'
     get 'user/finish_wepay_setup', :to => 'users/registrations#finish_wepay_setup'
@@ -31,6 +33,10 @@ Rails.application.routes.draw do
     get 'affiliates/plans', :to => 'affiliates/registrations#plans'
     post 'affiliate/select_plan', :to => 'affiliates/registrations#select_plan'
   end
+
+  resources :affiliates, :only => [:show]
+  resources :stripe_charges, :only => [:new]
+
 
 
 
