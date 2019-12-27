@@ -23,7 +23,7 @@
         
         <%= form_for(@affiliate, url: wizard_path, method: :put) do |f| %>
             <%= f.label :contract_signed do %>
-                <%= f.check_box :contract_signed %> I agree to the terms and conditions
+                <%= f.check_box :contract_signed, required: true %> I agree to the terms and conditions
             <% end %>
 
             <div class="row">
