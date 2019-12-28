@@ -28,9 +28,17 @@ $theme-colors: (
   "secondary": $light-gray
 );
 
+// $font-family-base: 'Montserrat', sans-serif !default;
+$font-family-sans-serif: Montserrat, -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-serif:      Montserrat, Georgia, "Times New Roman", Times, serif !default;
+$font-family-monospace:  Montserrat, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:       $font-family-sans-serif !default;
+
 @import "bootstrap";
 @import "font-awesome";
 @import "social-share-button";
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap');
+
 
 // Secondary colors 
 $plan-light: plan-light #F7B2C7;
@@ -40,7 +48,15 @@ $plan-dark: plan-dark #FF4894;
 $plans: $plan-light $plan-middle $plan-dark; 
 
 // General Styling 
-*{font-family: 'Montserrat', sans-serif;}
+
+body,
+h1, h2, h3, h4, h5, h6,
+p, li,
+.h1, .h2, .h3, .h4, .h5, .h6,
+.tooltip,
+.popover {
+    font-family: 'Montserrat', sans-serif !important;
+}
 
 a {
     background-color: inherit !important;
