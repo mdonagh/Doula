@@ -1,0 +1,28 @@
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+<div class="container">
+    <div class="page-header my">
+        <h2><%=@affiliate.business_name%> Profile</h2>
+    </div>
+
+    <div class="row">
+        <div class="col-4 border-right">
+            <h5>ACCOUNT INFO<h5>
+            <p><%= @affiliate.full_name %></p>
+            <p><%= @affiliate.email %></p>
+            <p><%= @affiliate.address["street_address"] %></p>
+            <p><%= "#{@affiliate.address["city"]}, #{@affiliate.address["state"]} #{@affiliate.address["zip_code"]}" %></p>
+            <p><%= @affiliate.address["address_line2"] %></p>
+            <p><%= @affiliate.phone %></p>
+            <p><%= @affiliate.website %></p>
+        </div>
+        <div class="col-8 text-center">
+            <% if @affiliate.services.empty? %>
+                <h2>No Active Listings</h2>
+                <%= button_to "Add Listing", new_service_path, method: "get", class: "btn btn-light" %>
+            <% else %>
+            <% end %>
+        </div>
+    </div>
+</div>

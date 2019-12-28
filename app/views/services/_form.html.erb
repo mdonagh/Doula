@@ -11,9 +11,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.text_field :name, placeholder: "Listing Title", class: "form-control" %>
   </div>
 
   <div class="field">
@@ -35,3 +34,4 @@
     <%= form.submit %>
   </div>
 <% end %>
+ 
