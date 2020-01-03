@@ -6,6 +6,8 @@
     <%= link_to('Login User', new_user_session_path) %> 
     <%# <%= link_to('Sign Up', new_user_registration_path)%> 
 <%# <%end %> 
+<br>
+    <%= link_to('Create a registry', new_registry_path) %> 
 
 <% if affiliate_signed_in? %> 
     <%= link_to('Logout Affiliate', destroy_affiliate_session_path, method: :delete) %> 

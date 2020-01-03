@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :service_categories
   resources :registries, param: :slug
   resources :affiliate_signups
+  resources :registry_steps
 
 
   devise_for :users, controllers: {
