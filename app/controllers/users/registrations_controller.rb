@@ -37,13 +37,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end`
 
   # POST /resource
-  def create
-    super
-    # if current_user
-    #   redirect_to registry_steps_children_path
-    #   # https://github.com/plataformatec/devise/blob/master/app/controllers/devise/registrations_controller.rb
-    # end
-  end
+  # def create
+  #   super
+  # end
 
   # GET /resource/edit
   # def edit

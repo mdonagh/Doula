@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   resources :registries, param: :slug
   resources :affiliate_signups
   resources :registry_steps
-  # get '/registry_steps/children', to: 'registry_steps#children'
   get '/registry_steps/children', to: 'registry_steps#children', as: :registry_steps_2
 
 
