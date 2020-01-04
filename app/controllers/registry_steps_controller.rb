@@ -3,19 +3,19 @@ class RegistryStepsController < ApplicationController
   steps :party, :address, :payment
 
   def show 
-    # @registry = Registry.find(params[:registry_id])
-    binding.pry
+    current_registry_id = current_user.current_registry_id
+    @registry = Registry.find(current_registry_id)
     render_wizard
   end
 
-  # def update
-  #   @registry = Product.find(params[:registry_id])
-  #   @registry.update_attributes(params[:registry])
-  #   render_wizard @registry
-  # end
+  def update
+    current_registry_id = current_user.current_registry_id
+    @registry = Registry.find(current_registry_id)
+    @registry.update_attributes(party_params)
+    render_wizard @registry
+  end
 
-  def create
-    @registry = Registry.create
-    redirect_to wizard_path(steps.first, registry_id: @registry.id)
+  def party_params
+    params.require(:registry).permit(:shower_or_sprinkle, :shower_date, :cards_ordered)
   end
 end
