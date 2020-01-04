@@ -1,1 +1,18 @@
-Children
+<%= binding.pry %>
+<%= form_for @registry, url:wizard_path do |f| %>
+  <div class="field">
+    <%= form.label :due_date %>
+    <%= form.date_field :due_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :num_child %>
+    <%= form.number_field :num_child, min: 1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %>
+    <%= form.text_field :gender %>
+  </div>
+<% end %>
+
