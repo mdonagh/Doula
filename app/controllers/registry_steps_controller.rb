@@ -1,6 +1,6 @@
 class RegistryStepsController < ApplicationController
   include Wicked::Wizard 
-  steps :personal, :children, :party, :address, :payment
+  steps :children, :party, :address, :payment
 
   def show 
     render_wizard
