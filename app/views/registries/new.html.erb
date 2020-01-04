@@ -1,5 +1,54 @@
-<h1>New Registry</h1>
+<div class="container">
+  <div class="page-header text-center">
+    <h2>CREATE YOUR REGISTRY</h2>
+  </div>
 
-<%= render 'form', registry: @registry %>
+  <div class="row pt-5">
+    <div class="col">
+        <h5>Tell us about yourself</h5>
+    </div>
+    <div class="col text-right">
+      <p>2 of 5</p>
+    </div>
+  </div>
 
-<%= link_to 'Back', registries_path %>
+  <%= form_for @registry do |form| %>
+    <div class="field">
+      <%= form.label "Due Date" %>
+      <%= form.date_field :due_date, placeholder: "Due Date", autofocus: true, min: Date.today, max: 10.month.from_now %>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col">
+        <%= form.label "# of Children" %>
+        <%= form.select :num_child, (1..10), :include_blank => true %>
+      </div>
+
+      <div class="form-group col">
+        <%= form.label "Child Number" %>
+        <%= form.select :child_number, (1..10), :include_blank => true %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= form.label :gender %>
+      <%= form.select :gender, [['Male', 0], ['Female', 1]], :include_blank => true %>
+    </div>
+
+    <br><br>
+
+     <div class="form-row">
+      <div class="form-group col">
+        <%= link_to "Back", new_user_registration_path %>
+      </div>
+
+      <div class="form-group col">
+        <div class="actions">
+        <%= form.submit "Next", class: "btn btn-primary btn-sm" %>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+
+</div>
