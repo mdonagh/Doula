@@ -1,1 +1,70 @@
-Address
+<div class="container">
+  <div class="page-header text-center">
+    <h2>CREATE YOUR REGISTRY</h2>
+  </div>
+  <div class="row pt-5">
+    <div class="col">
+        <h5>CONTACT INFO</h5>
+    </div>
+    <div class="col text-right">
+      <p>4 of 5</p>
+    </div>
+  </div>
+  <br>
+  <div class="align-items-end">
+    <h5>Mailing Address</h5>
+  </div>
+  <br>
+  <%= form_for @registry, url: wizard_path do |f| %>
+    <%= f.fields_for :address do |a| %>
+      <div class="form-group">
+        <%= a.text_field :street_address, autofocus: true, placeholder: "Address", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= a.text_field :address_line2, placeholder: "Apartment, Suite, etc", class: "form-control" %>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col">
+          <%= a.text_field :city, placeholder: "City", class: "form-control" %>
+        </div>
+
+        <div class="form-group col">
+          <%= a.select :state, @states, {prompt: "State"}, {class: "form-control"} %>
+        </div>
+
+        <div class="form-group col">
+          <%= a.text_field :zip_code, placeholder: "Zip code", class: "form-control" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="form-row">
+      <div class="form-group col">
+        <%= f.telephone_field :phone_number %>
+      </div>
+
+      <div class="form-group col">
+        <%= f.check_box :shipping_address%>
+        <%= f.label "Shipping address is the same as mailing" %>
+      </div>
+    </div>
+
+
+    <br><br>
+
+     <div class="form-row">
+      <div class="form-group col">
+        <%= link_to "< Back", previous_wizard_path %>
+      </div>
+
+      <div class="form-group col">
+        <div class="actions">
+        <%= f.submit "Continue", class: "btn btn-primary btn-sm" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>
