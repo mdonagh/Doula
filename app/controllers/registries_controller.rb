@@ -37,40 +37,19 @@ class RegistriesController < ApplicationController
     @registry.name = current_user.first_name.capitalize + "'s Registry"
 
     #assign the slug 
-    @registry.slug = current_user.first_name + "_registry"
+    @registry.slug = current_user.first_name.downcase + "-registry"
 
       if @registry.save
         #assign current_registry_id 
         current_user.current_registry_id = @registry.id
         current_user.save
+
         redirect_to registry_steps_path
       else
         flash[:danger] =  @registry.errors.full_messages.to_sentence
         redirect_to new_registry_path
       end
-     
-    #assign the slug 
-    # @registry.slug = registry_params["name"].gsub("'", "").parameterize
-
-    # respond_to do |format|
-    #   if @registry.save
-
-    #     current_user.current_registry_id = @registry.id
-    #     current_user.save 
-    #     # Setup WePay if selected 
-    #     if @registry.accepts_wepay && (!current_user.has_valid_wepay_access_token? || !current_user.has_wepay_account?)
-    #       # TODO check if they already have a wepay account setup 
-    #       format.html { redirect_to user_setup_wepay_path, notice: 'Registry was successfully created.'}
-    #       format.json { render :show, status: :created, location: @registry }
-    #     end 
-
-    #     format.html { redirect_to services_path, notice: 'Registry was successfully created.' }
-    #     format.json { render :show, status: :created, location: @registry }
-    #   else
-    #     format.html { render :new }
-    #     format.json { render json: @registry.errors, status: :unprocessable_entity }
-    #   end
-    # end
+    
   end
 
   # PATCH/PUT /registries/1
