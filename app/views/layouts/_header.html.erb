@@ -7,7 +7,6 @@
     <%# <%= link_to('Sign Up', new_user_registration_path)%> 
 <%# <%end %> 
 <br>
-    <%= link_to('Create a registry', new_user_registration_path) %> 
 
 <% if affiliate_signed_in? %> 
     <%= link_to('Logout Affiliate', destroy_affiliate_session_path, method: :delete) %> 
@@ -16,6 +15,16 @@
 <%end %>
 
 <nav class="navbar navbar-expand-lg navbar-default">
-  <%= link_to image_tag("logos/main_logo.png"), root_path, class: "navbar-brand mx-auto" %>
+      <%= link_to('Create a Registry', new_user_registration_path, class: "nav-link") %> 
+      <%#= Change the path to appropriate path when back-end is ready %>
+      <%= link_to('Find a Registry', root_path, class: "nav-link") %> 
+      <%= link_to image_tag("logos/main_logo.png"), root_path, class: "navbar-brand mx-auto" %>
+      <%#= Change the path to appropriate path when back-end is ready %>
+      <%= link_to('Become Affiliate', root_path, class: "nav-link") %> 
+      <%= link_to('Log in', new_user_session_path, class: "nav-link") %> 
+      <%#= Change the path to appropriate path when back-end is ready %>
+      <%= link_to root_path do %>
+        <span class="fa fa-shopping-cart nav-link"></span>
+      <% end %>
 </nav>
 
