@@ -15,12 +15,12 @@ class RegistryStepsController < ApplicationController
     @registry = Registry.find(current_registry_id)
     @registry.update_attributes(additional_params)
 
-    # Setup WePay if selected 
-    # if @registry.accepts_wepay && (!current_user.has_valid_wepay_access_token? || !current_user.has_wepay_account?)
-    #   # TODO check if they already have a wepay account setup 
-    #   format.html { redirect_to user_setup_wepay_path, notice: 'Registry was successfully created.'}
-    #   format.json { render :show, status: :created, location: @registry }
-    # end 
+    #Setup WePay if selected 
+    if @registry.accepts_wepay && (!current_user.has_valid_wepay_access_token? || !current_user.has_wepay_account?)
+      # TODO check if they already have a wepay account setup 
+      # format.html { redirect_to user_setup_wepay_path, notice: 'Registry was successfully created.'}
+      # format.json { render :show, status: :created, location: @registry }
+    end 
     
     render_wizard @registry
   end
