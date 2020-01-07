@@ -11,40 +11,37 @@
       <p>1 of 5</p>
     </div>
   </div>
-
+  <br>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 
     <%= devise_error_messages! %>
 
     <div class="form-row">
       <div class="form-group col">
-        <%= f.text_field :first_name, autofocus: true, placeholder: "First Name", autocomplete: "first_name" %>
+        <%= f.text_field :first_name, autofocus: true, placeholder: "First Name", autocomplete: "first_name" , class: "form-control" %>
       </div>
-
+      <br>
       <div class="form-group col">
-        <%= f.text_field :last_name, placeholder: "Last Name", autocomplete: "last_name" %>
+        <%= f.text_field :last_name, placeholder: "Last Name", autocomplete: "last_name" , class: "form-control" %>
       </div>
     </div>
-
-    <div class="field">
-      <%= f.email_field :email, placeholder: "Email", autocomplete: "email" %>
+    <br>
+    <div class="form-group">
+      <%= f.email_field :email, placeholder: "Email", autocomplete: "email", class: "form-control"%>
     </div>
-
+    <br>
     <div class="form-row">
       <div class="form-group col">
-        <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %><br />
-        <%= f.password_field :password, placeholder: "Password", autocomplete: "new-password" %>
+        <%= f.password_field :password, placeholder: "Password", autocomplete: "new-password", class: "form-control" %>
       </div>
 
       <div class="form-group col">
-        <%= f.password_field :password_confirmation, placeholder: "Confirm Password", autocomplete: "new-password" %>
+        <%= f.password_field :password_confirmation, placeholder: "Confirm Password", autocomplete: "new-password", class: "form-control" %>
       </div>
-     </div> 
-
+    </div>   
+    <br>
     <div class="actions">
-      <%= f.submit "Next", class: "btn btn-primary btn-sm" %>
+      <%= f.submit "Next", class: "btn btn-primary btn-sm pull-right next" %>
     </div>
   <% end %>
 </div>

@@ -42,12 +42,11 @@
 
     <div class="form-row">
       <div class="form-group col">
-        <%= f.telephone_field :phone_number %>
+        <%= f.telephone_field :phone_number, placeholder: "Phone Number", class: "form-control" %>
       </div>
 
       <div class="form-group col">
-        <%= f.check_box :shipping_address%>
-        <%= f.label "Shipping address is the same as mailing" %>
+        <%= f.check_box :shipping_address %>Shipping address is the same as mailing
       </div>
     </div>
 
