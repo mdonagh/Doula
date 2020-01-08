@@ -11,28 +11,29 @@
       <p>2 of 5</p>
     </div>
   </div>
-
+  <br>
   <%= form_for @registry do |form| %>
-    <div class="field">
-      <%= form.label "Due Date" %>
-      <%= form.date_field :due_date, placeholder: "Due Date", autofocus: true, min: Date.today, max: 10.month.from_now %>
+    <div class="form-group">
+      <%= form.text_field :due_date, 
+        data: { provide: "datepicker", 
+        'date-format': 'mm/dd/yyyy',
+        'date-today-highlight': 'true', 
+        'date-autoclose': 'true'},
+        placeholder: "Due Date",
+        class: "datepicker form-control"  %>
     </div>
-
+    
     <div class="form-row">
       <div class="form-group col">
-        <%= form.label "# of Children" %>
-        <%= form.select :num_child, (1..10), :include_blank => true %>
-      </div>
-
+        <%= form.select :num_child, (1..10), {include_blank: "# of Children"}, {class: 'form-control'} %>
+     </div>
       <div class="form-group col">
-        <%= form.label "Child Number" %>
-        <%= form.select :child_number, (1..10), :include_blank => true %>
+        <%= form.select :child_number, (1..10), {include_blank: "Child Number"}, {class: 'form-control'} %>
       </div>
     </div>
 
-    <div class="field">
-      <%= form.label :gender %>
-      <%= form.select :gender, [['Male', 0], ['Female', 1]], :include_blank => true %>
+    <div class="form-group">
+      <%= form.select :gender, [['Male', 0], ['Female', 1]], {include_blank: "Gender"}, {class: 'form-control'} %>
     </div>
 
     <br><br>

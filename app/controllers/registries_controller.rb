@@ -29,7 +29,9 @@ class RegistriesController < ApplicationController
   # POST /registries.json
   def create
     @registry = Registry.new(registry_params)
-    
+    #converts and assign due_date
+    @registry.due_date = Date.strptime(registry_params[:due_date], '%m/%d/%Y')
+
     #assign the registry to the currently logged in user 
     @registry.user_id = current_user.id
 
@@ -39,17 +41,16 @@ class RegistriesController < ApplicationController
     #assign the slug 
     @registry.slug = current_user.first_name.downcase + "-registry"
 
-      if @registry.save
-        #assign current_registry_id 
-        current_user.current_registry_id = @registry.id
-        current_user.save
+    if @registry.save
+      #assign current_registry_id 
+      current_user.current_registry_id = @registry.id
 
-        redirect_to registry_steps_path
-      else
-        flash[:danger] =  @registry.errors.full_messages.to_sentence
-        redirect_to new_registry_path
-      end
-    
+      current_user.save
+      redirect_to registry_steps_path
+    else
+      flash[:danger] =  @registry.errors.full_messages.to_sentence
+      redirect_to new_registry_path
+    end  
   end
 
   # PATCH/PUT /registries/1

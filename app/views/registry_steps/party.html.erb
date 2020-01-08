@@ -2,7 +2,6 @@
   <div class="page-header text-center">
     <h2>CREATE YOUR REGISTRY</h2>
   </div>
-<%= binding.pry %>
   <div class="row pt-5">
     <div class="col">
         <h5>TELL US ABOUT YOUR PARTY</h5>
@@ -19,8 +18,12 @@
       </div>
 
       <div class="form-group col">
-        <%= form.label "Date of Party" %>
-        <%= form.date_field :shower_date, placeholder: "Date of Party", autofocus: true, min: 2.week.from_now, max: 10.month.from_now %>
+        <%= form.text_field :shower_date,
+            data: { provide: "datepicker", 
+            'date-format': 'mm/dd/yyyy', 
+            'date-today-highlight': 'true', 
+            'date-autoclose': 'true'}, 
+            placeholder: "Date of Party", class: "datepicker form-control" %>
       </div>
     </div>
 

@@ -21,7 +21,12 @@ class RegistryStepsController < ApplicationController
       # format.html { redirect_to user_setup_wepay_path, notice: 'Registry was successfully created.'}
       # format.json { render :show, status: :created, location: @registry }
     end 
-    
+
+    #converts and assign due_date when shower_date comes in as additional_params
+    if @registry.shower_date.nil?
+      @registry.shower_date = Date.strptime(additional_params[:shower_date], '%m/%d/%Y')
+    end
+
     render_wizard @registry
   end
 
