@@ -18,7 +18,7 @@
   <%= form_for @registry, url: wizard_path do |f| %>
     <%= f.fields_for :address do |a| %>
       <div class="form-group">
-        <%= a.text_field :street_address, autofocus: true, placeholder: "Address", class: "form-control" %>
+        <%= a.text_field :street_address, autofocus: true, placeholder: "Address", required: true, class: "form-control" %>
       </div>
 
       <div class="form-group">
@@ -27,22 +27,24 @@
 
       <div class="form-row">
         <div class="form-group col">
-          <%= a.text_field :city, placeholder: "City", class: "form-control" %>
+          <%= a.text_field :city, placeholder: "City", required: true, class: "form-control" %>
         </div>
 
         <div class="form-group col">
-          <%= a.select :state, @states, {prompt: "State"}, {class: "form-control"} %>
+          <%= a.select :state, @states, 
+                       {prompt: "State"}, 
+                       {required: true, class: "form-control"} %>
         </div>
 
         <div class="form-group col">
-          <%= a.text_field :zip_code, placeholder: "Zip code", class: "form-control" %>
+          <%= a.text_field :zip_code, placeholder: "Zip code", required: true, class: "form-control" %>
         </div>
       </div>
     <% end %>
 
     <div class="form-row">
       <div class="form-group col">
-        <%= f.telephone_field :phone_number, placeholder: "Phone Number", class: "form-control" %>
+        <%= f.telephone_field :phone_number, placeholder: "Phone Number", required: true, class: "form-control" %>
       </div>
 
       <div class="form-group col">
