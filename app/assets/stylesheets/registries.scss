@@ -44,8 +44,8 @@ select.form-control {
   margin-top: 0.6em;
 }
 
-div.card-box {
-  font-size: 0.9em;
+div.check-box {
+  font-size: 0.8em;
 }
 
 .datepicker {
@@ -54,4 +54,18 @@ div.card-box {
 
 input#registry_shower_date {
   height: 2.2em;
+}
+
+select.form-control.state {
+  margin-top: 0;
+  height: 2.7em;
+}
+
+div.shipping-check-box {
+  font-size: 0.7em;
+  margin-top: 0.6em;
+}
+
+.selection-info {
+  padding: 1em 0 1em 0.93em;
 }
