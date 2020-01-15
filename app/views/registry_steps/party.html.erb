@@ -1,10 +1,11 @@
-<div class="container">
+<div class="container registry">
   <div class="page-header text-center">
-    <h2>CREATE YOUR REGISTRY</h2>
+    <p class="registry-title">CREATE YOUR REGISTRY</p>
   </div>
-  <div class="row pt-5">
+
+  <div class="row pt-5 registry-page-about">
     <div class="col">
-        <h5>TELL US ABOUT YOUR PARTY</h5>
+     <p class="about">TELL US ABOUT YOUR PARTY</p>
     </div>
     <div class="col text-right">
       <p>3 of 5</p>
@@ -13,10 +14,10 @@
   <br>
   <%= form_for @registry, url: wizard_path do |form| %>
     <div class="form-row">
-      <div class="form-group col">
+      <div class="form-group col double-input">
         <%= form.select :shower_or_sprinkle, [['Shower', 0], ['Sprinkle', 1]], 
                         {include_blank: "Type of Party"}, 
-                        {required: true, class: 'form-control'}  %>
+                        {required: true, class: 'form-control party-date'}  %>
       </div>
 
       <div class="form-group col">
@@ -31,21 +32,19 @@
       </div>
     </div>
 
-    <div class="field">
+    <div class="field card-box">
       <%= form.check_box :cards_ordered%>
       <%= form.label "Order Registry Cards" %>
     </div>
-
-    <br><br>
-
+    <br>
      <div class="form-row">
       <div class="form-group col">
-        <%= link_to "< Back", new_registry_path %>
+        <%= link_to "< Back", new_registry_path, class: "back-link"%>
       </div>
 
       <div class="form-group col">
         <div class="actions">
-        <%= form.submit "Next", class: "btn btn-primary btn-sm" %>
+        <%= form.submit "Next", class: "btn btn-primary btn-sm pull-right next" %>
         </div>
       </div>
 

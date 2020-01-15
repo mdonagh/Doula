@@ -115,12 +115,15 @@ footer li {
 }
 
 .navbar-brand img {
-    height: 2.7em;
+    height: 2.3em;
 }
 
-
+.navbar-brand {
+    height: 2.8em;
+}
 .nav-link {
     font-weight: bold;
+    font-size: 0.7em;
 }
   
 // Affiliate Plan Page Styling 
@@ -158,3 +161,9 @@ footer li {
         background-color: nth($plan, 2);    
     }
 }
+
+// Input placeholder  
+
+::-webkit-input-placeholder {
+    font-size: 0.8em!important;
+ }

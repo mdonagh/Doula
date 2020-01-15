@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container registry">
   <div class="page-header text-center">
-    <h2>CREATE YOUR REGISTRY</h2>
+    <p class="registry-title">CREATE YOUR REGISTRY</p>
   </div>
 
-  <div class="row pt-5">
+  <div class="row pt-5 registry-page-about">
     <div class="col">
-        <h5>Tell us about yourself</h5>
+        <p class="about">Tell us about yourself</p>
     </div>
     <div class="col text-right">
       <p>1 of 5</p>
@@ -17,7 +17,7 @@
     <%= devise_error_messages! %>
 
     <div class="form-row">
-      <div class="form-group col">
+      <div class="form-group col double-input">
         <%= f.text_field :first_name, autofocus: true, placeholder: "First Name", autocomplete: "first_name" , class: "form-control" %>
       </div>
       <br>
@@ -25,18 +25,17 @@
         <%= f.text_field :last_name, placeholder: "Last Name", autocomplete: "last_name" , class: "form-control" %>
       </div>
     </div>
-    <br>
     <div class="form-group">
       <%= f.email_field :email, placeholder: "Email", autocomplete: "email", class: "form-control"%>
     </div>
-    <br>
+   
     <div class="form-row">
-      <div class="form-group col">
-        <%= f.password_field :password, placeholder: "Password", autocomplete: "new-password", class: "form-control" %>
+      <div class="form-group col double-input">
+        <%= f.password_field :password, placeholder: "Password", autocomplete: "new-password", class: "form-control reg-form-one" %>
       </div>
 
       <div class="form-group col">
-        <%= f.password_field :password_confirmation, placeholder: "Confirm Password", autocomplete: "new-password", class: "form-control" %>
+        <%= f.password_field :password_confirmation, placeholder: "Confirm Password", autocomplete: "new-password", class: "form-control reg-form-one" %>
       </div>
     </div>   
     <br>

@@ -1,11 +1,11 @@
-<div class="container">
+<div class="container registry">
   <div class="page-header text-center">
-    <h2>CREATE YOUR REGISTRY</h2>
+    <p class="registry-title">CREATE YOUR REGISTRY</p>
   </div>
 
-  <div class="row pt-5">
+  <div class="row pt-5 registry-page-about">
     <div class="col">
-        <h5>Tell us about yourself</h5>
+        <p class="about">Tell us about yourself</p>
     </div>
     <div class="col text-right">
       <p>2 of 5</p>
@@ -25,7 +25,7 @@
     </div>
     
     <div class="form-row">
-      <div class="form-group col">                                                       
+      <div class="form-group col double-input">                                                       
         <%= form.select :num_child, (1..10), 
                         {include_blank: "# of Children"}, 
                         {required: true, class: 'form-control'} %>
@@ -47,12 +47,12 @@
 
      <div class="form-row">
       <div class="form-group col">
-        <%= link_to "< Back", new_user_registration_path %>
+        <%= link_to "< Back", new_user_registration_path, class: "back-link" %>
       </div>
 
       <div class="form-group col">
         <div class="actions">
-        <%= form.submit "Next", class: "btn btn-primary btn-sm" %>
+        <%= form.submit "Next", class: "btn btn-primary btn-sm pull-right next" %>
         </div>
       </div>
 
