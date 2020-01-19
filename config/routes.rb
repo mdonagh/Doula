@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :service_categories
   resources :registries, param: :slug
   resources :affiliate_signups
+  resources :registry_steps
+  get '/registry_steps/children', to: 'registry_steps#children', as: :registry_steps_2
+
 
 
   devise_for :users, controllers: {
@@ -21,7 +24,7 @@ Rails.application.routes.draw do
     registrations: 'affiliates/registrations'
   }
 
-  resources :users, :only => [:show]
+  # resources :users, :only => [:show]
 
   devise_scope :user do
     get 'user/setup_wepay', :to => 'users/registrations#setup_wepay'

@@ -101,3 +101,6 @@ gem 'rails_admin', '~> 2.0'
 
 #Stripe 
 gem 'stripe'
+
+#Datepicker
+gem 'bootstrap-datepicker-rails'

@@ -1,0 +1,70 @@
+<div class="container registry">
+  <div class="page-header text-center">
+    <p class="registry-title">CREATE YOUR REGISTRY</p>
+  </div>
+  <div class="row pt-5 registry-page-about">
+    <div class="col">
+      <p class="about">CONTACT INFO</p>
+    </div>
+    <div class="col text-right">
+      <p>4 of 5</p>
+    </div>
+  </div>
+
+  <div class="align-items-end">
+    <p class="about">Mailing Address</p>
+  </div>
+  <br>
+  <%= form_for @registry, url: wizard_path do |f| %>
+    <%= f.fields_for :address do |a| %>
+      <div class="form-group">
+        <%= a.text_field :street_address, autofocus: true, placeholder: "Address", required: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= a.text_field :address_line2, placeholder: "Apartment, Suite, etc", class: "form-control" %>
+      </div>
+
+      <div class="form-row row">
+        <div class="form-group col-6">
+          <%= a.text_field :city, placeholder: "City", required: true, class: "form-control" %>
+        </div>
+
+        <div class="form-group col-3">
+          <%= a.select :state, @states, 
+                       {prompt: "State"}, 
+                       {required: true, class: "form-control state"} %>
+        </div>
+
+        <div class="form-group col-3">
+          <%= a.text_field :zip_code, placeholder: "Zip code", required: true, class: "form-control" %>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="form-row">
+      <div class="form-group col">
+        <%= f.telephone_field :phone_number, placeholder: "Phone Number", required: true, class: "form-control" %>
+      </div>
+
+      <div class="form-group col shipping-check-box">
+        <%= f.check_box :shipping_address %> Shipping address is the same as mailing
+      </div>
+    </div>
+
+    <br><br>
+
+     <div class="form-row">
+      <div class="form-group col">
+        <%= link_to "< Back", previous_wizard_path, class: "back-link"%>
+      </div>
+
+      <div class="form-group col">
+        <div class="actions">
+        <%= f.submit "Next", class: "btn btn-primary btn-sm pull-right next" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+</div>
