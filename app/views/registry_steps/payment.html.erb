@@ -15,12 +15,19 @@
   <%= form_for @registry, url: wizard_path do |form| %>
     <div class="field check-box">
       <%= form.check_box :accepts_check %>
-      <%= form.label "Cash/Check off the site ⊕" %>
+
+      <%= form.label :accepts_check do %>
+        Cash/Check off the site
+        <%= fa_icon "plus-circle" %>
+      <% end %>
     </div>
 
     <div class="field check-box">
       <%= form.check_box :accepts_wepay %>
-      <%= form.label "wePay ⊕" %>
+      <%= form.label :accepts_wepay do %>
+        wePay
+        <%= fa_icon "plus-circle" %>
+      <% end %>
     </div>
 
     <br><br>

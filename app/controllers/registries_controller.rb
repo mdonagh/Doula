@@ -48,7 +48,7 @@ class RegistriesController < ApplicationController
       current_user.save
       redirect_to registry_steps_path
     else
-      flash[:danger] =  @registry.errors.full_messages.to_sentence
+      flash[:error] =  @registry.errors.full_messages.to_sentence
       redirect_to new_registry_path
     end  
   end
