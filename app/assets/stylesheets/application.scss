@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap-datepicker
  */
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 // Main colors 
@@ -35,6 +36,7 @@ $font-family-monospace:  Montserrat, Menlo, Monaco, Consolas, "Liberation Mono",
 $font-family-base:       $font-family-sans-serif !default;
 
 @import "bootstrap";
+@import "bootstrap-datepicker";
 @import "font-awesome";
 @import "social-share-button";
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap');
@@ -49,6 +51,9 @@ $plans: $plan-light $plan-middle $plan-dark;
 
 // General Styling 
 
+body {
+    background-color: #F5F5F5;
+}
 body,
 h1, h2, h3, h4, h5, h6,
 p, li,
@@ -60,6 +65,10 @@ p, li,
 
 a {
     background-color: inherit !important;
+}
+
+.btn-sm {
+    padding: 0.25rem 3.0rem;
 }
 
 @media (min-width: 1200px) {
@@ -106,9 +115,17 @@ footer li {
 }
 
 .navbar-brand img {
-    height: 2.7em;
+    height: 2.3em;
 }
 
+.navbar-brand {
+    height: 2.8em;
+}
+.nav-link {
+    font-weight: bold;
+    font-size: 0.7em;
+}
+  
 // Affiliate Plan Page Styling 
 .card-header h4{
     color: white; 
@@ -144,3 +161,9 @@ footer li {
         background-color: nth($plan, 2);    
     }
 }
+
+// Input placeholder  
+
+::-webkit-input-placeholder {
+    font-size: 0.8em!important;
+ }

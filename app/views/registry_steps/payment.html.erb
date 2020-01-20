@@ -1,0 +1,49 @@
+<div class="container registry">
+  <div class="page-header text-center">
+    <p class="registry-title">CREATE YOUR REGISTRY</p>
+  </div>
+
+  <div class="row pt-5 registry-page-about">
+      <p class="about col">PAYMENT INFO</p>
+      <div class="col text-right">
+        <p>5 of 5</p>
+      </div>
+      <p class="selection-info">Please select how you would like to recieve payment for your gifts</p>
+      <br>
+  </div>
+
+  <%= form_for @registry, url: wizard_path do |form| %>
+    <div class="field check-box">
+      <%= form.check_box :accepts_check %>
+
+      <%= form.label :accepts_check do %>
+        Cash/Check off the site
+        <%= fa_icon "plus-circle" %>
+      <% end %>
+    </div>
+
+    <div class="field check-box">
+      <%= form.check_box :accepts_wepay %>
+      <%= form.label :accepts_wepay do %>
+        wePay
+        <%= fa_icon "plus-circle" %>
+      <% end %>
+    </div>
+
+    <br><br>
+
+     <div class="form-row">
+      <div class="form-group col">
+        <%= link_to "< Back", previous_wizard_path, class: "back-link"%>
+      </div>
+
+      <div class="form-group col">
+        <div class="actions">
+        <%= form.submit "Next", class: "btn btn-primary btn-sm pull-right next"%>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+
+</div>

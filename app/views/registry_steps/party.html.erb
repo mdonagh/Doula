@@ -1,0 +1,54 @@
+<div class="container registry">
+  <div class="page-header text-center">
+    <p class="registry-title">CREATE YOUR REGISTRY</p>
+  </div>
+
+  <div class="row pt-5 registry-page-about">
+    <div class="col">
+     <p class="about">TELL US ABOUT YOUR PARTY</p>
+    </div>
+    <div class="col text-right">
+      <p>3 of 5</p>
+    </div>
+  </div>
+  <br>
+  <%= form_for @registry, url: wizard_path do |form| %>
+    <div class="form-row">
+      <div class="form-group col double-input">
+        <%= form.select :shower_or_sprinkle, [['Shower', 0], ['Sprinkle', 1]], 
+                        {include_blank: "Type of Party"}, 
+                        {required: true, class: 'form-control party-date'}  %>
+      </div>
+
+      <div class="form-group col">
+        <%= form.text_field :shower_date,
+            data: { provide: "datepicker", 
+            'date-format': 'mm/dd/yyyy', 
+            'date-today-highlight': 'true', 
+            'date-autoclose': 'true'}, 
+            placeholder: "Date of Party", 
+            required: true,
+            class: "datepicker form-control" %>
+      </div>
+    </div>
+
+    <div class="field check-box">
+      <%= form.check_box :cards_ordered%>
+      <%= form.label "Order Registry Cards" %>
+    </div>
+    <br>
+     <div class="form-row">
+      <div class="form-group col">
+        <%= link_to "< Back", new_registry_path, class: "back-link"%>
+      </div>
+
+      <div class="form-group col">
+        <div class="actions">
+        <%= form.submit "Next", class: "btn btn-primary btn-sm pull-right next" %>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+
+</div>

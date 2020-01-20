@@ -1,5 +1,62 @@
-<h1>New Registry</h1>
+<div class="container registry">
+  <div class="page-header text-center">
+    <p class="registry-title">CREATE YOUR REGISTRY</p>
+  </div>
 
-<%= render 'form', registry: @registry %>
+  <div class="row pt-5 registry-page-about">
+    <div class="col">
+      <p class="about">Tell us about yourself</p>
+    </div>
+    <div class="col text-right">
+      <p>2 of 5</p>
+    </div>
+  </div>
+  <br>
+  <%= form_for @registry do |form| %>
+    <div class="form-group">
+      <%= form.text_field :due_date, 
+        data: { provide: "datepicker", 
+        'date-format': 'mm/dd/yyyy',
+        'date-today-highlight': 'true', 
+        'date-autoclose': 'true'},
+        placeholder: "Due Date",
+        required: true,
+        class: "datepicker form-control"  %>
+    </div>
+    
+    <div class="form-row">
+      <div class="form-group col double-input">                                                       
+        <%= form.select :num_child, (1..10), 
+                        {include_blank: "# of Children"}, 
+                        {required: true, class: 'form-control'} %>
+     </div>
+      <div class="form-group col">
+        <%= form.select :child_number, (1..10), 
+                        {include_blank: "Child Number"}, 
+                        {required: true, class: 'form-control'} %>
+      </div>
+    </div>
 
-<%= link_to 'Back', registries_path %>
+    <div class="form-group">
+      <%= form.select :gender, [['Male', 0], ['Female', 1]], 
+                      {include_blank: 'Gender'}, 
+                      {required: true, class: 'form-control'} %>
+    </div>
+
+    <br><br>
+
+     <div class="form-row">
+      <div class="form-group col">
+        <%= link_to "< Back", new_user_registration_path, class: "back-link"%>
+      </div>
+
+      <div class="form-group col">
+        <div class="actions">
+        <%= form.submit "Next", class: "btn btn-primary btn-sm pull-right next"%>
+        </div>
+      </div>
+
+    </div>
+  <% end %>
+
+</div>
