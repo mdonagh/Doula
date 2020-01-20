@@ -8,20 +8,41 @@
 
     <div class="row">
         <div class="col-4 border-right">
-            <h5>ACCOUNT INFO<h5>
+            
+            <%= button_to "Add Listing", new_service_path, method: "get", class: "btn btn-primary" %>
+            <h5 class="font-weight-bold">ACCOUNT INFO<h5>
             <p><%= @affiliate.full_name %></p>
             <p><%= @affiliate.email %></p>
             <p><%= @affiliate.address["street_address"] %></p>
             <p><%= "#{@affiliate.address["city"]}, #{@affiliate.address["state"]} #{@affiliate.address["zip_code"]}" %></p>
             <p><%= @affiliate.address["address_line2"] %></p>
             <p><%= @affiliate.phone %></p>
-            <p><%= @affiliate.website %></p>
+            <a href="http://<%=@affiliate.website%>"><p><%= @affiliate.website %></p></a>
         </div>
         <div class="col-8 text-center">
             <% if @affiliate.services.empty? %>
                 <h2>No Active Listings</h2>
                 <%= button_to "Add Listing", new_service_path, method: "get", class: "btn btn-light" %>
             <% else %>
+                <div class="container">
+                    <% @affiliate.services.each do |service| %>
+                    <div class="row">
+                        <div class="col-6 text-left">
+                            <% if service.thumbnail.attached? %>
+                                <%= image_tag(service.thumbnail, height: 150) %>
+                            <% end %>
+                            <h4 class="font-weight-bold"><%= service.name %></h4>
+                            <p><%= service.subtitle %></p>
+                            <h5 class="font-weight-bold"><%= number_to_currency(service.price) %></h5>
+                            <h6 class="font-weight-bold">Description</h6>
+                            <p><%= service.description %></p>
+                        </div>
+                        <div class="col-6 text-left">
+                            <%= link_to "Edit Listing", edit_service_path(service)%>
+                        </div>
+                    </div>
+                </div>
+                <% end %>
             <% end %>
         </div>
     </div>

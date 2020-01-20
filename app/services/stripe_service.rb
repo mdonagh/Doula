@@ -5,9 +5,7 @@ class StripeService
         @email = user.email
         @key = Rails.application.credentials.stripe[Rails.env.to_sym][:secret_key]
         @plan = AffiliatePlan.find(user.affiliate_plans_id).stripe_code
-        binding.pry
         @user = user
-        binding.pry
 
         Stripe.api_key = @key 
     end

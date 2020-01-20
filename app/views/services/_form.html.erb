@@ -12,26 +12,54 @@
   <% end %>
 
   <div class="form-group">
+    <label>
+    <% if @service.thumbnail.attached? %>
+      <%= image_tag(@service.thumbnail, height: 150) %>
+    Change Photo
+    <% else %>
+      <%= image_tag("placeholder", size: 150) %>
+    Add Photo 
+    <% end %>
+      <span style="display:none">
+        <%= form.file_field :thumbnail %>
+      </span>
+    </label>
+  </div>
+
+  <div class="form-group">
     <%= form.text_field :name, placeholder: "Listing Title", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
+  <div class="form-group">
+    <%= form.text_field :subtitle, placeholder: "Listing Subtitle", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :price %>
-    <%= form.text_field :price %>
+  <div class="form-row">
+    <div class="form-group col">
+      <%= form.text_field :price, placeholder: "Price", class: "form-control" %>
+    </div>
+
+    <div class="form-group col">
+      <%= form.collection_select :service_category_id, ServiceCategory.all, :id, :name, {prompt: "Category"}, {class: "form-control"} %>
+    </div>
   </div>
 
-  <div class="field">
-    <%#= form.label :intervals %>
-    <%#= form.number_field :intervals %>
+  <div class="form-group">
+    <%= form.text_area :description, placeholder: "Description", class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <%= form.hidden_field :affiliate_id, value: @affiliate.id %>
+
+  <div class="row">
+      <div class="col">
+        <u><%= link_to 'Cancel', :back %></u>
+      </div>
+      <div class="col text-right">
+          <div class="actions">
+              <%= form.submit action_name == 'new' ? 'Add Listing' : 'Save Changes', class: "btn btn-primary btn-sm" %>
+          </div>
+      </div>
   </div>
+
 <% end %>
  

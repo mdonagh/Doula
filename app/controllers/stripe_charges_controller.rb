@@ -11,7 +11,6 @@ class StripeChargesController < ApplicationController
 
     def new
         # @stripe_session = StripeService.create_session(current_affiliate.email, params[:plan])
-        binding.pry
         @stripe_session = StripeService.create_session(current_affiliate.email, 'plan_GLlLVOFWdoZqcw')
     end
 
