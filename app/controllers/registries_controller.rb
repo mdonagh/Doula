@@ -39,13 +39,19 @@ class RegistriesController < ApplicationController
     @registry.name = current_user.first_name.capitalize + "'s Registry"
 
     #assign the slug 
-    @registry.slug = current_user.first_name.downcase + "-registry"
+
+    @registry.slug = current_user.first_name.downcase + '-' + current_user.last_name.downcase + '-' + Time.now.strftime('%d-%m')
+    
+    if (Registry.where(slug: @registry.slug).size > 0)
+      @registry.slug += '-1'
+    end
 
     if @registry.save
       #assign current_registry_id 
       current_user.current_registry_id = @registry.id
 
       current_user.save
+      byebug
       redirect_to registry_steps_path
     else
       flash[:error] =  @registry.errors.full_messages.to_sentence
