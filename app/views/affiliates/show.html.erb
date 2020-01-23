@@ -11,11 +11,11 @@
             <h5>ACCOUNT INFO<h5>
             <p><%= @affiliate.full_name %></p>
             <p><%= @affiliate.email %></p>
-            <p><%= @affiliate.address["street_address"] %></p>
-            <p><%= "#{@affiliate.address["city"]}, #{@affiliate.address["state"]} #{@affiliate.address["zip_code"]}" %></p>
-            <p><%= @affiliate.address["address_line2"] %></p>
-            <p><%= @affiliate.phone %></p>
-            <p><%= @affiliate.website %></p>
+            <p><%= @affiliate.address["street_address"]</p> %>
+            <p><%= "#{@affiliate.address["city"]}, #{@affiliate.address["state"]} #{@affiliate.address["zip_code"]}"</p> %>
+            <p><%= @affiliate.address["address_line2"]</p> %>
+            <p><%= @affiliate.phone</p> %>
+            <p><%= @affiliate.website</p> %>
         </div>
         <div class="col-8 text-center">
             <% if @affiliate.services.empty? %>

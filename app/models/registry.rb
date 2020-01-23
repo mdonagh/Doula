@@ -48,4 +48,4 @@ class Registry < ApplicationRecord
     # end 
 end
 
-Registry.import(force: true) #for auto syncing the model with elasticsearch
+# Registry.import(force: true) #for auto syncing the model with elasticsearch
