@@ -53,6 +53,14 @@ class User < ApplicationRecord
     end
   end
 
+  def end_affiliate_session
+    # remove conditionals from new user/affiliate session views
+    # log into the user account
+    # create the user session
+    # destroy the affiliate session
+    # render the message
+  end
+
   
 
 end

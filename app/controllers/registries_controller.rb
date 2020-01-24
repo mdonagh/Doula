@@ -40,7 +40,7 @@ class RegistriesController < ApplicationController
 
     #assign the slug 
 
-    @registry.slug = current_user.first_name.downcase + '-' + current_user.last_name.downcase + '-' + Time.now.strftime('%d-%m')
+    @registry.slug = "#{current_user.first_name.downcase}-#{current_user.last_name.downcase}-#{Time.now.strftime('%d-%m')}"
     
     if (Registry.where(slug: @registry.slug).size > 0)
       @registry.slug += '-1'
