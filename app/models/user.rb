@@ -52,15 +52,4 @@ class User < ApplicationRecord
       self.create_wepay_account
     end
   end
-
-  def end_affiliate_session
-    # remove conditionals from new user/affiliate session views
-    # log into the user account
-    # create the user session
-    # destroy the affiliate session
-    # render the message
-  end
-
-  
-
 end
