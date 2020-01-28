@@ -2,33 +2,36 @@
 
 <div class="container-fluid">
   <%# Registry Banner %>
-  <div class="row p-2 mb-2">
+  <div class="row justify-content-around">
 
-    <div class="col">
-      <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="<%= @registry.name %>">
+    <div class="col-md">
+        <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="<%= @registry.name %>">
     </div>
 
-    <div class="col-8">
-      <div class="row">
-        <h2><strong><%= @registry.name %></strong></h2>
+    <div class="col-md-8">
+      <div class="row justify-content-center">
+        <h1><strong><%= @registry.name %></strong></h1>
       </div>
 
-      <div class="row">
-        <p>
-          <strong>Expected Arrival Date:</strong>
-          <%= @registry.due_date %>
-        </p>
+      <div class="row justify-content-around">
+        <h5>
+          <strong>Expected Arrival Date:  </strong>
+          <%= @registry.due_date.strftime("%A, %B %e, %Y") %>
+        </h5>
 
-        <p>
-          <strong>Shower Date:</strong>
-          <%= @registry.shower_date %>
-        </p>
+        <h5>
+          <strong>Shower Date:  </strong>
+          <%= @registry.shower_date.strftime("%A, %B %e, %Y") %>
+        </h5>
       </div>
     </div>
 
-    <div class="col-2">
-    <a href="#" class="btn btn-secondary">Registry Guide</a>
+    <div class="col-md">
+      <div class="row justify-content-around">
+        <a href="#" class="btn btn-secondary">Registry Guide</a>
+      </div>
     </div>
+  </div>
   <%# Services %>
   <div class="row">
     <strong>Services:</strong>
@@ -54,8 +57,10 @@
     <% end %>
     </ul>
   </div>
+  <div class="row">
+    <%= link_to 'Edit', edit_registry_path(@registry) %> |
+    <%= link_to 'Back', registries_path %>
+    <%= social_share_button_tag( @registry.name, desc: @registry.name) %>
+  </div>
 </div>
 
-<%= link_to 'Edit', edit_registry_path(@registry) %> |
-<%= link_to 'Back', registries_path %>
-<%= social_share_button_tag( @registry.name, desc: @registry.name) %>
