@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%# Registry Banner %>
+<img src="https://randomuser.me/api/portraits/women/1.jpg" alt="<%= @registry.name %>">
 
 <p>
   <strong>Name:</strong>
@@ -7,18 +9,8 @@
 </p>
 
 <p>
-  <strong>Due Date:</strong>
+  <strong>Expected Arrival Date:</strong>
   <%= @registry.due_date %>
-</p>
-
-<p>
-  <strong>Child Number:</strong>
-  <%= @registry.num_child %>
-</p>
-
-<p>
-  <strong>Gender:</strong>
-  <%= @registry.gender %>
 </p>
 
 <p>
@@ -26,11 +18,7 @@
   <%= @registry.shower_date %>
 </p>
 
-<p>
-  <strong>Shower or Sprinkle:</strong>
-  <%= @registry.shower_or_sprinkle %>
-</p>
-
+<%# Services %>
 <p>
   <strong>Services:</strong>
   <ul>
