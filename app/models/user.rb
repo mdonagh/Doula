@@ -52,7 +52,4 @@ class User < ApplicationRecord
       self.create_wepay_account
     end
   end
-
-  
-
 end
