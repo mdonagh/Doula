@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_012821) do
+ActiveRecord::Schema.define(version: 2020_01_28_151720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -63,9 +63,11 @@ ActiveRecord::Schema.define(version: 2019_12_28_012821) do
     t.boolean "contract_signed"
     t.datetime "contract_signed_date"
     t.text "contract"
+    t.bigint "terms_and_conditions_id"
     t.index ["affiliate_plans_id"], name: "index_affiliates_on_affiliate_plans_id"
     t.index ["email"], name: "index_affiliates_on_email", unique: true
     t.index ["reset_password_token"], name: "index_affiliates_on_reset_password_token", unique: true
+    t.index ["terms_and_conditions_id"], name: "index_affiliates_on_terms_and_conditions_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -99,6 +101,9 @@ ActiveRecord::Schema.define(version: 2019_12_28_012821) do
     t.string "slug", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "child_number"
+    t.string "phone_number"
+    t.boolean "shipping_address", default: true
     t.index ["user_id"], name: "index_registries_on_user_id"
   end
 
@@ -135,6 +140,7 @@ ActiveRecord::Schema.define(version: 2019_12_28_012821) do
 
   create_table "services", force: :cascade do |t|
     t.string "name"
+    t.string "subtitle"
     t.text "description"
     t.decimal "price"
     t.integer "intervals"
@@ -145,9 +151,17 @@ ActiveRecord::Schema.define(version: 2019_12_28_012821) do
     t.boolean "approved", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "img_url"
     t.index ["affiliate_id"], name: "index_services_on_affiliate_id"
     t.index ["lonlat"], name: "index_services_on_lonlat", using: :gist
     t.index ["service_category_id"], name: "index_services_on_service_category_id"
+  end
+
+  create_table "terms_and_conditions", force: :cascade do |t|
+    t.text "text"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -170,6 +184,7 @@ ActiveRecord::Schema.define(version: 2019_12_28_012821) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "affiliates", "terms_and_conditions", column: "terms_and_conditions_id"
   add_foreign_key "registry_services", "registries"
   add_foreign_key "registry_services", "services"
   add_foreign_key "service_increments", "registry_services"
