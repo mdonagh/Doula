@@ -1,23 +1,31 @@
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<% flash.each do |key, value| %>
+  <div class="alert alert-success text-center">
+    <a href="#" data-dismiss="alert" class="close">×</a>
+          <%= value %>
+  </div>
+<% end %>
 
 <div class="container">
-    <div class="page-header my">
+    <div class="page-header my-5">
         <h2><%=@affiliate.business_name%> Profile</h2>
     </div>
 
     <div class="row">
         <div class="col-4 border-right">
             
-            <%= button_to "Add Listing", new_service_path, method: "get", class: "btn btn-primary" %>
-            <h5 class="font-weight-bold">ACCOUNT INFO<h5>
-            <p><%= @affiliate.full_name %></p>
-            <p><%= @affiliate.email %></p>
-            <p><%= @affiliate.address["street_address"] %></p>
-            <p><%= "#{@affiliate.address["city"]}, #{@affiliate.address["state"]} #{@affiliate.address["zip_code"]}" %></p>
-            <p><%= @affiliate.address["address_line2"] %></p>
-            <p><%= @affiliate.phone %></p>
+            <%= button_to "Add Listing", new_service_path, method: "get", class: "btn btn-sm btn-primary" %>
+            <p class="mt-1"><%= @affiliate.services.size%> of 3 listings active</p>
+
+            <h5 class="font-weight-bold mt-5">ACCOUNT INFO <%=link_to("(edit)", edit_affiliate_registration_path(@affiliate), style: "font-weight: normal;font-size:smaller;")%> <h5>
+            <p class="my-0"><%= @affiliate.full_name %></p>
+            <p class="my-0"><%= @affiliate.email %></p>
+            <p class="my-0"><%= @affiliate.address["street_address"] %></p>
+            <p class="my-0"><%= "#{@affiliate.address["city"]}, #{@affiliate.address["state"]} #{@affiliate.address["zip_code"]}" %></p>
+            <p class="my-0"><%= @affiliate.address["address_line2"] %></p>
+            <p class="my-0"><%= @affiliate.phone %></p>
             <a href="http://<%=@affiliate.website%>"><p><%= @affiliate.website %></p></a>
+
+            <h5 class="font-weight-bold mt-5">SETTINGS <%=link_to("(edit)", edit_affiliate_registration_path(@affiliate), style: "font-weight: normal;font-size:smaller;")%> <h5>
         </div>
         <div class="col-8 text-center">
             <% if @affiliate.services.empty? %>
@@ -31,18 +39,19 @@
                             <% if service.thumbnail.attached? %>
                                 <%= image_tag(service.thumbnail, height: 150) %>
                             <% end %>
-                            <h4 class="font-weight-bold"><%= service.name %></h4>
+                            <h4 class="font-weight-bold mt-4 mb-1"><%= service.name %></h4>
                             <p><%= service.subtitle %></p>
-                            <h5 class="font-weight-bold"><%= number_to_currency(service.price) %></h5>
-                            <h6 class="font-weight-bold">Description</h6>
-                            <p><%= service.description %></p>
+                            <h6 class="font-weight-bold mb-3"><%= number_to_currency(service.price) %></h6>
+                            <h6 class="font-weight-bold mb-0">Description</h6>
+                            <p class="mb-5"><%= service.description %></p>
                         </div>
                         <div class="col-6 text-left">
                             <%= link_to "Edit Listing", edit_service_path(service)%>
                         </div>
                     </div>
+                    <% end %>
                 </div>
-                <% end %>
+                
             <% end %>
         </div>
     </div>

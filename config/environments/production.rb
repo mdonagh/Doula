@@ -117,3 +117,5 @@ Rails.application.configure do
   config.wepay.use_stage = true 
   
 end
+
+Rails.application.routes.default_url_options[:host] = "behervillage.com"

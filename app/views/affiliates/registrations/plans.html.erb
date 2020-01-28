@@ -4,7 +4,7 @@
 <div class="container-fluid px-0">
   <div class="row">
     <div class="col-md-12">
-        <%=image_tag("affiliates/AffiliateHome.jpg", class:"img-fluid w-100", style: "background-image")%>
+        <%=image_tag("affiliates/AffiliateHome.jpg", class:"cover-image", style: "background-image")%>
     </div>
    </div>
 </div>
@@ -40,7 +40,7 @@
                         <% end %>
                     </ul>
                     <div class="row mt-auto justify-content-center">
-                        <%= f.button 'Select Plan', value: plan[:name], class: "btn btn-sm btn-block btn-outline #{plan[:class]}", type: 'submit' %> 
+                        <%= f.button 'Select Plan', value: plan[:name], class: "btn btn-block btn-outline #{plan[:class]}", type: 'submit' %> 
                     </div>
                 </div>
             </div>

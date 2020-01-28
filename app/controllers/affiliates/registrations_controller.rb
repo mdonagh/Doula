@@ -7,7 +7,6 @@ class Affiliates::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
   def new
     @plan = AffiliatePlan.find_by(nickname: params.permit(:plan)[:plan].downcase)
-    binding.pry
     super
   end
 

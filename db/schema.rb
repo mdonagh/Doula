@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_28_012821) do
+ActiveRecord::Schema.define(version: 2020_01_04_235515) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -101,6 +101,9 @@ ActiveRecord::Schema.define(version: 2019_12_28_012821) do
     t.string "slug", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "child_number"
+    t.string "phone_number"
+    t.boolean "shipping_address", default: true
     t.index ["user_id"], name: "index_registries_on_user_id"
   end
 

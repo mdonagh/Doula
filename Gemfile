@@ -104,3 +104,8 @@ gem 'stripe'
 
 #Datepicker
 gem 'bootstrap-datepicker-rails'
+
+#Azure Storage 
+gem 'azure-storage', '~> 0.15.0.preview', require: false
+
+
