@@ -1,50 +1,61 @@
 <p id="notice"><%= notice %></p>
 
-<%# Registry Banner %>
-<img src="https://randomuser.me/api/portraits/women/1.jpg" alt="<%= @registry.name %>">
+<div class="container-fluid">
+  <%# Registry Banner %>
+  <div class="row p-2 mb-2">
 
-<p>
-  <strong>Name:</strong>
-  <%= @registry.name %>
-</p>
+    <div class="col">
+      <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="<%= @registry.name %>">
+    </div>
 
-<p>
-  <strong>Expected Arrival Date:</strong>
-  <%= @registry.due_date %>
-</p>
+    <div class="col-8">
+      <div class="row">
+        <h2><strong><%= @registry.name %></strong></h2>
+      </div>
 
-<p>
-  <strong>Shower Date:</strong>
-  <%= @registry.shower_date %>
-</p>
-
-<%# Services %>
-<p>
-  <strong>Services:</strong>
-  <ul>
-  <% @registry.registry_services.each do |rs|%>
-  <li>
-  <%= rs.service.name %>
-    <ul>
-      <li> <strong>Increments Left: </strong> <%= rs.unpurchased_increments.count %> </li>
-      <li> <strong>Increment Cost: </strong> <%= rs.unpurchased_increments.first.price %> </li>
-      <li> 
-      <%= form_with model: LineItem.new do |f|%>
+      <div class="row">
         <p>
-        <%= f.label "Number of Increments:"%>
-        <%= f.number_field :quantity %>
-        <%= f.hidden_field :registry_service_id, value: rs.id %>
-        <%= f.submit "Add Increments to Cart" %>
+          <strong>Expected Arrival Date:</strong>
+          <%= @registry.due_date %>
         </p>
-      <% end %>
-      </li>
+
+        <p>
+          <strong>Shower Date:</strong>
+          <%= @registry.shower_date %>
+        </p>
+      </div>
+    </div>
+
+    <div class="col-2">
+    <a href="#" class="btn btn-secondary">Registry Guide</a>
+    </div>
+  <%# Services %>
+  <div class="row">
+    <strong>Services:</strong>
+    <ul>
+    <% @registry.registry_services.each do |rs|%>
+    <li>
+    <%= rs.service.name %>
+      <ul>
+        <li> <strong>Increments Left: </strong> <%= rs.unpurchased_increments.count %> </li>
+        <li> <strong>Increment Cost: </strong> <%= rs.unpurchased_increments.first.price %> </li>
+        <li> 
+        <%= form_with model: LineItem.new do |f|%>
+          <p>
+          <%= f.label "Number of Increments:"%>
+          <%= f.number_field :quantity %>
+          <%= f.hidden_field :registry_service_id, value: rs.id %>
+          <%= f.submit "Add Increments to Cart" %>
+          </p>
+        <% end %>
+        </li>
+      </ul>
+    </li>
+    <% end %>
     </ul>
-  </li>
-  <% end %>
-  </ul>
-</p>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_registry_path(@registry) %> |
 <%= link_to 'Back', registries_path %>
-
 <%= social_share_button_tag( @registry.name, desc: @registry.name) %>
