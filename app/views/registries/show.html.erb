@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container-fluid">
+<div class="container">
   <%# Registry Banner %>
   <div class="row justify-content-around">
 
@@ -39,7 +39,7 @@
     <%# Service Card %>
     <% 6.times do %>
     <div class="card mb-3 shadow" style="width: 18rem;">
-      <img src="https://via.placeholder.com/200x100/" class="card-img-top" alt="...">
+      <img src="https://via.placeholder.com/300x200/" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-subtitle"><strong>Seamless</strong></h5>
         <p class="card-text">Meal services from example company name here</p>
@@ -84,12 +84,12 @@
 
   </div>
 
+  <%= render partial: "layouts/footer" %>
+
   <hr>
-  
   <div class="row">
     <%= link_to 'Edit', edit_registry_path(@registry) %> |
     <%= link_to 'Back', registries_path %>
-    <%= social_share_button_tag( @registry.name, desc: @registry.name) %>
   </div>
 </div>
 
