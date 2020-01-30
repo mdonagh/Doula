@@ -61,18 +61,20 @@
       <div>
         <img src="https://placekitten.com/800/400" class="card-img-top" alt="...">
       </div>
-      <div class="card-body">
+      <div class="card-body d-flex flex-column">
         <h5 class="card-subtitle"><strong><%= rs.service.name %></strong></h5>
         <p class="card-text"><%= rs.service.description %></p>
-        <h5 class="card-text"><strong>$49.99</strong></h5>
-        <div class="row d-flex align-items-end">
-          <div class="col d-flex align-items-end">
-            <input class="mr-2" type="number" id="service_num" name="service_num" min="1" max="50" value="0">
-            <label class="my-auto" for="service_num">Edit</label>
-          </div>
-          <div class="col d-flex align-items-end flex-column">
-            <p class="my-auto">Requested: 1</p>
-            <p class="my-auto">Still needs: 1</p>
+        <div class="mt-auto">
+          <h5 class="card-text"><strong>$49.99</strong></h5>
+          <div class="row d-flex align-items-end">
+            <div class="col d-flex align-items-end">
+              <input class="mr-2" type="number" id="service_num" name="service_num" min="1" max="50" value="0">
+              <label class="my-auto" for="service_num">Edit</label>
+            </div>
+            <div class="col d-flex align-items-end flex-column">
+              <p class="my-auto">Requested: 1</p>
+              <p class="my-auto">Still needs: 1</p>
+            </div>
           </div>
         </div>
       </div>
