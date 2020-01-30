@@ -36,7 +36,9 @@
   <hr>
   <%# Services %>
   <div class="row justify-content-around">
-    <div class="card" style="width: 18rem;">
+    <%# Service Card %>
+    <% 6.times do %>
+    <div class="card mb-3 shadow" style="width: 18rem;">
       <img src="https://via.placeholder.com/200x100/" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-subtitle"><strong>Seamless</strong></h5>
@@ -48,7 +50,6 @@
             <input class="mr-2" type="number" id="service_num" name="service_num" min="1" max="50" value="0">
             <label class="my-auto" for="service_num">Edit</label>
           </div>
-          <%# <div class="col d-flex align-items-end flex-column"> %>
           <div class="col d-flex align-items-end flex-column">
             <p class="my-auto">Requested: 1</p>
             <p class="my-auto">Still needs: 1</p>
@@ -56,7 +57,8 @@
         </div>
       </div>
     </div>
-
+    <% end %>
+    
   <% if false %>
     <!-- <ul>
     <% @registry.registry_services.each do |rs|%>
