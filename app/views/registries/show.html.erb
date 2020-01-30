@@ -35,9 +35,30 @@
 
   <hr>
   <%# Services %>
-  <div class="row">
-    <strong>Services:</strong>
-    <ul>
+  <div class="row justify-content-around">
+    <div class="card" style="width: 18rem;">
+      <img src="https://via.placeholder.com/200x100/" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-subtitle"><strong>Seamless</strong></h5>
+        <p class="card-text">Meal services from example company name here</p>
+        <h5 class="card-text"><strong>$49.99</strong></h5>
+        <%# TODO: Set max and value dynamically once the services are pulling in %>
+        <div class="row d-flex align-items-end">
+          <div class="col d-flex align-items-end">
+            <input class="mr-2" type="number" id="service_num" name="service_num" min="1" max="50" value="0">
+            <label class="my-auto" for="service_num">Edit</label>
+          </div>
+          <%# <div class="col d-flex align-items-end flex-column"> %>
+          <div class="col d-flex align-items-end flex-column">
+            <p class="my-auto">Requested: 1</p>
+            <p class="my-auto">Still needs: 1</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <% if false %>
+    <!-- <ul>
     <% @registry.registry_services.each do |rs|%>
     <li>
     <%= rs.service.name %>
@@ -57,7 +78,8 @@
       </ul>
     </li>
     <% end %>
-    </ul>
+    </ul> --> <% end %>
+
   </div>
 
   <hr>
