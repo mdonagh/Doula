@@ -34,6 +34,16 @@
   </div>
 
   <hr>
+
+  <%# Buttons and dropdown %>
+  <div class="col mb-5 mt-5 mx-auto p-0" style="width:67%">
+    <div class="row mb-5 d-flex justify-content-end ">dropdown</div>
+    <div class="row d-flex justify-content-lg-between justify-content-center">
+      <%= link_to "Add Be Her Village Service", services_path, class: "btn btn-secondary mb-3 p-3"%>
+      <%= link_to "Add your own Custom Service", new_service_path, class: "btn btn-secondary mb-3 p-3"%>
+    </div>
+  </div>
+
   <%# Services %>
   <div class="row justify-content-around">
     <%# Service Card %>
