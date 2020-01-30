@@ -56,14 +56,15 @@
   <%# Services %>
   <div class="row justify-content-around">
     <%# Service Card %>
-    <% 6.times do %>
+    <% @registry.registry_services.each do |rs|%>
     <div class="card mb-3 shadow" style="width: 18rem;">
-      <img src="https://via.placeholder.com/300x200/" class="card-img-top" alt="...">
+      <div>
+        <img src="https://placekitten.com/800/400" class="card-img-top" alt="...">
+      </div>
       <div class="card-body">
-        <h5 class="card-subtitle"><strong>Seamless</strong></h5>
-        <p class="card-text">Meal services from example company name here</p>
+        <h5 class="card-subtitle"><strong><%= rs.service.name %></strong></h5>
+        <p class="card-text"><%= rs.service.description %></p>
         <h5 class="card-text"><strong>$49.99</strong></h5>
-        <%# TODO: Set max and value dynamically once the services are pulling in %>
         <div class="row d-flex align-items-end">
           <div class="col d-flex align-items-end">
             <input class="mr-2" type="number" id="service_num" name="service_num" min="1" max="50" value="0">
@@ -79,6 +80,9 @@
     <% end %>
     
   <% if false %>
+      <img src=<%= rs.img_url ? rs.img_url :  "https://via.placeholder.com/300x200/"%> class="card-img-top" alt="..."> 
+
+
     <!-- <ul>
     <% @registry.registry_services.each do |rs|%>
     <li>

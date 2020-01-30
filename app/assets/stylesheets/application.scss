@@ -142,6 +142,7 @@ footer li {
 .card{
     background: #F7F7F8; 
 }
+
 @each $plan in $plans {
     .card-header.#{nth($plan, 1)} {
         background-color: nth($plan, 2);

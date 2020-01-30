@@ -16,9 +16,9 @@ meal_providers = ServiceCategory.create({name: "Meal Providers", description: "M
 lactation_specialists = ServiceCategory.create({name: "Lactation Specialists", description: "Lactation services. Lorem ipsum..."})
 
 #create services 
-doula_service = Service.create({name: 'Apple Doula Service', description: 'Doula service description. Lorem ipsum blah blah blah this is how we do it.', price: 1543.00, intervals:20, service_category_id: doulas.id, affiliate_id: doula.id})
-meal_service = Service.create({name: 'Apple Meal Service', description: 'Meal service description. Lorem ipsum blah blah blah this is how we do it.', price: 950.00, intervals:10, service_category_id: meal_providers.id, affiliate_id: cook.id})
-lactation_service = Service.create({name: 'Apple Lactation Service', description: 'Lactation service description. Lorem ipsum blah blah blah this is how we do it.', price: 2104.00, intervals:20, service_category_id: lactation_specialists.id, affiliate_id: lactation.id})
+doula_service = Service.create({name: 'Apple Doula Service', description: 'Doula service description. Lorem ipsum blah blah blah this is how we do it.', price: 1543.00, intervals:20, service_category_id: doulas.id, affiliate_id: doula.id, img_url: 'https://placekitten.com/300/200'})
+meal_service = Service.create({name: 'Apple Meal Service', description: 'Meal service description. Lorem ipsum blah blah blah this is how we do it.', price: 950.00, intervals:10, service_category_id: meal_providers.id, affiliate_id: cook.id, img_url: 'https://placekitten.com/300/200'})
+lactation_service = Service.create({name: 'Apple Lactation Service', description: 'Lactation service description. Lorem ipsum blah blah blah this is how we do it.', price: 2104.00, intervals:20, service_category_id: lactation_specialists.id, affiliate_id: lactation.id, img_url: 'https://placekitten.com/300/200'})
 
 #create registry
 alices_registry = Registry.create({name: "Alice's Registry", slug:"alices_registry", user_id: alice, accepts_wepay: true})
