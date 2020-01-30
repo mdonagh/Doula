@@ -39,16 +39,17 @@
   <%# Buttons and dropdown %>
   <div class="col mb-5 mt-5">
     <div class="row mb-5 mr-1 d-flex flex-direction-row justify-content-end">
-      <button class="btn btn-light btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button class="btn btn-light btn-lg dropdown-toggle shadow" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%# TODO: Add options %>
         Available
       </button>
     </div>
     <div class="row d-flex justify-content-md-around justify-content-center">
       <div>
-      <%= link_to "Add Be Her Village Service", services_path, class: "btn btn-secondary btn-lg btn-block mb-3 p-3"%>
+      <%= link_to "Add Be Her Village Service", services_path, class: "btn btn-secondary btn-lg btn-block mb-3 p-3 btn-light shadow"%>
       </div>
       <div>
-      <%= link_to "Add your own Custom Service", new_service_path, class: "btn btn-secondary btn-lg btn-block mb-3 p-3"%>
+      <%= link_to "Add your own Custom Service", new_service_path, class: "btn btn-secondary btn-lg btn-block mb-3 p-3 btn-light shadow"%>
       </div>
     </div>
   </div>
