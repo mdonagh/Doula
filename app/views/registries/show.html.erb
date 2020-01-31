@@ -72,7 +72,7 @@
           <%= form_with model: LineItem.new, class:"col d-inline-flex align-items-end" do |f|%>
           <%# TODO?  Could not get the nuber field to format correctly so it is hard coded for now %>
           <%# <%= f.number_field :quantity %> 
-          <input class="mr-2" type="number" id="line_item_quantity" name="line_item[quantity]" min="1" max="50" value="1">
+          <input class="mr-2" type="number" id="line_item_quantity" name="line_item[quantity]" min="1" max=<%= rs.unpurchased_increments.count %> <%= rs.unpurchased_increments.count == 0 ? "disabled" : "value=1" %>>
 
           <%= f.hidden_field :registry_service_id, value: rs.id %>
           <%= f.submit "Add to Cart", class: "btn btn-primary btn-tiny" %>
@@ -91,4 +91,3 @@
   <%= render partial: "layouts/footer" %>
 
 </div>
-
