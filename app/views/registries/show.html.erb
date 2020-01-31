@@ -66,15 +66,15 @@
         <h5 class="card-subtitle"><strong><%= rs.service.name %></strong></h5>
         <p class="card-text"><%= rs.service.description %></p>
         <div class="mt-auto">
-          <h5 class="card-text"><strong>$49.99</strong></h5>
+          <h5 class="card-text"><strong><%= rs.unpurchased_increments.first.price %></strong></h5>
           <div class="row d-flex align-items-end">
             <div class="col d-flex align-items-end">
               <input class="mr-2" type="number" id="service_num" name="service_num" min="1" max="50" value="0">
               <label class="my-auto" for="service_num">Edit</label>
             </div>
             <div class="col d-flex align-items-end flex-column">
-              <p class="my-auto">Requested: 1</p>
-              <p class="my-auto">Still needs: 1</p>
+              <p class="my-auto">Requested: <%= rs.unpurchased_increments.count %></p>
+              <p class="my-auto">Still needs: <%= rs.unpurchased_increments.count %></p>
             </div>
           </div>
         </div>
