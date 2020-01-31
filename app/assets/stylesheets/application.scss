@@ -67,10 +67,6 @@ a {
     background-color: inherit !important;
 }
 
-.btn-sm {
-    padding: 0.25rem 3.0rem;
-}
-
 @media (min-width: 1200px) {
     .container {
       width: 1000px;
@@ -163,8 +159,29 @@ footer li {
     }
 }
 
+
+
 // Input placeholder  
 
 ::-webkit-input-placeholder {
     font-size: 0.8em!important;
  }
+
+
+
+// Buttons
+
+// Dark pink button
+.btn.btn-primary.btn-dark-pink{
+    background-color: $pink-dark !important;
+    color: #ffffff !important;
+}
+
+.btn-sm {
+    padding: 0.25rem 3.0rem;
+}
+
+.btn-tiny {
+    padding: .25rem .25rem;
+    font-size: .8rem;
+}

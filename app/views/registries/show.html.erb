@@ -29,7 +29,7 @@
     <div class="col-md">
       <div class="row justify-content-around">
         <%# TODO: This is a temporary path.  Update once registry guide path is set %>
-        <%= link_to "Registry Guide", registries_path, class: "btn btn-primary" %>
+        <%= link_to "Registry Guide", registries_path, class: "btn btn-primary btn-dark-pink" %>
       </div>
     </div>
   </div>
@@ -58,22 +58,27 @@
   <div class="row justify-content-around">
     <%# Service Card %>
     <% @registry.registry_services.each do |rs|%>
-    <div class="card mb-3 shadow" style="width: 18rem;">
+    <div class="card mb-3 shadow" style="width: 20rem;">
       <div>
-        <img src="https://placekitten.com/800/400" class="card-img-top" alt="...">
+        <img src=<%= rs.service.img_url ? rs.service.img_url :  "https://via.placeholder.com/300x200/"%> class="card-img-top" alt="...">
       </div>
       <div class="card-body d-flex flex-column">
         <h5 class="card-subtitle"><strong><%= rs.service.name %></strong></h5>
         <p class="card-text"><%= rs.service.description %></p>
         <div class="mt-auto">
-          <h5 class="card-text"><strong><%= rs.unpurchased_increments.first.price %></strong></h5>
+          <h5 class="card-text"><strong>$<%= sprintf('%.2f', rs.unpurchased_increments.first.price) %></strong></h5>
+
           <div class="row d-flex align-items-end">
-            <div class="col d-flex align-items-end">
-              <input class="mr-2" type="number" id="service_num" name="service_num" min="1" max="50" value="0">
-              <label class="my-auto" for="service_num">Edit</label>
-            </div>
+          <%= form_with model: LineItem.new, class:"col d-inline-flex align-items-end" do |f|%>
+          <%# TODO?  Could not get the nuber field to format correctly so it is hard coded for now %>
+          <%# <%= f.number_field :quantity %> 
+          <input class="mr-2" type="number" id="line_item_quantity" name="line_item[quantity]" min="1" max="50" value="1">
+
+          <%= f.hidden_field :registry_service_id, value: rs.id %>
+          <%= f.submit "Add to Cart", class: "btn btn-primary btn-tiny" %>
+        <% end %>
             <div class="col d-flex align-items-end flex-column">
-              <p class="my-auto">Requested: <%= rs.unpurchased_increments.count %></p>
+              <p class="my-auto">Requested: <%= rs.service_increments.count %></p>
               <p class="my-auto">Still needs: <%= rs.unpurchased_increments.count %></p>
             </div>
           </div>
@@ -81,41 +86,9 @@
       </div>
     </div>
     <% end %>
-    
-  <% if false %>
-      <img src=<%= rs.img_url ? rs.img_url :  "https://via.placeholder.com/300x200/"%> class="card-img-top" alt="..."> 
-
-
-    <!-- <ul>
-    <% @registry.registry_services.each do |rs|%>
-    <li>
-    <%= rs.service.name %>
-      <ul>
-        <li> <strong>Increments Left: </strong> <%= rs.unpurchased_increments.count %> </li>
-        <li> <strong>Increment Cost: </strong> <%= rs.unpurchased_increments.first.price %> </li>
-        <li> 
-        <%= form_with model: LineItem.new do |f|%>
-          <p>
-          <%= f.label "Number of Increments:"%>
-          <%= f.number_field :quantity %>
-          <%= f.hidden_field :registry_service_id, value: rs.id %>
-          <%= f.submit "Add Increments to Cart" %>
-          </p>
-        <% end %>
-        </li>
-      </ul>
-    </li>
-    <% end %>
-    </ul> --> <% end %>
-
   </div>
 
   <%= render partial: "layouts/footer" %>
 
-  <hr>
-  <div class="row">
-    <%= link_to 'Edit', edit_registry_path(@registry) %> |
-    <%= link_to 'Back', registries_path %>
-  </div>
 </div>
 
