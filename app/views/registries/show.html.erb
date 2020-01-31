@@ -75,7 +75,7 @@
           <input class="mr-2" type="number" id="line_item_quantity" name="line_item[quantity]" min="1" max=<%= rs.unpurchased_increments.count %> <%= rs.unpurchased_increments.count == 0 ? "disabled" : "value=1" %>>
 
           <%= f.hidden_field :registry_service_id, value: rs.id %>
-          <%= f.submit "Add to Cart", class: "btn btn-primary btn-tiny" %>
+          <%= f.submit "Add to Cart", class: "btn btn-primary btn-tiny", disabled: rs.unpurchased_increments.count == 0 %>
         <% end %>
             <div class="col d-flex align-items-end flex-column">
               <p class="my-auto">Requested: <%= rs.service_increments.count %></p>
