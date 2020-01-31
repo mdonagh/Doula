@@ -21,10 +21,10 @@ meal_service = Service.create({name: 'Apple Meal Service', description: 'Meal se
 lactation_service = Service.create({name: 'Apple Lactation Service', description: 'Lactation service description. Lorem ipsum blah blah blah this is how we do it.', price: 2104.00, intervals:20, service_category_id: lactation_specialists.id, affiliate_id: lactation.id, img_url: 'https://placekitten.com/800/300'})
 
 #create registry
-alices_registry = Registry.create({name: "Alice's Registry", slug:"alices_registry", user_id: alice, accepts_wepay: true, due_date: Date.new + 180, shower_date: Date.new + 120})
-bellas_registry = Registry.create({name: "Bella's Registry", slug:"bellas_registry", user_id: bella, accepts_wepay: false, due_date: Date.new + 180, shower_date: Date.new + 120})
-courtneys_registry = Registry.create({name: "Courtney's Registry", slug:"courtneys_registry", user_id: courtney, accepts_wepay: true, due_date: Date.new + 180, shower_date: Date.new + 120})
-delilahs_registry = Registry.create({name: "Delilah's Registry", slug:"delilahs_registry", user_id: delilah, accepts_wepay: false, due_date: Date.new + 180, shower_date: Date.new + 120})
+alices_registry = Registry.create({name: "Alice's Registry", slug:"alices_registry", user_id: alice, accepts_wepay: true, due_date: Date.new + 180.days, shower_date: Date.new + 120.days})
+bellas_registry = Registry.create({name: "Bella's Registry", slug:"bellas_registry", user_id: bella, accepts_wepay: false, due_date: Date.new + 180.days, shower_date: Date.new + 120.days})
+courtneys_registry = Registry.create({name: "Courtney's Registry", slug:"courtneys_registry", user_id: courtney, accepts_wepay: true, due_date: Date.new + 180.days, shower_date: Date.new + 120.days})
+delilahs_registry = Registry.create({name: "Delilah's Registry", slug:"delilahs_registry", user_id: delilah, accepts_wepay: false, due_date: Date.new + 180.days, shower_date: Date.new + 120.days})
 
 #create affiliate plans 
 local = AffiliatePlan.create({nickname: 'local', radius_miles: 10, stripe_code: 'plan_GLlIWot9vdIto8'})
