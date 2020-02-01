@@ -69,6 +69,11 @@ a:visited {
     color: map-get($theme-colors, "primary"); 
 }
 
+.secondary-link{
+    color: black !important; 
+    text-decoration: underline; 
+}
+
 .btn-sm {
     padding: 0.25rem 3.0rem;
 }
@@ -77,6 +82,10 @@ a:visited {
     .container {
       width: 1000px;
     }
+  }
+
+  .primary-header {
+      color: map-get($theme-colors, "primary"); 
   }
 
 //Page header 
@@ -126,7 +135,7 @@ footer li {
 .nav-link {
     font-weight: bold;
     font-size: 0.7em;
-    color: $dark-gray !important; 
+    color: $dark-gray !important;
 }
 
 //Cover images 
