@@ -8,7 +8,8 @@
   border: none;
 }
 
-a.btn.btn-lg.btn-faq:hover{
+a.btn.btn-lg.btn-faq:hover,
+a.btn.btn-lg.btn-faq[aria-expanded="true"]{
   color: $pink-dark;
 }
 
