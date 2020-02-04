@@ -50,7 +50,7 @@ Rails.application.routes.draw do
 
   resources :services
   get '/articles/:article' => "articles#show"
-  # get ':page' => "pages#show" 
+  get ':page' => "pages#show" 
 
   get 'search', to: 'registries#search_by_name'
  
