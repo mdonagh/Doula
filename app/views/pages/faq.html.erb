@@ -3,124 +3,26 @@
     <h1 class="mt-5 mb-3">FREQUENTLY ASKED QUESTIONS</h1>
     
     <!-- FAQ 01 -->
-    <div class="d-flex justify-content-between" id="faqs">
-      <a class="btn btn-lg btn-faq pl-0" type="button" data-toggle="collapse" data-target="#faq-01"
-        aria-expanded="false" aria-controls="faq-01">
-        01 - FAQ 1
-      </a>
-      <a class="btn btn-lg btn-faq btn-icon" type="button" data-toggle="collapse" data-target="#faq-01" aria-expanded="false"
-        aria-controls="faq-01">
-        <%= fa_icon "chevron-right", class: "btn-faq" %>
-      </a>
-    </div>
-    <div class="collapse" id="faq-01">
-      <div class="card card-body card-faq">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim
-        keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-      </div>
-    </div>
+    <%= render partial: 'faq', :locals => {:faq_number => 1, :faq_text => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, excepturi. Reiciendis aliquid neque quaerat ea fugit, porro reprehenderit quidem alias, molestiae ex praesentium aspernatur eligendi.'} %>
+
+    <!-- FAQ 01 -->
+    <%= render partial: 'faq', :locals => {:faq_number => 2, :faq_text => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non cupiditate eius nostrum, ipsa laboriosam animi.'} %>
     
     <!-- FAQ 02 -->
-    <div class="d-flex justify-content-between" id="faqs">
-      <a class="btn btn-lg btn-faq pl-0" type="button" data-toggle="collapse" data-target="#faq-02"
-        aria-expanded="false" aria-controls="faq-02">
-        02 - FAQ 2
-      </a>
-      <a class="btn btn-lg btn-faq btn-icon" type="button" data-toggle="collapse" data-target="#faq-02" aria-expanded="false"
-        aria-controls="faq-02">
-        <%= fa_icon "chevron-right", class: "btn-faq" %>
-      </a>
-    </div>
-    <div class="collapse" id="faq-02">
-      <div class="card card-body card-faq">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae quam iusto quidem voluptas distinctio? Tempore id iusto quidem at vitae fugit nisi aspernatur omnis animi!
-      </div>
-    </div>
-    
-    <!-- FAQ 03 -->
-    <div class="d-flex justify-content-between" id="faqs">
-      <a class="btn btn-lg btn-faq pl-0" type="button" data-toggle="collapse" data-target="#faq-03"
-        aria-expanded="false" aria-controls="faq-03">
-        03 - FAQ 3
-      </a>
-      <a class="btn btn-lg btn-faq btn-icon" type="button" data-toggle="collapse" data-target="#faq-03" aria-expanded="false"
-        aria-controls="faq-03">
-        <%= fa_icon "chevron-right", class: "btn-faq" %>
-      </a>
-    </div>
-    <div class="collapse" id="faq-03">
-      <div class="card card-body card-faq">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Enim temporibus reiciendis exercitationem voluptates recusandae facilis doloribus sunt iure, vitae minus inventore nostrum maxime unde dignissimos blanditiis beatae repudiandae quasi consequatur quam ipsam fugit tempora. Nam distinctio corporis aliquam sit cupiditate blanditiis odit, iure at possimus, illum aperiam eveniet tenetur voluptas!
-      </div>
-    </div>
+    <%= render partial: 'faq', :locals => {:faq_number => 3, :faq_text => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia sunt voluptate rem asperiores et voluptas sapiente repudiandae optio, consectetur exercitationem velit tempore distinctio quaerat ut in fuga expedita quibusdam at reiciendis inventore enim maiores ratione! Deserunt reiciendis quaerat exercitationem soluta?'} %>
     
     <!-- FAQ 04 -->
-    <div class="d-flex justify-content-between" id="faqs">
-      <a class="btn btn-lg btn-faq pl-0" type="button" data-toggle="collapse" data-target="#faq-04"
-        aria-expanded="false" aria-controls="faq-04">
-        04 - FAQ 4
-      </a>
-      <a class="btn btn-lg btn-faq btn-icon" type="button" data-toggle="collapse" data-target="#faq-04" aria-expanded="false"
-        aria-controls="faq-04">
-        <%= fa_icon "chevron-right", class: "btn-faq" %>
-      </a>
-    </div>
-    <div class="collapse" id="faq-04">
-      <div class="card card-body card-faq">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis laborum debitis porro atque ab tempore numquam accusamus, maiores dignissimos iure quaerat ut est veniam vero voluptatum cupiditate, voluptates dolor eius esse culpa aut nemo optio?
-      </div>
-    </div>
+    <%= render partial: 'faq', :locals => {:faq_number => 4, :faq_text => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed, excepturi. Reiciendis aliquid neque quaerat ea fugit, porro reprehenderit quidem alias, molestiae ex praesentium aspernatur eligendi.'} %>
     
     <!-- FAQ 05 -->
-    <div class="d-flex justify-content-between" id="faqs">
-      <a class="btn btn-lg btn-faq pl-0" type="button" data-toggle="collapse" data-target="#faq-05"
-        aria-expanded="false" aria-controls="faq-05">
-        05 - FAQ 5
-      </a>
-      <a class="btn btn-lg btn-faq btn-icon" type="button" data-toggle="collapse" data-target="#faq-05" aria-expanded="false"
-        aria-controls="faq-05">
-        <%= fa_icon "chevron-right", class: "btn-faq" %>
-      </a>
-    </div>
-    <div class="collapse" id="faq-05">
-      <div class="card card-body card-faq">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione libero magnam culpa. Deleniti, illo aspernatur.
-      </div>
-    </div>
+    <%= render partial: 'faq', :locals => {:faq_number => 5, :faq_text => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non cupiditate eius nostrum, ipsa laboriosam animi.'} %>
     
     <!-- FAQ 06 -->
-    <div class="d-flex justify-content-between" id="faqs">
-      <a class="btn btn-lg btn-faq pl-0" type="button" data-toggle="collapse" data-target="#faq-06"
-        aria-expanded="false" aria-controls="faq-06">
-        06 - FAQ 6
-      </a>
-      <a class="btn btn-lg btn-faq btn-icon" type="button" data-toggle="collapse" data-target="#faq-06" aria-expanded="false"
-        aria-controls="faq-06">
-        <%= fa_icon "chevron-right", class: "btn-faq" %>
-      </a>
-    </div>
-    <div class="collapse" id="faq-06">
-      <div class="card card-body card-faq">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores at adipisci placeat vitae ab atque explicabo ut illum impedit, id quos, amet quia ducimus officia?
-      </div>
-    </div>
+    <%= render partial: 'faq', :locals => {:faq_number => 6, :faq_text => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia sunt voluptate rem asperiores et voluptas sapiente repudiandae optio, consectetur exercitationem velit tempore distinctio quaerat ut in fuga expedita quibusdam at reiciendis inventore enim maiores ratione! Deserunt reiciendis quaerat exercitationem soluta?'} %>
     
     <!-- FAQ 07 -->
-    <div class="d-flex justify-content-between" id="faqs">
-      <a class="btn btn-lg btn-faq pl-0" type="button" data-toggle="collapse" data-target="#faq-07"
-        aria-expanded="false" aria-controls="faq-07">
-        07 - FAQ 7
-      </a>
-      <a class="btn btn-lg btn-faq btn-icon" type="button" data-toggle="collapse" data-target="#faq-07" aria-expanded="false"
-        aria-controls="faq-07">
-        <%= fa_icon "chevron-right", class: "btn-faq" %>
-      </a>
-    </div>
-    <div class="collapse" id="faq-07">
-      <div class="card card-body card-faq">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia harum aliquid, perferendis perspiciatis error veniam rem nobis, quia ut nihil optio voluptate illo aspernatur at nostrum eum obcaecati hic delectus!
-      </div>
-    </div>
+    <%= render partial: 'faq', :locals => {:faq_number => 7, :faq_text => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non cupiditate eius nostrum, ipsa laboriosam animi.'} %>
+
 
   </div>
 </div>

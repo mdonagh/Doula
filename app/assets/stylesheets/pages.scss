@@ -8,17 +8,22 @@
   border: none;
 }
 
-a.btn.btn-lg.btn-faq:hover,
-a.btn.btn-lg.btn-faq[aria-expanded="true"]{
+a.btn.btn-lg.btn-faq:hover{
   color: $pink-dark;
 }
 
-a.btn.btn-lg.btn-faq.btn-icon[aria-expanded="true"]{
+a.btn.btn-lg.btn-faq[aria-expanded="true"]{
+  &.btn-icon{
+    transform: rotate(90deg);
+  }
   transition: all .3s;
-  transform: rotate(90deg);
+  color: $pink-dark;
 }
 
 a.btn.btn-lg.btn-faq.btn-icon[aria-expanded="false"]{
+  &.btn-icon{
+    transform: rotate(0deg);
+  }
   transition: all .3s;
-  transform: rotate(0deg);
+  color: rgb(0,0,0);
 }

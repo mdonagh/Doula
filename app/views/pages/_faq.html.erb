@@ -1,17 +1,16 @@
-    <!-- FAQ 01 -->
+    <!-- FAQ -->
     <div class="d-flex justify-content-between" id="faqs">
-      <a class="btn btn-lg btn-faq pl-0" type="button" data-toggle="collapse" data-target="#faq-01"
-        aria-expanded="false" aria-controls="faq-01">
-        01 - FAQ 1
+      <a class="btn btn-lg btn-faq pl-0" type="button" data-toggle="collapse" data-target="#faq-<%= faq_number %>"
+        aria-expanded="false" aria-controls="faq-<%= faq_number %>">
+        0<%= faq_number %> - FAQ <%= faq_number %>
       </a>
-      <a class="btn btn-lg btn-faq btn-icon" type="button" data-toggle="collapse" data-target="#faq-01" aria-expanded="false"
-        aria-controls="faq-01">
+      <a class="btn btn-lg btn-faq btn-icon" type="button" data-toggle="collapse" data-target="#faq-<%= faq_number %>" aria-expanded="false"
+        aria-controls="faq-<%= faq_number %>">
         <%= fa_icon "chevron-right", class: "btn-faq" %>
       </a>
     </div>
-    <div class="collapse" id="faq-01">
+    <div class="collapse" id="faq-<%= faq_number %>">
       <div class="card card-body card-faq">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim
-        keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+        <%= faq_text %>
       </div>
     </div>
