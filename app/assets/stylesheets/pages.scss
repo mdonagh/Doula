@@ -1,3 +1,14 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'application.scss';
+
+.card.card-faq{
+  border: none;
+}
+
+.card-header
+.card-body
+.card-faq{
+  background-color: white !important;
+}
