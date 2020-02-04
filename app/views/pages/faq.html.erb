@@ -2,14 +2,14 @@
   <div class="col">
     <h1 class="mt-5 mb-3">FREQUENTLY ASKED QUESTIONS</h1>
     <!-- FAQ 01 -->
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between" id="faqs">
       <a class="btn btn-lg btn-faq pl-0" type="button" data-toggle="collapse" data-target="#faq-01"
         aria-expanded="false" aria-controls="faq-01">
         01 - FAQ 1
       </a>
-      <a class="btn btn-lg btn-faq" type="button" data-toggle="collapse" data-target="#faq-01" aria-expanded="false"
+      <a class="btn btn-lg btn-faq btn-icon" type="button" data-toggle="collapse" data-target="#faq-01" aria-expanded="false"
         aria-controls="faq-01">
-        <%= fa_icon "chevron-right" %>
+        <%= fa_icon "chevron-right", class: "btn-faq" %>
       </a>
     </div>
     <div class="collapse" id="faq-01">

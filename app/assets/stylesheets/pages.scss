@@ -11,3 +11,13 @@
 a.btn.btn-lg.btn-faq:hover{
   color: $pink-dark;
 }
+
+a.btn.btn-lg.btn-faq.btn-icon[aria-expanded="true"]{
+  transition: all .3s;
+  transform: rotate(90deg);
+}
+
+a.btn.btn-lg.btn-faq.btn-icon[aria-expanded="false"]{
+  transition: all .3s;
+  transform: rotate(0deg);
+}
