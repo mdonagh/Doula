@@ -3,12 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import 'application.scss';
 
-.card.card-faq{
+.card.card-body.card-faq{
+  background-color: #F5F5F5;
   border: none;
 }
 
-.card-header
-.card-body
-.card-faq{
-  background-color: white !important;
+a.btn.btn-lg.btn-faq:hover{
+  color: $pink-dark;
 }
