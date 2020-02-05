@@ -1,0 +1,39 @@
+<div class="container registry">
+  <div class="page-header text-center">
+    <p class="registry-title">FIND A REGISTRY</p>
+  </div>
+
+  
+  <%= form_for search_path	, method: :get do |f| %>
+    <div class="form-group">
+      <%#= f.email_field :email, placeholder: "Email", autocomplete: "email", class: "form-control"%>
+      <p>
+        <%= text_field_tag :q, params[:q], placeholder: 'Search by first and last name', class: "form-control", id: "search_box" %>
+          <%= f.submit 'Search' %>
+
+      </p>
+    </div>
+  <% end %>
+
+ <ul>
+ <%#= binding.pry %>
+    <% if @registries.nil? %>
+      <h2>We could not find that name</h2>
+    <% else %>
+      <% @registries.each do |registry| %>
+
+        <li>
+          <h3>
+            <%= registry.name %>
+            <%= registry.due_date %>
+            <%= link_to "Select Registry", registry_steps_path(registry) %>
+                        <%#= link_to "Select Registry", controller: "registries", action: "show", id: registry %>
+
+          </h3>
+        </li> 
+      <% end %>
+    <% end %>
+
+  </ul> 
+
+</div>

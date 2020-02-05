@@ -86,6 +86,16 @@ class RegistriesController < ApplicationController
     end 
   end 
 
+  def search
+    unless params[:q].nil?
+      @registries = Registry.search(params[:q]).records
+      # binding.pry
+      #   render json: {
+      #     results: @registries.results
+      #   }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_registry
