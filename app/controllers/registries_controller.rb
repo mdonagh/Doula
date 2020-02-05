@@ -8,7 +8,7 @@ class RegistriesController < ApplicationController
     @registries = Registry.all
     if params[:q]
       @registries = Registry.search_by_name(params[:q]).records
-    end 
+    end
   end
 
   # GET /registries/1
@@ -39,7 +39,7 @@ class RegistriesController < ApplicationController
     @registry.name = current_user.first_name.capitalize + "'s Registry"
 
     #assign the slug 
-    @registry.slug = current_user.first_name.downcase + "-registry"
+    @registry.slug = "#{current_user.first_name.downcase}-#{current_user.last_name.downcase}-#{Time.now.strftime('%d-%m')}"
 
     if @registry.save
       #assign current_registry_id 
@@ -89,10 +89,6 @@ class RegistriesController < ApplicationController
   def search
     unless params[:q].nil?
       @registries = Registry.search(params[:q]).records
-      # binding.pry
-      #   render json: {
-      #     results: @registries.results
-      #   }
     end
   end
 
