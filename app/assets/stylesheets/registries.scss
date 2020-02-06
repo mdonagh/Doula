@@ -75,12 +75,12 @@ div.row.registry-row {
   border-top: 0.1em solid #D8D8D8	;
 }
 
-div.form-group.search_box {
+div.form-group#search_box {
   padding-bottom: 3em;
 }
 .show-registry {
-  padding-top: 1.4em;
-  padding-bottom:1.4em;
+  padding-top: 2em;
+  padding-bottom:2em;
 }
 
 div.col-6.show-registry {
@@ -99,6 +99,7 @@ div.col-3.show-registry {
 
 #registry-due {
   font-size: 1em;
+  margin-bottom: 0;
 }
 
 div.col-4.show-registry {
@@ -111,4 +112,9 @@ a.btn.btn-primary.btn-sm.select-reg {
   font-size: 0.8em;
   color: white;
   padding: 0.5em;
+}
+
+#registry-bottom {
+  border-top: 0.1em solid #D8D8D8	;
+  height: 4em
 }
