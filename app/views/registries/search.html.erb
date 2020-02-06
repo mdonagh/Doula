@@ -17,6 +17,7 @@
       <h3 class="text-center">We could not find that name</h3>
     <% else %>
         <% @registries.each do |registry| %>
+        <hr>
         <div class="row registry-row">
           <div class="col-2 show-registry">
           </div>
@@ -30,9 +31,11 @@
           </div>   
         </div>
         <% end %>
-
+        <% if @registries %>
+          <hr>
+        <% end %>
+        
     <% end %>
   <% end %>
-  <div id="registry-bottom">
-  </div>
-</div>
+  
+
