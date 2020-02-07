@@ -52,7 +52,7 @@ Rails.application.routes.draw do
   get '/articles/:article' => "articles#show"
   # get ':page' => "pages#show" 
 
-  get 'search', to: 'registries#search_by_name'
+  get 'search', to: 'registries#search'
  
 
   post '/add_to_registry/:service_id' => 'registries#add_service', as: :add_to_registry
