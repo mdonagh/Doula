@@ -8,6 +8,12 @@ class Registry < ApplicationRecord
 
     validates_uniqueness_of :slug
 
+    settings index: { number_of_shards: 1 } do
+      mappings dynamic: 'false' do
+        indexes :name, analyzer: 'english'
+      end
+    end
+
     def to_param
       slug
     end 
@@ -46,6 +52,24 @@ class Registry < ApplicationRecord
             }
           })
     end 
+
+    def self.search(query)
+      __elasticsearch__.search(
+        {
+          query: {
+            multi_match: {
+              query: query,
+              fields: ['name']
+            }
+          }
+        }
+      )
+    end
+  
+    def as_indexed_json(options={})
+      as_json(only: 'name')
+    end
 end
 
-Registry.import(force: true) #for auto syncing the model with elasticsearch
+# Registry.import(force: true) #for auto syncing the model with elasticsearch
+Registry.import
