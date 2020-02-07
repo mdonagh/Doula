@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
   handleOnSearchsubmit()
-  console.log('loaded');
 }, false);
 
 let submitForm
@@ -18,6 +17,5 @@ handleOnSearchsubmit = () => {
 
 submitInput = () => {
   let inputValue = submitForm.value
-  alert('submitting the form')
   document.getElementById('registry-search').submit(inputValue)
 }
