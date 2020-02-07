@@ -10,6 +10,7 @@
 
     <div class="col-md-8">
       <div class="row justify-content-center">
+        
         <h1><strong><%= @registry.name %></strong></h1>
       </div>
 
@@ -28,8 +29,10 @@
  
     <div class="col-md">
       <div class="row justify-content-around">
+      <% if @registry.user_id == current_user.id %>
         <%# TODO: This is a temporary path.  Update once registry guide path is set %>
         <%= link_to "Registry Guide", registries_path, class: "btn btn-primary btn-dark-pink" %>
+      <% end %>
       </div>
     </div>
   </div>
@@ -44,6 +47,7 @@
         Available
       </button>
     </div>
+    <% if @registry.user_id == current_user.id %>
     <div class="row d-flex justify-content-md-around justify-content-center">
       <div>
       <%= link_to "Add Be Her Village Service", services_path, class: "btn btn-secondary btn-lg btn-block mb-3 p-3 btn-light shadow"%>
@@ -52,6 +56,7 @@
       <%= link_to "Add your own Custom Service", new_service_path, class: "btn btn-secondary btn-lg btn-block mb-3 p-3 btn-light shadow"%>
       </div>
     </div>
+    <% end %>
   </div>
 
   <%# Services %>
@@ -72,9 +77,9 @@
           <%= form_with model: LineItem.new, class:"col d-inline-flex align-items-end" do |f|%>
           <%# TODO?  Could not get the nuber field to format correctly so it is hard coded for now %>
           <%# <%= f.number_field :quantity %> 
-          <input class="mr-2" type="number" id="line_item_quantity" name="line_item[quantity]" min="1" max=<%= rs.unpurchased_increments.count %> <%= rs.unpurchased_increments.count == 0 ? "disabled" : "value=1" %>>
+          <input class="mr-2" type="number" name="line_item[quantity]" min="1" max=<%= rs.unpurchased_increments.count %> <%= rs.unpurchased_increments.count == 0 ? "disabled" : "value=1" %>>
 
-          <%= f.hidden_field :registry_service_id, value: rs.id %>
+          <%= f.hidden_field :registry_service_id, value: rs.id, id: rs.id %>
           <%= f.submit "Add to Cart", class: "btn btn-primary btn-tiny", disabled: rs.unpurchased_increments.count == 0 %>
         <% end %>
             <div class="col d-flex align-items-end flex-column">
