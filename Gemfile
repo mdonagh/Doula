@@ -38,8 +38,8 @@ gem 'wepay', '~> 0.4.0'
 gem 'mail_form'
 
 #Searching capability 
-gem 'elasticsearch-model','~> 6'
-gem 'elasticsearch-rails','~> 6'
+gem 'elasticsearch-model', '~> 6'
+gem 'elasticsearch-rails', '~> 6'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

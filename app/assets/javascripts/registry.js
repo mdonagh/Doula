@@ -8,14 +8,16 @@ let submitForm
 handleOnSearchsubmit = () => {
   let timer = null
   submitForm = document.getElementById('search_box')
-  submitForm.addEventListener('keydown', function () {
-    clearTimeout(timer);
-    timer = setTimeout(submitInput, 1000)
-  })
+  if (submitForm) {
+    submitForm.addEventListener('keydown', function () {
+      clearTimeout(timer);
+      timer = setTimeout(submitInput, 1000)
+    })
+  }
 }
 
 submitInput = () => {
   let inputValue = submitForm.value
-  alert('submitForm.value in js', submitForm.value)
+  alert('submitting the form')
   document.getElementById('registry-search').submit(inputValue)
 }
