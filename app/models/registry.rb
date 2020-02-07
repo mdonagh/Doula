@@ -59,7 +59,8 @@ class Registry < ApplicationRecord
           query: {
             multi_match: {
               query: query,
-              fields: ['name']
+              fields: ['name'],
+              fuzziness: 'AUTO'
             }
           }
         }
@@ -71,5 +72,4 @@ class Registry < ApplicationRecord
     end
 end
 
-# Registry.import(force: true) #for auto syncing the model with elasticsearch
-Registry.import
+Registry.import(force: true) #for auto syncing the model with elasticsearch
