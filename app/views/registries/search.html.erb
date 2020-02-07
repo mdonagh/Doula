@@ -1,0 +1,40 @@
+<div class="container registry">
+  <div class="page-header text-center">
+    <p class="registry-title">FIND A REGISTRY</p>
+  </div>
+  
+  <%= form_for search_path	, method: :get, :html => { :id => "registry-search" } do |f| %>
+    <div class="form-group" id="search_box">
+      <p><%= text_field_tag :q, params[:q], placeholder: '  Search by first and last name', class: "form-control" %></p>
+    </div>
+  <% end %>
+
+ 
+  <% unless @registries.nil?  %>
+    <% if @registries.empty? %>
+    <br><br>
+      <h3 class="text-center">We could not find that name</h3>
+    <% else %>
+        <% @registries.each do |registry| %>
+        <hr>
+        <div class="row registry-row">
+          <div class="col-2 show-registry">
+          </div>
+          <div class="col-6 show-registry">
+            <% user = User.find_by_id(registry.user_id) %>
+            <p id="registry-name"><%= user.first_name %> <%= user.last_name %></p>
+            <p id="registry-due">Due <%= registry.due_date.to_time.strftime('%B %e, %Y ') %></p>
+          </div>
+          <div class="col-4 show-registry">
+            <%= link_to "Select Registry", registry_path(registry.slug), class: "btn btn-primary btn-sm select-reg" %>
+          </div>   
+        </div>
+        <% end %>
+        <% if @registries %>
+          <hr>
+        <% end %>
+        
+    <% end %>
+  <% end %>
+  
+

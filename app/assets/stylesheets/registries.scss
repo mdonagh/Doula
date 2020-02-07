@@ -69,3 +69,46 @@ div.shipping-check-box {
 .selection-info {
   padding: 1em 0 1em 0.93em;
 }
+
+div.row.registry-row {
+  margin: 0;
+}
+
+div.form-group#search_box {
+  padding: 3em 0 3em 0;
+}
+.show-registry {
+  padding-top: 2em;
+  padding-bottom:2em;
+}
+
+div.col-6.show-registry {
+  text-align: left;
+}
+
+div.col-3.show-registry {
+  text-align: right;
+}
+
+#registry-name {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 0.2em;
+}
+
+#registry-due {
+  font-size: 1em;
+  margin-bottom: 0;
+}
+
+div.col-4.show-registry {
+  padding-right: 0;
+  text-align: right;
+}
+
+a.btn.btn-primary.btn-sm.select-reg {
+  background: #FF4A92 !important;
+  font-size: 0.8em;
+  color: white;
+  padding: 0.5em;
+}
