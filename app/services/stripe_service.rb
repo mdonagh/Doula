@@ -6,7 +6,7 @@ class StripeService
   def initialize(user)
       @email = user.email
       @key = Rails.application.credentials.stripe[Rails.env.to_sym][:secret_key]
-      @plan = AffiliatePlan.find(user.affiliate_plans_id).stripe_code
+      @plan = user.affiliate_plan.stripe_code
       @user = user
 
       Stripe.api_key = @key 
@@ -17,8 +17,8 @@ class StripeService
   end
   
   def find_customer
-  if user.stripe_token
-    retrieve_customer(user.stripe_token)
+  if @user.stripe_code
+    retrieve_customer(@user.stripe_code)
   else
     create_customer
   end
@@ -30,10 +30,10 @@ class StripeService
 
   def create_customer
     customer = Stripe::Customer.create(
-      email: stripe_email,
-      source: stripe_token
+      name: @user.full_name,
+      email: @email
     )
-    user.update(stripe_token: customer.id)
+    @user.update(stripe_code: customer.id)
     customer
   end
 
@@ -48,7 +48,7 @@ class StripeService
 
   def create_session
       session = Stripe::Checkout::Session.create(
-          customer_email: @email,
+          customer: find_customer,
           payment_method_types: ['card'],
           subscription_data: {
               items: [{

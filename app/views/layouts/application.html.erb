@@ -21,11 +21,15 @@
   </head>
 
   <body>
-    <%= render 'layouts/header'%>
-    <%= yield %>
+    <div id="wrap">
+      <div id="main" class="clear-top">
+        <%= render 'layouts/header'%>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 
-  <footer class="footer fixed-bottom">
-  <%#= render 'layouts/footer'%>
+  <footer class="footer">
+  <%= render 'layouts/footer'%>
   </footer>
 </html>

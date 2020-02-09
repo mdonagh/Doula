@@ -5,6 +5,7 @@ class Affiliate < ApplicationRecord
   before_save :update_terms_and_conditions
 
   has_many :services
+  belongs_to :affiliate_plan
 
   def update_terms_and_conditions
     if contract_signed_changed?
@@ -15,5 +16,15 @@ class Affiliate < ApplicationRecord
 
   def full_name 
     "#{self.contact_name['first_name']} #{self.contact_name['last_name']}"
+  end 
+
+  def full_address 
+    address = self.address["street_address"]
+    if !self.address["address_line2"].empty?
+      address += ", #{self.address['address_line2']}"
+    end 
+    address += ", #{self.address['city']}, #{self.address['state']} #{self.address['zip_code']}"
+
+    address 
   end 
 end

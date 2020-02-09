@@ -66,5 +66,9 @@ Rails.application.configure do
   # WePay setup 
   config.wepay_use_stage = true 
   
+  # config.action_mailer.default_url_options = { :host => 'localhost' }
+
   
 end
+
+Rails.application.routes.default_url_options[:host] = "localhost:3000"

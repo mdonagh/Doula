@@ -8,7 +8,9 @@ class AffiliateSignupsController < ApplicationController
 
     def show 
         @affiliate = current_affiliate 
-        @terms_and_conditions = TermsAndConditions.active.text
+        if step == :terms_and_conditions
+            @terms_and_conditions = TermsAndConditions.active.populate(@affiliate)
+        end 
         @states = us_states
         service = StripeService.new(@affiliate)
         @stripe_session = service.create_session

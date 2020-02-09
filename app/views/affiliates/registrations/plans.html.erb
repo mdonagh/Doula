@@ -1,6 +1,3 @@
-<div class="test">
-</div>
-
 <div class="container-fluid px-0">
   <div class="row">
     <div class="col-md-12">
@@ -20,32 +17,69 @@
         <p>What are you waiting for? Start growing your business today!
         </p>
     </div>
-    
+</div>
+
     <%= form_with url: :affiliate_select_plan do |f|  %>
     <div class="card-deck mb-3 mx-auto text-center">
+        <!-- Free Plan -->
+        <div class="text-center">
+            <div class="row-1">
+    
+            </div>
+            <div class="row">
+                <div class="card mb-4 text-center">
+        
+                    <div class="card-header plan-dark">
+                        <h4 class="my-0 font-weight-bold">NAME</h4>
+                    </div>
+            
+                    <div class="card-body flex-column d-flex text-center">
+                        <div class="pricing-card-title plan-dark">
+                            <h1 class="mb-0">FREE</h1>
+                            <p class="my-0"><small>(yes really!)</small></p>
+                        </div>
+        
+                        <ul class="text-left mt-3 mb-5">
+                    
+                        </ul>
+                        <div class="row mt-auto justify-content-center">
+                            <%#= f.button 'Select Plan', value: plan[:name], class: "btn btn-block btn-outline #{plan[:class]}", type: 'submit' %> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Paid Plans -->
         <% @plans.each_with_index do |plan, i| %>
-            <div class="card mb-4 border-white text-center">
-                <div class="card-header <%=plan[:class]%>">
+        <div class="text-center">
+            <div class="above-card">
+                <h5 class="primary-header"><%= plan[:recommended] ? "RECOMMENDED" : "" %></h5>
+            </div>
+            <div class="card mb-4 text-center <%= plan[:recommended] ? "border-primary" : "" %>">
+                <div class="card-header plan-dark">
                     <h4 class="my-0 font-weight-bold"><%=plan[:name].upcase%></h4>
                 </div>
                 
                 <div class="card-body flex-column d-flex text-center ">
-                    <div class="pricing-card-title <%=plan[:class]%>">
+                    <div class="pricing-card-title plan-dark">
                         <h1 class="mb-0">$<%=plan[:cost]%></h1>
-                        <small>per month</small>
+                        <p class="my-0"><small>/per month</small></p>
+                        <p class="my-0"><small>Billed Yearly</small></p>
                     </div>
+            
                     <ul class="text-left mt-3 mb-5">
                         <% plan[:details].each do |detail|%>
                             <li><%= detail %></li>
                         <% end %>
                     </ul>
                     <div class="row mt-auto justify-content-center">
-                        <%= f.button 'Select Plan', value: plan[:name], class: "btn btn-block btn-outline #{plan[:class]}", type: 'submit' %> 
+                        <%= f.button 'Select Plan', value: plan[:name], class: "btn btn-block btn-outline plan-dark", type: 'submit' %> 
                     </div>
                 </div>
             </div>
+        </div>
         <% end %>
     </div>
     <% end %>
     <p class="text-center">Already a user? Sign in <%= link_to "here", new_affiliate_session_path %></p>
-</div>

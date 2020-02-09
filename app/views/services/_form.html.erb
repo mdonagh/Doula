@@ -17,8 +17,17 @@
       <%= image_tag(@service.thumbnail, height: 150) %>
     Change Photo
     <% else %>
-      <%= image_tag("placeholder", size: 150) %>
-    Add Photo 
+    <div class="row">
+      <div class="col-4">
+        <%= image_tag("placeholder", height: 150, width: 300) %>
+      </div>
+      <div class="col-8 mt-auto">
+        <div class="secondary-link">Add Photo</div>
+        <p>Please add a headshot or a company logo.
+         Or leave this blank and we will add a stock photo for you.</p>
+      </div>
+    </div>
+    
     <% end %>
       <span style="display:none">
         <%= form.file_field :thumbnail %>
@@ -27,11 +36,11 @@
   </div>
 
   <div class="form-group">
-    <%= form.text_field :name, placeholder: "Listing Title", class: "form-control" %>
+    <%= form.text_field :name, placeholder: "Service Title (What do you offer?)", class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= form.text_field :subtitle, placeholder: "Listing Subtitle", class: "form-control" %>
+    <%= form.text_field :subtitle, placeholder: "Service Subtitle (Tell us in one sentence what you do for new moms)", class: "form-control" %>
   </div>
 
   <div class="form-row">
@@ -40,19 +49,19 @@
     </div>
 
     <div class="form-group col">
-      <%= form.collection_select :service_category_id, ServiceCategory.all, :id, :name, {prompt: "Category"}, {class: "form-control"} %>
+      <%= form.collection_select :service_category_id, ServiceCategory.all, :id, :name, {prompt: "Category"}, {class: "form-control mt-0"} %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= form.text_area :description, placeholder: "Description", class: "form-control" %>
+    <%= form.text_area :description, placeholder: "Description:\nHere is your chance to tell new parents and their friends and families why your service is the perfect gift for them as they prepare for their new baby.", rows: "8", class: "form-control" %>
   </div>
 
   <%= form.hidden_field :affiliate_id, value: @affiliate.id %>
 
   <div class="row">
       <div class="col">
-        <u><%= link_to 'Cancel', :back %></u>
+        <u><%= link_to 'Cancel', :back, class:"black-link" %></u>
       </div>
       <div class="col text-right">
           <div class="actions">

@@ -50,7 +50,26 @@ $plan-dark: plan-dark #FF4894;
 $plans: $plan-light $plan-middle $plan-dark; 
 
 // General Styling 
+html, body{
+    height: 100%; 
+}
 
+#wrap {
+    min-height: 100%;
+}
+
+#main {
+    overflow:auto;
+    padding-bottom:150px; /* this needs to be bigger than footer height*/
+}
+
+.footer {
+    position: relative;
+    margin-top: -150px; /* negative value of footer height */
+    height: 150px;
+    clear:both;
+    padding-top:20px;
+} 
 
 body,
 h1, h2, h3, h4, h5, h6,
@@ -74,6 +93,10 @@ a:visited {
     text-decoration: underline; 
 }
 
+.black-link{
+    color: black !important; 
+}
+
 .btn-sm {
     padding: 0.25rem 3.0rem;
 }
@@ -86,6 +109,11 @@ a:visited {
 
   .primary-header {
       color: map-get($theme-colors, "primary"); 
+  }
+
+  .primary-border {
+      border-radius: .25rem; 
+      border-width: 3px; 
   }
 
 //Page header 
@@ -116,7 +144,7 @@ footer li {
 .footer-header {
     font-size: 0.80em;
     font-weight: bold;
-    margin-bottom: 0;
+    // margin-bottom: 0;
 }
 
 // Navbar Styling 
@@ -153,15 +181,22 @@ footer li {
 }
 
 .card-deck {
-    width: 80%; 
+    width: 60%; 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: .5rem;
+    grid-gap: .1rem;
 }
 
 .card{
     background: #F7F7F8; 
+    max-width: 15rem; 
+    min-height: 400px;
 }
+
+.above-card {
+    height: 10%; 
+}
+
 @each $plan in $plans {
     .card-header.#{nth($plan, 1)} {
         background-color: nth($plan, 2);

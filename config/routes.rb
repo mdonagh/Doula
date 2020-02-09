@@ -47,7 +47,10 @@ Rails.application.routes.draw do
     resources :stripe_charges, :only => [:new]
   
     #Root page 
-    root to: "pages#home"
+    # root to: "pages#home"
+    devise_scope :affiliate do
+        root to: "affiliates/registrations#plans"
+    end
   
     resources :services
     get '/articles/:article' => "articles#show"

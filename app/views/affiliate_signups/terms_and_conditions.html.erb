@@ -4,42 +4,49 @@
 
 <div class="container">
     <div class="page-header text-center mt-5">
-        <h2>BECOME AN AFFILIATE</h2>
+        <h2>BECOME A PARTNER</h2>
     </div>
     
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h5>Terms and Conditions</h5>
-            </div>
-            <div class="col text-right">
-                <%= @current_step_number %>  of <%= @step_total %>
-            </div>
+    <div class="row mt-5 mb-4">
+        <div class="col">
+            <h5>THE FINE PRINT</h5>
         </div>
-        
-        <div class="pre-scrollable terms_and_conditions border">
-            <%= @terms_and_conditions %>
+        <div class="col text-right">
+            <%= @current_step_number %>  of <%= @step_total %>
         </div>
+    </div>
         
-        <%= form_for(@affiliate, url: wizard_path, method: :put) do |f| %>
-            <%= f.label :contract_signed do %>
-                <%= f.check_box :contract_signed, required: true %> I agree to the terms and conditions
-            <% end %>
-
+    <div class="pre-scrollable terms_and_conditions border">
+        <%== @terms_and_conditions %>
+    </div>
+    
+    <%= form_for(@affiliate, url: wizard_path, method: :put) do |f| %>
+        
+        <%= f.label :contract_signed do %>
+            <div class="row mt-4 mb-2">
+                <div class="col">
+                    <%= f.check_box :contract_signed, required:true %>I agree to the Partner Agreement
+                </div>
+            </div>
             <div class="row">
                 <div class="col">
-                    <%= fa_icon "chevron-left xs" %> <%= link_to "Back", previous_wizard_path %>
-                </div>
-                <div class="col text-right">
-                    <div class="actions">
-                        <%= f.submit "Next", class: "btn btn-primary btn-sm" %>
-                    </div>
+                    <%= f.check_box :contract_signed, required: true %> I agree to the Terms of Use
                 </div>
             </div>
         <% end %>
 
+        <div class="row mt-4">
+            <div class="col">
+                <%= fa_icon "chevron-left xs" %> <%= link_to "Back", previous_wizard_path, class: "black-link" %>
+            </div>
+            <div class="col text-right">
+                <div class="actions">
+                    <%= f.submit "Next", class: "btn btn-primary btn-sm" %>
+                </div>
+            </div>
+        </div>
+    <% end %>
 
-    </div>
     
 </div>
 
