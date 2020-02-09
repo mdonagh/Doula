@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 2020_01_28_151720) do
     t.decimal "radius_miles"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "recommended"
+    t.decimal "yearly_price"
   end
 
   create_table "affiliates", force: :cascade do |t|
@@ -59,12 +61,13 @@ ActiveRecord::Schema.define(version: 2020_01_28_151720) do
     t.hstore "contact_name"
     t.string "phone"
     t.hstore "address"
-    t.bigint "affiliate_plans_id"
+    t.bigint "affiliate_plan_id"
     t.boolean "contract_signed"
     t.datetime "contract_signed_date"
     t.text "contract"
     t.bigint "terms_and_conditions_id"
-    t.index ["affiliate_plans_id"], name: "index_affiliates_on_affiliate_plans_id"
+    t.string "stripe_code"
+    t.index ["affiliate_plan_id"], name: "index_affiliates_on_affiliate_plan_id"
     t.index ["email"], name: "index_affiliates_on_email", unique: true
     t.index ["reset_password_token"], name: "index_affiliates_on_reset_password_token", unique: true
     t.index ["terms_and_conditions_id"], name: "index_affiliates_on_terms_and_conditions_id"

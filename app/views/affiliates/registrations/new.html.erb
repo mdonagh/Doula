@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="page-header text-center">
-    <h2>BECOME AN AFFILIATE</h2>
+  <div class="page-header text-center mt-5">
+    <h2>BECOME A PARTNER</h2>
   </div>
 
-  <div class="row pt-5">
+  <div class="row mt-5 mb-4">
     <div class="col">
-        <h5>Sign-up Now!</h5>
+        <h5>Tell us a little about yourself</h5>
     </div>
     <div class="col text-right">
       <p>1 of 4</p>
@@ -16,16 +16,16 @@
 
     <%= devise_error_messages! %>
 
-    <%= f.hidden_field :affiliate_plans_id, value: @plan.id %>
+    <%= f.hidden_field :affiliate_plan_id, value: @plan.id %>
 
       <%= f.fields_for :contact_name do |n| %>
       <div class="form-row">
         <div class="form-group col">
-          <%= n.text_field :first_name, autofocus: true, placeholder: "First Name", class: "form-control" %>
+          <%= n.text_field :first_name, autofocus: true, placeholder: "First Name*", class: "form-control", required: true %>
         </div>
 
         <div class="form-group col" >
-          <%= n.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+          <%= n.text_field :last_name, placeholder: "Last Name*", class: "form-control", required: true  %>
         </div>
       </div>
       <% end %>
@@ -35,22 +35,30 @@
     </div>
 
     <div class="form-group">
-      <%= f.email_field :email, autocomplete: "email", placeholder: "E-mail", class: "form-control"%>
+      <%= f.email_field :email, autocomplete: "email", placeholder: "E-mail Address*", class: "form-control", required: true %>
     </div>
 
     <div class="form-row">
       <div class="form-group col">
-        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "form-control" %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Create a Password", class: "form-control", required: true %>
       </div>
 
       <div class="form-group col">
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password", class: "form-control" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Confirm Password", class: "form-control", required: true %>
       </div>
     </div>
 
-    <div class="actions">
-      <%= f.submit "Next", class: "btn btn-primary btn-sm" %>
+    <div class="actions mt-4 row">
+        <div class="col">
+            <%= fa_icon "chevron-left xs" %> <%= link_to "Back", :back, class: "black-link" %>
+        </div>
+        <div class="col text-right">
+            <div class="actions">
+                <%= f.submit "Next", class: "btn btn-primary btn-sm" %>
+            </div>
+        </div>
     </div>
+
   <% end %>
 
 </div>

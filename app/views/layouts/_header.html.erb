@@ -1,16 +1,4 @@
-<%# <h1>Be Her Village</h1> %>
-<%# <%= link_to('Create A Registry', new_registry_path)%> 
-<%# <% if user_signed_in? %> 
-<!--     <%= link_to('Logout User', destroy_user_session_path, method: :delete)%> 
- --><%# <% else %> 
-<!--     <%= link_to('Login User', new_user_session_path) %>  -->
-    <%# <%= link_to('Sign Up', new_user_registration_path)%> 
-<%# <%end %> 
-<% if affiliate_signed_in? %> 
-    <%= link_to('Logout Affiliate', destroy_affiliate_session_path, method: :delete) %> 
-<%# else %>
-    <%#= link_to('Login Affiliate', new_affiliate_session_path) %>
-<%end %>
+
 
 <nav class="navbar navbar-expand-lg navbar-default">
       <%= link_to('Create a Registry', new_user_registration_path, class: "nav-link") unless user_signed_in? %> 

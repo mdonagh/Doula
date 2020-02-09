@@ -1,43 +1,89 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="container">
+  <div class="page-header mt-5 mb-4">
+    <h2>Edit Account Information</h2>
   </div>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+    <%= devise_error_messages! %>
+
+      <%= f.fields_for :contact_name do |n| %>
+      <div class="form-row">
+        <div class="form-group col">
+          <%= n.text_field :first_name, autofocus: true, placeholder: "First Name", value: resource.contact_name["first_name"], class: "form-control"%>
+        </div>
+
+        <div class="form-group col" >
+          <%= n.text_field :last_name, placeholder: "Last Name", value: resource.contact_name["last_name"], class: "form-control" %>
+        </div>
+      </div>
+      <% end %>
+
+    <div class="form-group">
+      <%= f.text_field :business_name, placeholder: "Company Name", value: resource.business_name, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.email_field :email, autocomplete: "email", placeholder: "E-mail", value: resource.email, class: "form-control"%>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col">
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "Password", class: "form-control" %>
+      </div>
+
+      Change Password 
+    </div>
+
+    <h5 class="mt-4">Business Address</h5>
+    <p>(use business address so customers can find you by location)<p>
+
+    <%= f.fields_for :address do |a| %>
+        <div class="form-group">
+          <%= a.text_field :street_address, autofocus: true, placeholder: "Address", value: resource.address["street_address"], class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= a.text_field :address_line2, placeholder: "Apartment, Suite, etc", value: resource.address["address_line2"], class: "form-control" %>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group col">
+            <%= a.text_field :city, placeholder: "City", value: resource.address["city"], class: "form-control" %>
+          </div>
+
+          <div class="form-group col ">
+            <%= a.select :state, @states, {prompt: "State", selected: resource.address["state"]}, {class: "form-control mt-0"}  %>
+          </div>
+
+          <div class="form-group col">
+            <%= a.text_field :zip_code, placeholder: "Zip code", value: resource.address["zip_code"], class: "form-control" %>
+          </div>
+        </div>
+
+      <% end %>
+
+    <div class="form-row">
+      <div class="form-group col">
+        <%= f.text_field :phone, placeholder: "Phone Number", value: resource.phone, class: "form-control" %>
+      </div>
+
+      <div class="form-group col">
+        <%= f.text_field :website, placeholder: "Website", value: resource.website, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row actions">
+        <div class="col">
+            <u><%= link_to "Cancel", :back, style:"color:black;" %></u>
+        </div>
+        <div class="col text-right">
+            <div class="actions">
+                <%= f.submit "Save Changes", class: "btn btn-primary", style:"font-size:smaller;" %>
+            </div>
+        </div>
+    </div>
+
   <% end %>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Update" %>
-  </div>
-<% end %>
-
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+</div>

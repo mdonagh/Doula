@@ -1,6 +1,6 @@
 class ServicesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show, :new]
-  before_action :authenticate_affiliate!, only: [:new]
+  skip_before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update]
+  before_action :authenticate_affiliate!, only: [:new, :create, :edit, :update]
   before_action :set_service, only: [:show, :edit, :update, :destroy]
 
   # GET /services
@@ -17,10 +17,12 @@ class ServicesController < ApplicationController
   # GET /services/new
   def new
     @service = Service.new
+    @affiliate = current_affiliate 
   end
 
   # GET /services/1/edit
   def edit
+    @affiliate = current_affiliate
   end
 
   # POST /services
@@ -71,6 +73,6 @@ class ServicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_params
-      params.require(:service).permit(:name, :description, :price, :intervals)
+      params.require(:service).permit(:name, :description, :price, :intervals, :subtitle, :service_category_id, :affiliate_id, :lonlat, :radius, :approved, :thumbnail)
     end
 end

@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class Affiliates::RegistrationsController < Devise::RegistrationsController
+  include StatesHelper
+
   before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
   def new
@@ -16,14 +18,16 @@ class Affiliates::RegistrationsController < Devise::RegistrationsController
   # end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+    @states = us_states
+    super
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    @states = us_states
+    super
+  end
 
   # DELETE /resource
   # def destroy
@@ -45,19 +49,19 @@ class Affiliates::RegistrationsController < Devise::RegistrationsController
         name: "Local",
         cost: 25, 
         details: ["Custom profile + URL", "10 mile reach"],
-        class: "plan-light"
+        recommended: false
       }, 
       {
         name: "Regional",
         cost: 45,
         details: ["Custom profile + URL", "Social Media Promotion", "Monthly Email Promotion", "Data tracking", "100 mile reach"],
-        class: "plan-middle"
+        recommended: true 
       },
       {
         name: "National",
         cost: 95,
         details: ["Custom profile + URL", "Social Media Promotion", "Monthly Email Promotion", "Data tracking", "Featured Listing", "National reach"],
-        class: "plan-dark"
+        recommended: false
       }
     ]
   end 
@@ -66,11 +70,15 @@ class Affiliates::RegistrationsController < Devise::RegistrationsController
     redirect_to new_affiliate_registration_path(plan: plan_params[:button])
   end 
 
-  # protected
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:business_name, :website, :phone, :affiliate_plans_id, contact_name: [:first_name, :last_name], address: [:street_address, :address_line2, :city, :state, :zip_code]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:business_name, :website, :phone, :affiliate_plan_id, contact_name: [:first_name, :last_name], address: [:street_address, :address_line2, :city, :state, :zip_code]])
   end
 
   def plan_params
@@ -78,9 +86,9 @@ class Affiliates::RegistrationsController < Devise::RegistrationsController
   end 
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
-  # end
+  def configure_account_update_params
+    devise_parameter_sanitizer.permit(:account_update, keys: [:business_name, :website, :phone, :affiliate_plan_id, contact_name: [:first_name, :last_name], address: [:street_address, :address_line2, :city, :state, :zip_code]])
+  end
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)

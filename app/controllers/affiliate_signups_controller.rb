@@ -8,15 +8,23 @@ class AffiliateSignupsController < ApplicationController
 
     def show 
         @affiliate = current_affiliate 
-        @terms_and_conditions = TermsAndConditions.active.text
+        if step == :terms_and_conditions
+            @terms_and_conditions = TermsAndConditions.active.populate(@affiliate)
+        end 
         @states = us_states
         service = StripeService.new(@affiliate)
         @stripe_session = service.create_session
 
         @step_total = wizard_steps.length + 1 
-        @current_step_number = wizard_steps.find_index(step) + 2
+        if step != "wicked_finish"
+            @current_step_number = wizard_steps.find_index(step) + 2
+        end 
         render_wizard 
     end 
+
+    # def finish_wizard_path
+
+    # end 
 
     def update 
         @affiliate = current_affiliate

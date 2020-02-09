@@ -115,5 +115,10 @@ Rails.application.configure do
 
   # WePay setup 
   config.wepay.use_stage = true 
+
+  config.action_mailer.default_url_options = { :host => 'behervillage.com' }
+
   
 end
+
+# Rails.application.routes.default_url_options[:host] = "behervillage.com"

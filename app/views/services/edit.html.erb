@@ -1,6 +1,10 @@
-<h1>Editing Service</h1>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 
-<%= render 'form', service: @service %>
+<div class="container">
+    <div class="page-header my">
+        <h2>Edit Listing</h2>
+    </div>
 
-<%= link_to 'Show', @service %> |
-<%= link_to 'Back', services_path %>
+    <%= render 'form', service: @service %>
+</div>

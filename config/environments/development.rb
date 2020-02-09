@@ -9,6 +9,7 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  # For testing custom error pages, set to false and restart server 
   # Show full error reports.
   config.consider_all_requests_local = true
 
@@ -65,5 +66,9 @@ Rails.application.configure do
   # WePay setup 
   config.wepay_use_stage = true 
   
+  # config.action_mailer.default_url_options = { :host => 'localhost' }
+
   
 end
+
+Rails.application.routes.default_url_options[:host] = "localhost:3000"
