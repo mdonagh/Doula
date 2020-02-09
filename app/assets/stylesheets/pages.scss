@@ -1,3 +1,29 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'application.scss';
+
+.card.card-body.card-faq{
+  background-color: #F5F5F5;
+  border: none;
+}
+
+a.btn.btn-lg.btn-faq:hover{
+  color: $pink-dark;
+}
+
+a.btn.btn-lg.btn-faq[aria-expanded="true"]{
+  &.btn-icon{
+    transform: rotate(90deg);
+  }
+  transition: all .3s;
+  color: $pink-dark;
+}
+
+a.btn.btn-lg.btn-faq.btn-icon[aria-expanded="false"]{
+  &.btn-icon{
+    transform: rotate(0deg);
+  }
+  transition: all .3s;
+  color: rgb(0,0,0);
+}

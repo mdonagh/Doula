@@ -1,4 +1,6 @@
 class Service < ApplicationRecord
+  has_many :registry_services
+  
   has_one_attached :thumbnail
 
   validates :description, :presence => true, :length => { 

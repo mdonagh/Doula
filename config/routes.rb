@@ -68,4 +68,34 @@ Rails.application.routes.draw do
   
   
   end
-  
+
+  devise_scope :affiliate do
+    get 'affiliates/plans', :to => 'affiliates/registrations#plans'
+    post 'affiliate/select_plan', :to => 'affiliates/registrations#select_plan'
+  end
+
+  resources :affiliates, :only => [:show]
+  resources :stripe_charges, :only => [:new]
+
+
+
+
+
+
+  #Root page 
+  root to: "pages#home"
+
+  resources :services
+  get '/articles/:article' => "articles#show"
+  get ':page' => "pages#show" 
+
+  get 'search', to: 'registries#search_by_name'
+ 
+
+  post '/add_to_registry/:service_id' => 'registries#add_service', as: :add_to_registry
+
+
+  # Stripe routes 
+  resources :charges, only: [:new, :create]
+
+end

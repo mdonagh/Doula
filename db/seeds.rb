@@ -16,20 +16,26 @@ meal_providers = ServiceCategory.create({name: "Meal Providers", description: "M
 lactation_specialists = ServiceCategory.create({name: "Lactation Specialists", description: "Lactation services. Lorem ipsum..."})
 
 #create services 
-doula_service = Service.create({name: 'Apple Doula Service', description: 'Doula service description. Lorem ipsum blah blah blah this is how we do it.', price: 1543.00, intervals:20, service_category_id: doulas.id, affiliate_id: doula.id})
-meal_service = Service.create({name: 'Apple Meal Service', description: 'Meal service description. Lorem ipsum blah blah blah this is how we do it.', price: 950.00, intervals:10, service_category_id: meal_providers.id, affiliate_id: cook.id})
-lactation_service = Service.create({name: 'Apple Lactation Service', description: 'Lactation service description. Lorem ipsum blah blah blah this is how we do it.', price: 2104.00, intervals:20, service_category_id: lactation_specialists.id, affiliate_id: lactation.id})
+doula_service = Service.create({name: 'Apple Doula Service', description: 'Doula service description. Lorem ipsum blah blah blah this is how we do it.', price: 1543.00, intervals:20, service_category_id: doulas.id, affiliate_id: doula.id, img_url: 'https://placekitten.com/300/200'})
+meal_service = Service.create({name: 'Apple Meal Service', description: 'Meal service description. Lorem ipsum blah blah blah this is how we do it.', price: 950.00, intervals:10, service_category_id: meal_providers.id, affiliate_id: cook.id, img_url: 'https://placekitten.com/600/400'})
+lactation_service = Service.create({name: 'Apple Lactation Service', description: 'Lactation service description. Lorem ipsum blah blah blah this is how we do it.', price: 2104.00, intervals:20, service_category_id: lactation_specialists.id, affiliate_id: lactation.id, img_url: 'https://placekitten.com/800/300'})
 
 #create registry
-alices_registry = Registry.create({name: "Alice's Registry", slug:"alices_registry", user_id: alice, accepts_wepay: true})
-bellas_registry = Registry.create({name: "Bella's Registry", slug:"bellas_registry", user_id: bella, accepts_wepay: false})
-courtneys_registry = Registry.create({name: "Courtney's Registry", slug:"courtneys_registry", user_id: courtney, accepts_wepay: true})
-delilahs_registry = Registry.create({name: "Delilah's Registry", slug:"delilahs_registry", user_id: delilah, accepts_wepay: false})
+alices_registry = Registry.create({name: "Alice's Registry", slug:"alices_registry", user_id: alice, accepts_wepay: true, due_date: Date.new + 180.days, shower_date: Date.new + 120.days})
+bellas_registry = Registry.create({name: "Bella's Registry", slug:"bellas_registry", user_id: bella, accepts_wepay: false, due_date: Date.new + 180.days, shower_date: Date.new + 120.days})
+courtneys_registry = Registry.create({name: "Courtney's Registry", slug:"courtneys_registry", user_id: courtney, accepts_wepay: true, due_date: Date.new + 180.days, shower_date: Date.new + 120.days})
+delilahs_registry = Registry.create({name: "Delilah's Registry", slug:"delilahs_registry", user_id: delilah, accepts_wepay: false, due_date: Date.new + 180.days, shower_date: Date.new + 120.days})
 
 #create affiliate plans 
 local = AffiliatePlan.create({nickname: 'local', radius_miles: 10, stripe_code: 'plan_GLlIWot9vdIto8'})
 regional = AffiliatePlan.create({nickname: 'regional', radius_miles: 50, stripe_code: 'plan_GLlLVOFWdoZqcw'})
 national = AffiliatePlan.create({nickname: 'national', stripe_code: 'plan_GLlKEV2eYgYJqH'})
+
+#Add registry services
+RegistryService.create(registry_id: alices_registry.id, service_id: doula_service.id)
+RegistryService.create(registry_id: alices_registry.id, service_id: meal_service.id)
+RegistryService.create(registry_id: alices_registry.id, service_id: lactation_service.id)
+
 
 
 terms_and_conditions = TermsAndConditions.create(active: true, text: "1. ACKNOWLEDGMENT AND ACCEPTANCE OF TERMS OF SERVICE

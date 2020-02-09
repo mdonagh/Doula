@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_09_003730) do
+ActiveRecord::Schema.define(version: 2020_01_28_151720) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 2020_02_09_003730) do
     t.boolean "approved", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "img_url"
     t.index ["affiliate_id"], name: "index_services_on_affiliate_id"
     t.index ["lonlat"], name: "index_services_on_lonlat", using: :gist
     t.index ["service_category_id"], name: "index_services_on_service_category_id"

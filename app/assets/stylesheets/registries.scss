@@ -69,3 +69,10 @@ div.shipping-check-box {
 .selection-info {
   padding: 1em 0 1em 0.93em;
 }
+
+// Turn off spinners in number input
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

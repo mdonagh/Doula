@@ -1,61 +1,93 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @registry.name %>
-</p>
+<div class="container">
+  <%# Registry Banner %>
+  <div class="row justify-content-around">
 
-<p>
-  <strong>Due Date:</strong>
-  <%= @registry.due_date %>
-</p>
+    <div class="col-md mx-auto text-center">
+        <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="<%= @registry.name %>" class="rounded">
+    </div>
 
-<p>
-  <strong>Child Number:</strong>
-  <%= @registry.num_child %>
-</p>
+    <div class="col-md-8">
+      <div class="row justify-content-center">
+        <h1><strong><%= @registry.name %></strong></h1>
+      </div>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @registry.gender %>
-</p>
+      <div class="row justify-content-around">
+        <h5>
+          <strong>Expected Arrival Date:  </strong>
+          <%= @registry.due_date.strftime("%A, %B %e, %Y") %>
+        </h5>
 
-<p>
-  <strong>Shower Date:</strong>
-  <%= @registry.shower_date %>
-</p>
+        <h5>
+          <strong>Shower Date:  </strong>
+          <%= @registry.shower_date.strftime("%A, %B %e, %Y") %>
+        </h5>
+      </div>
+    </div>
+ 
+    <div class="col-md">
+      <div class="row justify-content-around">
+        <%# TODO: This is a temporary path.  Update once registry guide path is set %>
+        <%= link_to "Registry Guide", registries_path, class: "btn btn-primary btn-dark-pink" %>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Shower or Sprinkle:</strong>
-  <%= @registry.shower_or_sprinkle %>
-</p>
+  <hr>
 
-<p>
-  <strong>Services:</strong>
-  <ul>
-  <% @registry.registry_services.each do |rs|%>
-  <li>
-  <%= rs.service.name %>
-    <ul>
-      <li> <strong>Increments Left: </strong> <%= rs.unpurchased_increments.count %> </li>
-      <li> <strong>Increment Cost: </strong> <%= rs.unpurchased_increments.first.price %> </li>
-      <li> 
-      <%= form_with model: LineItem.new do |f|%>
-        <p>
-        <%= f.label "Number of Increments:"%>
-        <%= f.number_field :quantity %>
-        <%= f.hidden_field :registry_service_id, value: rs.id %>
-        <%= f.submit "Add Increments to Cart" %>
-        </p>
-      <% end %>
-      </li>
-    </ul>
-  </li>
-  <% end %>
-  </ul>
-</p>
+  <%# Buttons and dropdown %>
+  <div class="col mb-5 mt-5">
+    <div class="row mb-5 mr-1 d-flex flex-direction-row justify-content-end">
+      <button class="btn btn-light btn-lg dropdown-toggle shadow" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%# TODO: Add options %>
+        Available
+      </button>
+    </div>
+    <div class="row d-flex justify-content-md-around justify-content-center">
+      <div>
+      <%= link_to "Add Be Her Village Service", services_path, class: "btn btn-secondary btn-lg btn-block mb-3 p-3 btn-light shadow"%>
+      </div>
+      <div>
+      <%= link_to "Add your own Custom Service", new_service_path, class: "btn btn-secondary btn-lg btn-block mb-3 p-3 btn-light shadow"%>
+      </div>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_registry_path(@registry) %> |
-<%= link_to 'Back', registries_path %>
+  <%# Services %>
+  <div class="row justify-content-around">
+    <%# Service Card %>
+    <% @registry.registry_services.each do |rs|%>
+    <div class="card mb-3 shadow" style="width: 20rem;">
+      <div>
+        <img src=<%= rs.service.img_url ? rs.service.img_url :  "https://via.placeholder.com/300x200/"%> class="card-img-top" alt="...">
+      </div>
+      <div class="card-body d-flex flex-column">
+        <h5 class="card-subtitle"><strong><%= rs.service.name %></strong></h5>
+        <p class="card-text"><%= rs.service.description %></p>
+        <div class="mt-auto">
+          <h5 class="card-text"><strong>$<%= sprintf('%.2f', rs.unpurchased_increments.first.price) %></strong></h5>
 
-<%= social_share_button_tag( @registry.name, desc: @registry.name) %>
+          <div class="row d-flex align-items-end">
+          <%= form_with model: LineItem.new, class:"col d-inline-flex align-items-end" do |f|%>
+          <%# TODO?  Could not get the nuber field to format correctly so it is hard coded for now %>
+          <%# <%= f.number_field :quantity %> 
+          <input class="mr-2" type="number" id="line_item_quantity" name="line_item[quantity]" min="1" max=<%= rs.unpurchased_increments.count %> <%= rs.unpurchased_increments.count == 0 ? "disabled" : "value=1" %>>
+
+          <%= f.hidden_field :registry_service_id, value: rs.id %>
+          <%= f.submit "Add to Cart", class: "btn btn-primary btn-tiny", disabled: rs.unpurchased_increments.count == 0 %>
+        <% end %>
+            <div class="col d-flex align-items-end flex-column">
+              <p class="my-auto">Requested: <%= rs.service_increments.count %></p>
+              <p class="my-auto">Still needs: <%= rs.unpurchased_increments.count %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+
+  <%= render partial: "layouts/footer" %>
+
+</div>
