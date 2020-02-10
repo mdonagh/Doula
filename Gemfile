@@ -31,7 +31,7 @@ gem 'jquery-rails'
 # gem 'activemerchant'
 # gem 'paypal-sdk-rest'
 # gem 'wepay-rails'
-gem 'wepay', '~> 0.4.0'
+# gem 'wepay', '~> 0.4.0'
 
 
 #Contact form functionality https://github.com/plataformatec/mail_form
