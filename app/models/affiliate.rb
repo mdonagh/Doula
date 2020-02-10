@@ -4,6 +4,8 @@ class Affiliate < ApplicationRecord
 
   before_save :update_terms_and_conditions
 
+  after_create :add_to_mailchimp_list
+
   has_many :services
   belongs_to :affiliate_plan
 
@@ -26,5 +28,11 @@ class Affiliate < ApplicationRecord
     address += ", #{self.address['city']}, #{self.address['state']} #{self.address['zip_code']}"
 
     address 
+  end 
+
+  def add_to_mailchimp_list
+    mc = MailchimpService.new
+    mc.add_user_to_list(self.email)
+    mc.add_tag_to_affiliate(self)
   end 
 end

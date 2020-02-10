@@ -29,6 +29,18 @@ class Affiliates::RegistrationsController < Devise::RegistrationsController
     super
   end
 
+  def free_signup
+    mc = MailchimpService.new 
+    
+    email = free_plan_params[:email]
+    first_name = free_plan_params[:contact_name]["first_name"]
+    last_name = free_plan_params[:contact_name]["last_name"]
+    mc.add_user_to_list(email)
+    mc.add_tag_to_free(email)
+    mc.add_attributes(email, first_name, last_name)
+    redirect_to :root, notice: "Successfully signed up!"
+  end 
+
   # DELETE /resource
   # def destroy
   #   super
@@ -48,19 +60,19 @@ class Affiliates::RegistrationsController < Devise::RegistrationsController
       {
         name: "Local",
         cost: 25, 
-        details: ["Custom profile + URL", "10 mile reach"],
+        details: ["Custom business profile", "10 mile radius", "One category listing", "One service listing", "Monthly email promotion"],
         recommended: false
       }, 
       {
         name: "Regional",
         cost: 45,
-        details: ["Custom profile + URL", "Social Media Promotion", "Monthly Email Promotion", "Data tracking", "100 mile reach"],
+        details: ["Custom business profile", "100 mile radius", "One category listing", "Up to 3 service listings", "Monthly email promotion", "Monthly Social Media promotion", "1 Feature full length article on blog"],
         recommended: true 
       },
       {
         name: "National",
         cost: 95,
-        details: ["Custom profile + URL", "Social Media Promotion", "Monthly Email Promotion", "Data tracking", "Featured Listing", "National reach"],
+        details: ["Custom business profile", "National audience", "Two category listings", "Up to 5 services", "Monthly email promotion", "Monthly Social Media promotion", "5 Feature full length articles on blog"],
         recommended: false
       }
     ]
@@ -95,6 +107,10 @@ class Affiliates::RegistrationsController < Devise::RegistrationsController
     # super(resource)
     affiliate_signups_path
   end
+
+  def free_plan_params
+    params.require(:free_signup).permit(:business_name, :email, contact_name: [:first_name, :last_name])
+  end 
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)

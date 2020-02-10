@@ -40,6 +40,8 @@ Rails.application.routes.draw do
   
     devise_scope :affiliate do
       get 'affiliates/plans', :to => 'affiliates/registrations#plans'
+      get 'affiliate/free', :to => 'affiliates/registrations#free'
+      post 'affiliate/free_signup', :to => 'affiliates/registrations#free_signup'
       post 'affiliate/select_plan', :to => 'affiliates/registrations#select_plan'
     end
   
@@ -54,7 +56,8 @@ Rails.application.routes.draw do
   
     resources :services
     get '/articles/:article' => "articles#show"
-    get ':page' => "pages#show" 
+    # get ':page' => "pages#show" 
+    get '/faq', to: "pages#faq", as: :faq
   
     get 'search', to: 'registries#search_by_name'
    

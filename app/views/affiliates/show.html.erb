@@ -35,7 +35,7 @@
                 <p><%= link_to @affiliate.website, "http://#{@affiliate.website}", class: "secondary-link", target: "blank"%></p>
             <% end %>
 
-            <h5 class="font-weight-bold mt-5">SETTINGS <%=link_to("(edit)", edit_affiliate_registration_path(@affiliate), style: "font-weight: normal;font-size:smaller;")%> <h5>
+            <!--<h5 class="font-weight-bold mt-5">SETTINGS <%=link_to("(edit)", edit_affiliate_registration_path(@affiliate), style: "font-weight: normal;font-size:smaller;")%> <h5>-->
 
             <h6 class="mt-5"><u><%= link_to('Log Out', destroy_affiliate_session_path, method: :delete) %></u></h6>
         </div>

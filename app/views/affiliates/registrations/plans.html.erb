@@ -23,11 +23,10 @@
     <div class="card-deck mb-3 mx-auto text-center">
         <!-- Free Plan -->
         <div class="text-center">
-            <div class="row-1">
-    
+            <div class="above-card">
+                <h5 class="primary-header my-0"></h5>
             </div>
-            <div class="row">
-                <div class="card mb-4 text-center">
+                <div class="card plan-card mb-4 mx-auto">
         
                     <div class="card-header plan-dark">
                         <h4 class="my-0 font-weight-bold">NAME</h4>
@@ -40,23 +39,24 @@
                         </div>
         
                         <ul class="text-left mt-3 mb-5">
-                    
+                            <% ["Have your services added to any registry", "Offer clients a new tool to access funds for your services", "Receive tips on attracting new customers in monthly emails"].each do |detail|%>
+                                <li><%= detail %></li>
+                            <% end %>
                         </ul>
                         <div class="row mt-auto justify-content-center">
-                            <%#= f.button 'Select Plan', value: plan[:name], class: "btn btn-block btn-outline #{plan[:class]}", type: 'submit' %> 
+                            <%= link_to 'Select Plan', affiliate_free_path, class: "btn btn-block btn-outline plan-dark" %>
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
 
         <!-- Paid Plans -->
         <% @plans.each_with_index do |plan, i| %>
         <div class="text-center">
             <div class="above-card">
-                <h5 class="primary-header"><%= plan[:recommended] ? "RECOMMENDED" : "" %></h5>
+                <h5 class="primary-header my-0"><%= plan[:recommended] ? "RECOMMENDED" : "" %></h5>
             </div>
-            <div class="card mb-4 text-center <%= plan[:recommended] ? "border-primary" : "" %>">
+            <div class="card plan-card mb-4 text-center mx-auto <%= plan[:recommended] ? "border-primary" : "" %>">
                 <div class="card-header plan-dark">
                     <h4 class="my-0 font-weight-bold"><%=plan[:name].upcase%></h4>
                 </div>

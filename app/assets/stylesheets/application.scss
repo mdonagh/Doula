@@ -170,14 +170,14 @@ footer li {
     grid-gap: .1rem;
 }
 
-.card{
+.plan-card {
     background: #F7F7F8; 
     max-width: 15rem; 
-    min-height: 400px;
+    height: 460px;
 }
 
 .above-card {
-    height: 10%; 
+    height: 30px; 
 }
 
 @each $plan in $plans {

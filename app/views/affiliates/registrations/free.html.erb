@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="page-header text-center mt-5">
+    <h2>Get listed on Be Her Village for FREE (yes, its true!)</h2>
+  </div>
+
+  <div class="row mt-5 mb-4">
+    <div class="col">
+        <h6>Not ready to make the investment in growing your business? At maximum capacity and can’t take on any more clients right now?  Share Be Her Village with your existing customers and offer them a whole new way to pay for your services! Anyone can customize a listing on their registry for your services. They get to work with a kickass service provider, such as yourself, and you get paid when their family and friends gift them the funds (link to cash registry FAQ question) for your work. There is no charge to you or your customer. 
+<br><br>Send us your info and we will walk you through everything you need to know!  
+</h6>
+    </div>
+  </div>
+
+  <%= form_for(:free_signup, url: affiliate_free_signup_path) do |f| %>
+
+      <%= f.fields_for :contact_name do |n| %>
+      <div class="form-row">
+        <div class="form-group col">
+          <%= n.text_field :first_name, autofocus: true, placeholder: "First Name", class: "form-control", required: true %>
+        </div>
+
+        <div class="form-group col" >
+          <%= n.text_field :last_name, placeholder: "Last Name", class: "form-control", required: true  %>
+        </div>
+      </div>
+      <% end %>
+
+    <div class="form-group">
+      <%= f.text_field :business_name, placeholder: "Company Name", class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.email_field :email, autocomplete: "email", placeholder: "E-mail Address", class: "form-control", required: true %>
+    </div>
+
+    <div class="actions mt-4 row">
+        <div class="col">
+            <%= fa_icon "chevron-left xs" %> <%= link_to "Back", :back, class: "black-link" %>
+        </div>
+        <div class="col text-right">
+            <div class="actions">
+                <%= f.submit "Sign Up", class: "btn btn-primary btn-sm" %>
+            </div>
+        </div>
+    </div>
+
+  <% end %>
+
+</div>
