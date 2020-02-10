@@ -79,7 +79,7 @@ namespace :deploy do
   after  :finishing,    :restart
 end
 
-append :linked_files, "config/master.key"
+set :linked_files, fetch(:linked_files, []).push("config/master.key")
 
 
 
