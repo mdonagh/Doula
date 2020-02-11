@@ -18,12 +18,12 @@
             <h4 class="footer-header">Partners</h4>
             <ul>
                 <% if affiliate_signed_in? %>
-                <li><%= link_to('Logout', destroy_affiliate_session_path, method: :delete)%></li>
+                <li><%= link_to('Logout', destroy_affiliate_session_path, method: :get)%></li>
                 <% else%>
                 <li><%=link_to 'Log In', new_affiliate_session_path %></li>
                 <%end%>
                 
-                <li><%= link_to('Logout', destroy_user_session_path, method: :delete) if user_signed_in? %></li>
+                <li><%= link_to('Logout', destroy_user_session_path, method: :get) if user_signed_in? %></li>
             </ul>
         </div>
         
