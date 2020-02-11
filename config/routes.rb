@@ -30,7 +30,7 @@ Rails.application.routes.draw do
       registrations: 'affiliates/registrations'
     }
   
-    # resources :users, :only => [:show]
+    resources :users, :only => [:show]
   
     devise_scope :user do
       get 'user/setup_wepay', :to => 'users/registrations#setup_wepay'
