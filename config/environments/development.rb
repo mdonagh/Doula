@@ -64,7 +64,7 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # WePay setup 
-  # config.wepay_use_stage = false 
+  config.wepay_use_stage = true 
   
   # config.action_mailer.default_url_options = { :host => 'localhost' }
 
