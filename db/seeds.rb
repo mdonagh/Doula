@@ -92,10 +92,12 @@ when "development"
     User acknowledges that content, including but not limited to text, software, music, sound, photographs, video, graphics or other material contained in either sponsor advertisements or email-distributed, commercially produced information presented to User by the Service (Content) by Wondersoft or Wondersoft's Advertisers (“Advertiser”), is protected by copyrights, trademarks, service marks, patents or other proprietary rights and laws; therefore, User is only permitted to use this Content as expressly authorized by the Service or the Advertiser. User may not copy, reproduce, distribute, or create derivative works from this Content without expressly being authorized to do so by the Service or the Advertiser.")
 
 when "production"
-    User.create({email: 'kaitlin@behervillage.com', password: 'p9dj30sntb59', password_confirmation: 'p9dj30sntb59'})
-    local = AffiliatePlan.create({nickname: 'local', radius_miles: 10, stripe_code: 'plan_GLlIWot9vdIto8'})
-    regional = AffiliatePlan.create({nickname: 'regional', radius_miles: 100, stripe_code: 'plan_GLlLVOFWdoZqcw'})
-    national = AffiliatePlan.create({nickname: 'national', stripe_code: 'plan_GLlKEV2eYgYJqH'})
+    User.create({email: 'kaitlin@behervillage.com', password: 'p9dj30sntb59', password_confirmation: 'p9dj30sntb59', admin: true})
+    User.create({email: 'sara@tibsarsoftware.com', password: '7hfk349nfs0', password_confirmation: '7hfk349nfs0', admin: true})
+
+    local = AffiliatePlan.create({nickname: 'local', radius_miles: 10, stripe_code: 'plan_GiGZLfSt7S1zqt'})
+    regional = AffiliatePlan.create({nickname: 'regional', radius_miles: 100, stripe_code: 'plan_GiGZgnUbkj6ARI'})
+    national = AffiliatePlan.create({nickname: 'national', stripe_code: 'plan_GiGZJBnaKDm230'})
 
     childbirth_education = ServiceCategory.create({name: "Childbirth Education"})
     yoga = ServiceCategory.create({name: "Yoga"})
