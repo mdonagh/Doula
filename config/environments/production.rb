@@ -116,9 +116,12 @@ Rails.application.configure do
   # WePay setup 
   config.wepay_use_stage = false 
 
-  config.action_mailer.default_url_options = { host: 'www.behervillage.com', protocol: 'https'}
+  config.action_mailer.default_url_options = { host: 'behervillage.com', protocol: 'https'}
 
 
   
 end
+
+Rails.application.routes.default_url_options[:host] = 'behervillage.com'
+
 
