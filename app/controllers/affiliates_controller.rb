@@ -6,6 +6,10 @@ class AffiliatesController < ApplicationController
     end 
 
     def validate_affiliate
-        redirect_to root_path unless current_affiliate.id.to_s == params[:id]
+        if current_affiliate.id.to_s != params[:id]
+            redirect_to root_path 
+        elsif !current_affiliate.contract_signed
+            redirect_to affiliate_signups_path
+        end 
     end
 end
