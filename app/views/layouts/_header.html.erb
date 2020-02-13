@@ -14,5 +14,6 @@
       <%#= link_to root_path do %>
         <!--<span class="fa fa-shopping-cart nav-link"></span>-->
       <%# end %>
+      <%= link_to "Profile", affiliate_path(current_affiliate), class: "nav-link" if affiliate_signed_in? %>
 </nav>
 
