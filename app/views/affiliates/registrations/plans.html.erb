@@ -8,8 +8,8 @@
 
 <div class="container">
     <div class="page-header">
-        <h2 class="mb-3 mt-5">LET'S WORK TOGETHER</h2>
-        <p>Be Her Village is partnering with businesses that serve growing families. Our platform gets your business in front of hundreds of new moms each month and helps them understand why they need your services.  Tap into a market full of new families looking for services just like yours and become the talk of the town. 
+        <h2 class="mb-3 mt-5">LET'S WORK TOGETHER!</h2>
+        <p>Be Her Village is partnering with businesses that serve growing families. Our platform gets your business in front of hundreds of new moms each month and helps them understand why they need your services.  Tap into a market full of new families looking for services just like yours and become the talk of the town.
         </p>
         <p>What are you waiting for? Start growing your business today!
     </p>
@@ -61,7 +61,7 @@
                 <div class="card-body flex-column d-flex text-center ">
                     <div class="pricing-card-title plan-dark">
                         <h1 class="mb-0">$<%=plan[:cost]%></h1>
-                        <p class="my-0"><small>/per month</small></p>
+                        <p class="my-0"><small>/month</small></p>
                         <p class="my-0"><small>Billed Yearly</small></p>
                     </div>
             
@@ -80,4 +80,13 @@
   
     </div>
     <% end %>
+
+<div class="container">
+    <div class="page-header">
+        <p>Have a question?  Find your <%= link_to 'answer!', faq_path %>
+        </p>
+        <p>Don’t see a package that’s right for your business? <%= mail_to 'hello@behervillage.com', 'Drop us a line' %> and we’ll come up with something that works for you! 
+    </p>
+    </div>
+</div>
     <p class="text-center">Already a user? Sign in <%= link_to "here", new_affiliate_session_path %></p>

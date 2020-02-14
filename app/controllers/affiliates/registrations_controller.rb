@@ -66,13 +66,13 @@ class Affiliates::RegistrationsController < Devise::RegistrationsController
       {
         name: "Regional",
         cost: 45,
-        details: ["Custom business profile", "Reach audience up to 100 mile radius", "One category listing", "Up to 3 service listings", "Monthly email promotion", "Monthly Social Media promotion", "1 Feature full length article on BeHerVillage.com", "Instant alert when added to registry", "Instance allerts when service is purchased"],
+        details: ["Custom business profile", "Reach audience up to 100 mile radius", "One category listing", "Up to 3 service listings", "Monthly email promotion", "Monthly Social Media promotion", "1 Feature full length article on BeHerVillage.com", "Instant alerts when added to registry", "Instance alerts when service is purchased"],
         recommended: true 
       },
       {
         name: "National",
         cost: 95,
-        details: ["Custom business profile", "Reach a national audience", "Two category listings", "Up to 5 services", "Monthly email promotion", "Monthly Social Media promotion", "5 Feature full length articles on BeHerVillage.com", "Instant allerts when added to registry", "Instant alerts when service is purchased", "Monthly comprehensive performance report"],
+        details: ["Custom business profile", "Reach a national audience", "Two category listings", "Up to 5 services", "Monthly email promotion", "Monthly Social Media promotion", "5 Feature full length articles on BeHerVillage.com", "Instant alerts when added to registry", "Instant alerts when service is purchased", "Monthly comprehensive performance report"],
         recommended: false
       }
     ]

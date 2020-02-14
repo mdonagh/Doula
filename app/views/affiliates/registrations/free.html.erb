@@ -1,12 +1,13 @@
 <div class="container">
   <div class="page-header text-center mt-5">
-    <h2>Get listed on Be Her Village for FREE (yes, its true!)</h2>
+    <h2>Get listed on Be Her Village for FREE (yes, it's true!)</h2>
   </div>
 
   <div class="row mt-5 mb-4">
     <div class="col">
-        <h6>Not ready to make the investment in growing your business? At maximum capacity and can’t take on any more clients right now?  Share Be Her Village with your existing customers and offer them a whole new way to pay for your services! Anyone can customize a listing on their registry for your services. They get to work with a kickass service provider, such as yourself, and you get paid when their family and friends gift them the funds (link to cash registry FAQ question) for your work. There is no charge to you or your customer. 
-<br><br>Send us your info and we will walk you through everything you need to know!  
+        <h6>Not ready to make the investment in growing your business? At maximum capacity and can’t take on any more clients right now?  Share Be Her Village with your existing customers and offer them a whole new way to pay for your services! 
+        <br><br>Anyone can customize a listing on their registry for your services. They get to work with a kickass service provider, such as yourself, and you get paid when their family and friends <%=link_to 'gift them the funds', faq_path %> for your work. There is no charge to you or your customer. 
+<br><br>Sign up here and we will walk you through everything you need to know!   
 </h6>
     </div>
   </div>
@@ -30,7 +31,7 @@
     </div>
 
     <div class="form-group">
-      <%= f.email_field :email, autocomplete: "email", placeholder: "E-mail Address", class: "form-control", required: true %>
+      <%= f.email_field :email, autocomplete: "email", placeholder: "Email Address", class: "form-control", required: true %>
     </div>
 
     <div class="actions mt-4 row">
@@ -45,5 +46,8 @@
     </div>
 
   <% end %>
-
+    <div class="container text-center">
+        <h6>Questions?  Get your answers <%= link_to 'here', faq_path %>
+        </h6>
+    </div>
 </div>
