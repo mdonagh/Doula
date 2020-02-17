@@ -165,10 +165,17 @@ footer li {
 
 .card-deck {
     width: 100%; 
-    display: inline-grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 250px));
+    // display: inline-grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 250px));
     grid-gap: .1rem;
     justify-items: center;
+}
+
+@media screen and (max-width: 1090px) {
+    .card-deck{
+        // grid-template-columns: repeat(2, minmax(250px, 250px));
+        width: 60%; 
+    }
 }
 
 .plan-card {
