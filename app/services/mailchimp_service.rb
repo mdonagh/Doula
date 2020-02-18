@@ -14,7 +14,9 @@ class MailchimpService
     end
     
     def add_user_to_list(email)
-        @gibbon.lists(@list_id).members.create(body: {email_address: email, status: "subscribed"})
+        # @gibbon.lists(@list_id).members.create(body: {email_address: email, status: "subscribed"})
+        @gibbon.lists(@list_id).members(Digest::MD5.hexdigest(email)).upsert(body: {email_address: email, status: "subscribed"})
+
     end 
 
     def add_tag_to_affiliate(affiliate) 

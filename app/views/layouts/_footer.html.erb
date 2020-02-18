@@ -4,8 +4,8 @@
         <div class="col">
             <h4 class="footer-header">Be Her Village, Inc.</h4>
             <ul>
-                <li>hello@behervillage.com</li>
-                <li>516 531 3548</li>
+                <li><%= mail_to("hello@behervillage.com", "hello@behervillage.com", class:"black-link") %></li>
+                <li><%= link_to "516 531 3548", "tel:516 531 3548", class: "black-link"%></li>
             </ul>
         </div>
         <div class="col">
