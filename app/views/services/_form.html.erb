@@ -19,7 +19,7 @@
     <% else %>
     <div class="row">
       <div class="col-4">
-        <%= image_tag("placeholder.png", height: 150, width: 300) %>
+        <%= image_tag("placeholder.png", height: 150, width: 300, class: "image-placeholder") %>
       </div>
       <div class="col-8 mt-auto">
         <div class="secondary-link">Add Photo</div>
@@ -72,3 +72,20 @@
 
 <% end %>
  
+ <script>
+  function loadPreview(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+        reader.onload = function (e) {
+          $('.image-placeholder').attr('src', e.target.result);
+          $('.image-placeholder').removeAttr('width');
+        }
+      
+      reader.readAsDataURL(input.files[0]);
+    } 
+  }
+
+  $("#service_thumbnail").change(function(){
+    loadPreview(this);
+  });
+ </script>
