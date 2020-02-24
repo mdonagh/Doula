@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :registry_types
     resources :service_categories
     resources :registries, param: :slug
-    resources :affiliate_signups
+    resources :affiliate_signups, path: "partner_signups"
     resources :registry_steps
     get '/registry_steps/children', to: 'registry_steps#children', as: :registry_steps_2
   
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       registrations: 'users/registrations'
     }
   
-    devise_for :affiliates, controllers: {
+    devise_for :affiliates, path: "partners", controllers: {
       sessions: 'affiliates/sessions',
       registrations: 'affiliates/registrations'
     }
@@ -39,13 +39,13 @@ Rails.application.routes.draw do
     end
   
     devise_scope :affiliate do
-      get 'affiliates/plans', :to => 'affiliates/registrations#plans'
-      get 'affiliate/free', :to => 'affiliates/registrations#free'
-      post 'affiliate/free_signup', :to => 'affiliates/registrations#free_signup'
-      post 'affiliate/select_plan', :to => 'affiliates/registrations#select_plan'
+      get 'partners/plans', :to => 'affiliates/registrations#plans'
+      get 'partner/free', :to => 'affiliates/registrations#free'
+      post 'partner/free_signup', :to => 'affiliates/registrations#free_signup'
+      post 'partner/select_plan', :to => 'affiliates/registrations#select_plan'
     end
   
-    resources :affiliates, :only => [:show]
+    resources :affiliates, path: "partners", :only => [:show]
     resources :stripe_charges, :only => [:new]
   
     #Root page 
@@ -58,6 +58,7 @@ Rails.application.routes.draw do
     get '/articles/:article' => "articles#show"
     # get ':page' => "pages#show" 
     get '/faq', to: "pages#faq", as: :faq
+    get '/temp_home', to: "pages#temp_home"
   
     get 'search', to: 'registries#search_by_name'
    

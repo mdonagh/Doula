@@ -2,6 +2,7 @@ class ServicesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show, :new, :create, :edit, :update]
   before_action :authenticate_affiliate!, only: [:new, :create, :edit, :update]
   before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :validate_number_of_services, :only => [:new, :create]
 
   # GET /services
   # GET /services.json
@@ -46,7 +47,7 @@ class ServicesController < ApplicationController
   def update
     respond_to do |format|
       if @service.update(service_params)
-        format.html { redirect_to @service, notice: 'Service was successfully updated.' }
+        format.html { redirect_to affiliate_path(current_affiliate), notice: 'Service was successfully updated.'  }
         format.json { render :show, status: :ok, location: @service }
       else
         format.html { render :edit }
@@ -75,4 +76,11 @@ class ServicesController < ApplicationController
     def service_params
       params.require(:service).permit(:name, :description, :price, :intervals, :subtitle, :service_category_id, :affiliate_id, :lonlat, :radius, :approved, :thumbnail)
     end
+
+    def validate_number_of_services 
+      if current_affiliate.services.count >= current_affiliate.affiliate_plan.number_of_services 
+        # format.html { redirect_to affiliate_path(current_affiliate), notice: 'You have reached the maximum number of services for your plan.'  }
+        redirect_to affiliate_path(current_affiliate), notice: 'You have reached the maximum number of services for your plan.'  
+      end 
+    end 
 end

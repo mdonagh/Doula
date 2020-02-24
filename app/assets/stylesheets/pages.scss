@@ -28,3 +28,63 @@ a.btn.btn-lg.btn-faq.btn-icon[aria-expanded="false"]{
   transition: all .3s;
   color: rgb(0,0,0);
 }
+
+// Temp Homepage 
+
+// Mixins
+// Background Cover Mixin
+@mixin background-cover {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+  
+header.masthead {
+  position: relative;
+  background-color: $gray-800;
+  background: url('/assets/affiliates/AffiliateHome1.jpg') no-repeat center center;
+  @include background-cover;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  .overlay {
+    position: absolute;
+    background-color: $gray-900;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0.3;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  @media (min-width: 768px) {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+    h1 {
+      font-size: 3rem;
+    }
+  }
+}
+
+.features-icons {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  .features-icons-item {
+    max-width: 20rem;
+    .features-icons-icon {
+      height: 7rem;
+      i {
+        font-size: 4.5rem;
+      }
+    }
+    &:hover {
+      .features-icons-icon {
+        i {
+          font-size: 5rem;
+        }
+      }
+    }
+  }
+}

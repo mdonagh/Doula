@@ -206,7 +206,7 @@ footer li {
         border: 2px solid nth($plan, 2);    
         width: 60%; 
     }
-    
+
     .btn-outline.#{nth($plan, 1)}:hover {
         background-color: nth($plan, 2);    
     }
@@ -228,6 +228,7 @@ footer li {
 .btn.btn-primary.btn-dark-pink{
     background-color: $pink-dark !important;
     color: #ffffff !important;
+    
 }
 
 .btn-sm {
@@ -238,3 +239,18 @@ footer li {
     padding: .25rem .25rem;
     font-size: .8rem;
 }
+
+//Form validation styling 
+#error_explanation {
+    @extend .alert;
+    @extend .alert-danger;
+    width: 100%;
+    h2 {
+      color: #721c24;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    ul {
+      margin-top: 2em;
+    }
+  }

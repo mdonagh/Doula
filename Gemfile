@@ -110,3 +110,7 @@ gem 'azure-storage', '~> 0.15.0.preview', require: false
 
 #Mailchimp 
 gem 'gibbon', '~> 3.0.0'
+
+#For active storage validations 
+gem 'active_storage_validations'
+

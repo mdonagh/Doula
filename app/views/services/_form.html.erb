@@ -1,8 +1,6 @@
 <%= form_with(model: service, local: true) do |form| %>
   <% if service.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(service.errors.count, "error") %> prohibited this service from being saved:</h2>
-
       <ul>
         <% service.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -13,7 +11,7 @@
 
   <div class="form-group">
     <label>
-    <% if @service.thumbnail.attached? %>
+    <% if @service.thumbnail.attached? && @service.thumbnail.record.img_url %>
       <%= image_tag(@service.thumbnail, height: 150) %>
     Change Photo
     <% else %>
@@ -30,34 +28,34 @@
     
     <% end %>
       <span style="display:none">
-        <%= form.file_field :thumbnail %>
+        <%= form.file_field :thumbnail, accept: 'image/png,image/jpeg' %>
       </span>
     </label>
   </div>
 
   <div class="form-group">
-    <%= form.text_field :name, placeholder: "Service Title (What do you offer?)", class: "form-control" %>
+    <%= form.text_field :name, placeholder: "Service Title (What do you offer?)", class: "form-control", required: true %>
   </div>
 
   <div class="form-group">
-    <%= form.text_field :subtitle, placeholder: "Service Subtitle (Tell us in one sentence what you do for new moms)", class: "form-control" %>
+    <%= form.text_field :subtitle, placeholder: "Service Subtitle (Tell us in one sentence what you do for new moms)", class: "form-control", required: true  %>
   </div>
 
   <div class="form-row">
     <div class="form-group col">
-      <%= form.number_field :price, placeholder: "Price", :step => 0.01, class: "form-control" %>
+      <%= form.number_field :price, placeholder: "Price", :step => 0.01, class: "form-control", required: true %>
     </div>
 
     <div class="form-group col">
-      <%= form.collection_select :service_category_id, ServiceCategory.all, :id, :name, {prompt: "Category"}, {class: "form-control mt-0"} %>
+      <%= form.collection_select :service_category_id, ServiceCategory.all, :id, :name, {prompt: "Category"}, {class: "form-control mt-0"}%>
     </div>
   </div>
 
   <div class="form-group">
-    <%= form.text_area :description, placeholder: "Description:\nHere is your chance to tell new parents and their friends and families why your service is the perfect gift for them as they prepare for their new baby.", rows: "8", class: "form-control" %>
+    <%= form.text_area :description, placeholder: "Description:\nHere is your chance to tell new parents and their friends and families why your service is the perfect gift for them as they prepare for their new baby.", rows: "8", class: "form-control", required: true %>
   </div>
 
-  <%= form.hidden_field :affiliate_id, value: @affiliate.id %>
+  <%= form.hidden_field :affiliate_id, value: current_affiliate.id %>
 
   <div class="row">
       <div class="col">

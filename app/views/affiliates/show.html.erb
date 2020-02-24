@@ -12,9 +12,8 @@
 
     <div class="row">
         <div class="col-4 border-right">
-            
             <%= button_to "Add Listing", new_service_path, method: "get", class: "btn btn-sm btn-primary" %>
-            <p class="mt-1"><%= @affiliate.services.size%> of 3 listings active</p>
+            <p class="mt-1"><%= @affiliate.services.size%> of <%= pluralize(@affiliate.affiliate_plan.number_of_services , "listing") %> active</p>
 
             <h5 class="font-weight-bold mt-5">ACCOUNT INFO <%=link_to("(edit)", edit_affiliate_registration_path(@affiliate), style: "font-weight: normal;font-size:smaller;")%> <h5>
             <% if @affiliate.full_name %>
@@ -46,7 +45,12 @@
                 <%= button_to "Add Listing", new_service_path, method: "get", class: "btn btn-light" %>
             <% else %>
                 <div class="container">
-                    <% @affiliate.services.each do |service| %>
+                    <% @affiliate.services.each_with_index do |service, i| %>
+                    <% if i != 0 %>
+                    <div class="row justify-content-left">
+                        <div class="border-top my-5 w-75"></div>
+                    </div>
+                    <% end %>
                     <div class="row">
                         <div class="col-6 text-left">
                             <% if service.thumbnail.attached? %>
@@ -56,7 +60,7 @@
                             <p><%= service.subtitle %></p>
                             <h6 class="font-weight-bold mb-3"><%= number_to_currency(service.price) %></h6>
                             <h6 class="font-weight-bold mb-0">Description</h6>
-                            <p class="mb-5"><%= service.description %></p>
+                            <p class="mb-1"><%= service.description %></p>
                         </div>
                         <div class="col-6 text-left">
                             <%= link_to "Edit Listing", edit_service_path(service)%>
