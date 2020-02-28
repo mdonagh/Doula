@@ -1,0 +1,57 @@
+<div class="card mb-3 shadow" style="width: 20rem;">
+  <div>
+    <img src=<%= rs.service.img_url ? rs.service.img_url :  "https://via.placeholder.com/300x200/"%>
+      class="card-img-top" alt="...">
+  </div>
+  <div class="card-body d-flex flex-column">
+    <h5 class="card-subtitle"><strong><%= rs.service.name %></strong></h5>
+    <p class="card-text"><%= rs.service.description %></p>
+    <div class="mt-auto">
+
+
+      <!-- Display 'Buy it Now' and 'Add to Cart' buttons if not the registry owner-->
+      <% if @registry.user_id != current_user.id %>
+        <div class="row d-flex justify-content-around">
+          <h5 class="col card-text"><strong>$<%= sprintf('%.2f', rs.unpurchased_increments.first.price) %></strong></h5>
+          <%= form_with model: LineItem.new, class:"col d-flex justify-content-end" do |f|%>
+          <%# TODO?  Could not get the nuber field to format correctly so it is hard coded for now %>
+          <%# <%= f.number_field :quantity %>
+          <input class="" type="number" name="line_item[quantity]" min="1" max=<%= rs.unpurchased_increments.count %>
+            <%= rs.unpurchased_increments.count == 0 ? "disabled" : "value=1" %>>
+        </div>
+  
+        <div class="col d-flex flex-column mt-3">
+          <div class="row d-flex justify-content-around pb-3">
+          <%= f.hidden_field :registry_service_id, value: rs.id, id: rs.id %>
+          <%= f.submit "Buy it Now", class: "btn btn-primary btn-small", disabled: rs.unpurchased_increments.count == 0 %>
+          <%= f.submit "Add to Cart", class: "btn btn-primary btn-small", disabled: rs.unpurchased_increments.count == 0 %>
+          <% end %>
+          </div>
+          <div class="row d-flex justify-content-center">
+            <p class="pr-2">Requested: <%= rs.service_increments.count %></p>
+            <p  class="pl-2">Still needs: <%= rs.unpurchased_increments.count %></p>
+          </div>
+        </div>
+      <% end %>
+
+      <!-- Display 'Edit' if the registry owner-->
+      <% if @registry.user_id == current_user.id %>
+      <h5 class="card-text"><strong>$<%= sprintf('%.2f', rs.unpurchased_increments.first.price) %></strong></h5>
+      <div class="row d-flex align-items-end">
+        <%= form_with model: LineItem.new, class:"col d-inline-flex align-items-end" do |f|%>
+        <%# TODO?  Could not get the nuber field to format correctly so it is hard coded for now %>
+        <%# <%= f.number_field :quantity %>
+        <input class="mr-2" value="1" type="number" name="line_item[quantity]" min="1" max=<%= rs.service.intervals %>>
+        <%= f.hidden_field :registry_service_id, value: rs.id, id: rs.id %>
+        <%= f.submit "Edit", class: "btn btn-tiny", disabled: rs.unpurchased_increments.count == 0 %>
+        <% end %>
+        <div class="col d-flex align-items-end flex-column">
+          <p class="my-auto">Requested: <%= rs.service_increments.count %></p>
+          <p class="my-auto">Still needs: <%= rs.unpurchased_increments.count %></p>
+        </div>
+      </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
