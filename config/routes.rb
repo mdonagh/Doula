@@ -36,6 +36,7 @@ Rails.application.routes.draw do
       get 'user/setup_wepay', :to => 'users/registrations#setup_wepay'
       get 'user/finish_wepay_setup', :to => 'users/registrations#finish_wepay_setup'
       get 'user/oauth(/:userid)', :to => 'users/registrations#oauth'
+      post 'user/email_signup', :to => 'users/registrations#email_signup'
     end
   
     devise_scope :affiliate do
@@ -49,16 +50,16 @@ Rails.application.routes.draw do
     resources :stripe_charges, :only => [:new]
   
     #Root page 
-    # root to: "pages#home"
-    devise_scope :affiliate do
-        root to: "affiliates/registrations#plans"
-    end
+    root to: "pages#temp_home"
+    # devise_scope :affiliate do
+    #     root to: "affiliates/registrations#plans"
+    # end
   
     resources :services
     get '/articles/:article' => "articles#show"
     # get ':page' => "pages#show" 
     get '/faq', to: "pages#faq", as: :faq
-    get '/temp_home', to: "pages#temp_home"
+    # get '/temp_home', to: "pages#temp_home"
   
     get 'search', to: 'registries#search_by_name'
    

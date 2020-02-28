@@ -31,6 +31,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @redirect_uri = url_for(:controller => 'registrations', :action => 'oauth', :userid => current_user.id, :host => request.host_with_port)
   end 
 
+  def email_signup 
+    mc = MailchimpService.new 
+    
+    email = email_params[:email]
+    mc.add_user_to_list(email)
+    mc.add_tag_to_homepage_user(email)
+    redirect_to :root, notice: "Successfully signed up!"
+  end 
+
   # GET /resource/sign_up
   # def new
   #   super
@@ -71,6 +80,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up) { |user_params| user_params.permit(:first_name, :last_name, :email, :password)}
   end
+
+  def email_params
+    params.require(:email_signup).permit(:email)
+  end 
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

@@ -28,6 +28,10 @@ class MailchimpService
         @gibbon.lists(@list_id).members(Digest::MD5.hexdigest(email)).tags.create(body: {tags: [{name: "affiliate-free-plan", status:"active"}]})
     end 
 
+    def add_tag_to_homepage_user(email)
+        @gibbon.lists(@list_id).members(Digest::MD5.hexdigest(email)).tags.create(body: {tags: [{name: "user-temp-homepage-signup", status:"active"}]})
+    end 
+
     def add_attributes(email, first_name, last_name)
         @gibbon.lists(@list_id).members(Digest::MD5.hexdigest(email)).update(body: { merge_fields: {FNAME: first_name, LNAME: last_name}})
     end 

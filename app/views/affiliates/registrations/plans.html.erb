@@ -6,6 +6,13 @@
    </div>
 </div>
 
+<% flash.each do |key, value| %>
+  <div class="alert alert-success text-center">
+    <a href="#" data-dismiss="alert" class="close">×</a>
+          <%= value %>
+  </div>
+<% end %>
+
 <div class="container">
     <div class="page-header">
         <h2 class="mb-3 mt-5">LET'S WORK TOGETHER!</h2>
@@ -35,15 +42,16 @@
                         <div class="pricing-card-title plan-dark">
                             <h1 class="mb-0">FREE</h1>
                             <p class="my-0"><small>(yes really!)</small></p>
+                            <p></p>
                         </div>
         
                         <ul class="text-left mt-3 mb-5">
-                            <% ["Have your services added to any registry", "Offer clients a new tool to access funds for your services", "Grow your business with our platform", "Receive tips on attracting new customers in monthly emails", "Instant alerts when service is added to a registry", "Instant alert when service is purchased"].each do |detail|%>
+                            <% ["Have your services added to any registry", "Offer clients a new tool to access funds for your services", "Grow your business with our platform", "Receive tips on attracting new customers in monthly emails"].each do |detail|%>
                                 <li><%= detail %></li>
                             <% end %>
                         </ul>
                         <div class="row mt-auto justify-content-center">
-                            <%= link_to 'Select Plan', partner_free_path, class: "btn btn-block btn-outline plan-dark", role: "button" %>
+                            <%= link_to 'Sign Up', partner_free_path, class: "btn btn-block btn-outline plan-dark", role: "button" %>
                         </div>
                     </div>
                 </div>
