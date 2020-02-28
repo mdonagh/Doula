@@ -43,7 +43,7 @@ a.btn.btn-lg.btn-faq.btn-icon[aria-expanded="false"]{
 header.masthead {
   position: relative;
   background-color: $gray-800;
-  background: url('/assets/affiliates/AffiliateHome1.jpg') no-repeat center center;
+  background: image-url("affiliates/AffiliateHome1.jpg") no-repeat center center;
   @include background-cover;
   padding-top: 7rem;
   padding-bottom: 7rem;
