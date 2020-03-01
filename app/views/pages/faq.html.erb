@@ -44,8 +44,17 @@
     <!-- FAQ 14 -->
     <%= render partial: 'faq', :locals => {:faq_number => 14, :faq_title => "This is a great idea! How do I share Be Her Village?", :faq_text => "We love when people spread the word about Be Her Village! You can share our website (BeHerVillage.com), or our social media links. You can sign up to receive Be Her Village stickers, flyers, and other materials #{link_to 'here', partner_free_path}.<br><br>When you decide to partner with us we will send you a Welcome Package with all the materials you need to spread the word about Be Her Village!"} %>
 
-    
-
-
   </div>
 </div>
+<script>
+
+$( document ).ready(function() {    
+    var url = document.location.toString();
+    if ( url.match('#') ) {
+        var hash = url.split('#')[1];
+        // expand the requested panel
+       document.getElementById(hash).setAttribute('aria-expanded', 'true');
+       $("#faq-" + hash).addClass("show"); 
+    }
+});
+</script>
