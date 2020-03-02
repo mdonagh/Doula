@@ -23,7 +23,6 @@
     </div>
 </div>
 
-    <%= form_with url: :partner_select_plan, class: "mx-auto" do |f|  %>
     <div class="row">
     <div class="col">
     <div class="card-deck mb-3 text-center justify-content-center mx-auto">
@@ -81,7 +80,7 @@
                         <% end %>
                     </ul>
                     <div class="row mt-auto justify-content-center">
-                        <%= f.button 'Select Plan', value: plan[:name], class: "btn btn-block btn-outline plan-dark", type: 'submit' %> 
+                        <%= link_to 'Select Plan', new_affiliate_registration_path(plan: plan[:name]), class: "btn btn-block btn-outline plan-dark", role: "button"%>
                     </div>
                 </div>
             </div>
@@ -90,7 +89,6 @@
     </div>
     </div>
     </div>
-    <% end %>
 
 <div class="container">
     <div class="page-header">
