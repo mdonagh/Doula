@@ -35,8 +35,7 @@ class StripeService
   def create_customer
     customer = Stripe::Customer.create(
       name: @user.full_name,
-      email: @email, 
-      coupon: "IH1tci7f"  #NEED TO REMOVE 
+      email: @email
     )
     @user.update(stripe_code: customer.id)
     customer
