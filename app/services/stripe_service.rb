@@ -28,10 +28,15 @@ class StripeService
     Stripe::Customer.retrieve(stripe_token) 
   end
 
+  def retrieve_coupon(id)
+    Stripe::Coupon.retrieve(id)
+  end 
+
   def create_customer
     customer = Stripe::Customer.create(
       name: @user.full_name,
-      email: @email
+      email: @email, 
+      coupon: "IH1tci7f"  #NEED TO REMOVE 
     )
     @user.update(stripe_code: customer.id)
     customer
@@ -43,6 +48,7 @@ class StripeService
       amount: order_amount,
       description: customer.email,
       currency: DEFAULT_CURRENCY
+    
     )
   end
 
@@ -56,7 +62,7 @@ class StripeService
               }],
           },
           success_url: affiliate_url(@user.id),
-          cancel_url: 'https://www.google.com'
+          cancel_url: partners_plans_url
       )
   end 
 

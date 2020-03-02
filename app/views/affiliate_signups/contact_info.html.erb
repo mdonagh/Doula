@@ -49,6 +49,14 @@
       </div>
     </div>
 
+  <div class="form-group">
+  <%= f.label :location_independent do %>
+    <%= f.check_box :location_independent %>
+      Business is online only
+  <% end %>
+  </div>
+ 
+
     <div class="actions row mt-4">
         <div class="col">
             <%= fa_icon "chevron-left xs" %> <%= link_to "Back", :back, class: "black-link" %>
