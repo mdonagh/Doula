@@ -33,7 +33,6 @@ class AffiliateSignupsController < ApplicationController
     end 
 
     def contact_params
-        binding.pry
         params.require(:affiliate).permit(:business_name, :website, :phone, :contract_signed, :location_independent, contact_name: [:first_name, :last_name], address: [:street_address, :address_line2, :city, :state, :zip_code])
     end
 

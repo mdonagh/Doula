@@ -81,7 +81,7 @@
                         <% end %>
                     </ul>
                     <div class="row mt-auto justify-content-center">
-                        <%= f.button 'Select Plan', value: plan[:name], class: "btn btn-block btn-outline plan-dark", type: 'submit' %> 
+                        <%= link_to 'Select Plan', new_affiliate_registration_path(plan: plan[:name]), class: "btn btn-block btn-outline plan-dark", role: "button"%>
                     </div>
                 </div>
             </div>
