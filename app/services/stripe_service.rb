@@ -59,6 +59,7 @@ class StripeService
               items: [{
               plan: @plan,
               }],
+              trial_period_days: 90
           },
           success_url: affiliate_url(@user.id),
           cancel_url: partners_plans_url
