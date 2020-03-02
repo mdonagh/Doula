@@ -90,7 +90,7 @@ class Affiliates::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:business_name, :website, :phone, :affiliate_plan_id, contact_name: [:first_name, :last_name], address: [:street_address, :address_line2, :city, :state, :zip_code]])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:business_name, :website, :phone, :affiliate_plan_id, :location_independent, contact_name: [:first_name, :last_name], address: [:street_address, :address_line2, :city, :state, :zip_code]])
   end
 
   def plan_params
@@ -99,7 +99,7 @@ class Affiliates::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:business_name, :website, :phone, :affiliate_plan_id, contact_name: [:first_name, :last_name], address: [:street_address, :address_line2, :city, :state, :zip_code]])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:business_name, :website, :phone, :affiliate_plan_id, :location_independent, contact_name: [:first_name, :last_name], address: [:street_address, :address_line2, :city, :state, :zip_code]])
   end
 
   # The path used after sign up.
