@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-
     mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  
-  
+
     # Custom error page routes 
     match "/404", :to => "errors#not_found", :via => :all
     match "/500", :to => "errors#internal_server_error", :via => :all
@@ -17,8 +15,6 @@ Rails.application.routes.draw do
     resources :affiliate_signups, path: "partner_signups"
     resources :registry_steps
     get '/registry_steps/children', to: 'registry_steps#children', as: :registry_steps_2
-  
-  
   
     devise_for :users, controllers: {
       sessions: 'users/sessions',
@@ -38,15 +34,18 @@ Rails.application.routes.draw do
       get 'user/oauth(/:userid)', :to => 'users/registrations#oauth'
       post 'user/email_signup', :to => 'users/registrations#email_signup'
     end
-  
+
     devise_scope :affiliate do
-      get 'partners/plans', :to => 'affiliates/registrations#plans'
+      get 'partners/plans', :to => 'affiliates/registrations#plans', :constraints => { :subdomain => /.+/ }, as: 'subdomain_root'
       get 'partner/free', :to => 'affiliates/registrations#free'
       post 'partner/free_signup', :to => 'affiliates/registrations#free_signup'
       post 'partner/select_plan', :to => 'affiliates/registrations#select_plan'
     end
   
-    resources :affiliates, path: "partners", :only => [:show]
+    constraints subdomain: 'affiliate' do
+      resources :affiliates, path: "partners" :only => [:show]
+    end
+
     resources :stripe_charges, :only => [:new]
   
     #Root page 
@@ -68,5 +67,4 @@ Rails.application.routes.draw do
   
     # Stripe routes 
     resources :charges, only: [:new, :create]
-
 end

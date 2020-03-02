@@ -120,6 +120,9 @@ Rails.application.configure do
 
 
   
+  #Subdomain setup
+  config.action_dispatch.tld_length = 1
+  
 end
 
 Rails.application.routes.default_url_options[:host] = 'behervillage.com'
