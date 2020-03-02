@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_24_012710) do
+ActiveRecord::Schema.define(version: 2020_03_01_204101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2020_02_24_012710) do
     t.text "contract"
     t.bigint "terms_and_conditions_id"
     t.string "stripe_code"
+    t.boolean "location_independent"
     t.index ["affiliate_plan_id"], name: "index_affiliates_on_affiliate_plan_id"
     t.index ["email"], name: "index_affiliates_on_email", unique: true
     t.index ["reset_password_token"], name: "index_affiliates_on_reset_password_token", unique: true
