@@ -43,7 +43,7 @@ Rails.application.routes.draw do
     end
   
     constraints subdomain: 'affiliate' do
-      resources :affiliates, path: "partners" :only => [:show]
+      resources :affiliates, path: "partners", :only => [:show]
     end
 
     resources :stripe_charges, :only => [:new]
